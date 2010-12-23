@@ -10,60 +10,37 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101218172104) do
+ActiveRecord::Schema.define(:version => 20101223145035) do
 
-  create_table "employments", :force => true do |t|
-    t.integer  "organization_id"
-    t.integer  "user_id"
-    t.boolean  "admin",           :default => false, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "employments", ["organization_id", "user_id"], :name => "index_employments_on_organization_id_and_user_id", :unique => true
-
-  create_table "organizations", :force => true do |t|
-    t.string   "nickname"
+  create_table "slugs", :force => true do |t|
     t.string   "name"
+    t.integer  "sluggable_id"
+    t.integer  "sequence",                     :default => 1, :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.string   "scope"
     t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
-  add_index "organizations", ["nickname"], :name => "index_organizations_on_nickname"
-
-  create_table "rubygems", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "organization_id"
-  end
-
-  add_index "rubygems", ["name"], :name => "index_rubygems_on_name", :unique => true
-  add_index "rubygems", ["organization_id"], :name => "index_rubygems_on_organization_id"
+  add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
+  add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "users", :force => true do |t|
-    t.string   "name"
+    t.string   "email",                               :default => "", :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "reset_password_token"
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                       :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "users", ["name"], :name => "index_users_on_name", :unique => true
-
-  create_table "versions", :force => true do |t|
-    t.integer  "rubygem_id"
-    t.string   "number"
-    t.string   "platform"
-    t.boolean  "latest",     :default => true,  :null => false
-    t.boolean  "prerelease", :default => false, :null => false
-    t.boolean  "indexed",    :default => false, :null => false
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "versions", ["indexed"], :name => "index_versions_on_indexed"
-  add_index "versions", ["position"], :name => "index_versions_on_position"
-  add_index "versions", ["rubygem_id", "latest"], :name => "index_versions_on_rubygem_id_and_latest", :unique => true
-  add_index "versions", ["rubygem_id"], :name => "index_versions_on_rubygem_id"
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

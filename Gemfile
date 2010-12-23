@@ -6,9 +6,11 @@ gem 'rails', '3.0.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'devise'
+gem 'friendly_id'
 
 group :development do
   gem 'mysql2'
+  gem 'heroku'
 end
 
 group :test do
