@@ -8,13 +8,14 @@ gem 'rails', '3.0.3'
 gem 'devise'
 gem 'friendly_id'
 
+gem 'rspec-rails', '~> 2.3.1', :group => [ :development, :test ]
+
 group :development do
   gem 'mysql2'
   gem 'heroku'
 end
 
 group :test do
-  gem 'rspec-rails', '~> 2.3.1'
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'database_cleaner'
