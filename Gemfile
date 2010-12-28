@@ -9,6 +9,7 @@ gem 'devise'
 gem 'friendly_id'
 
 gem 'rspec-rails', '~> 2.3.1', :group => [ :development, :test ]
+gem 'ruby-debug19',            :group => [ :development, :test ]
 
 group :development do
   gem 'mysql2'
@@ -18,7 +19,9 @@ end
 group :test do
   gem 'cucumber-rails'
   gem 'capybara'
+  gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'shoulda'
 end
 
 group :production do

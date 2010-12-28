@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101223150347) do
+ActiveRecord::Schema.define(:version => 20101228145821) do
+
+  create_table "memberships", :force => true do |t|
+    t.integer  "subdomain_id"
+    t.integer  "user_id"
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "memberships", ["subdomain_id", "user_id", "role"], :name => "index_memberships_on_subdomain_id_and_user_id_and_role"
+  add_index "memberships", ["subdomain_id", "user_id"], :name => "index_memberships_on_subdomain_id_and_user_id"
 
   create_table "slugs", :force => true do |t|
     t.string   "name"
@@ -26,10 +37,11 @@ ActiveRecord::Schema.define(:version => 20101223150347) do
 
   create_table "subdomains", :force => true do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "subdomains", ["name"], :name => "index_subdomains_on_name"
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
