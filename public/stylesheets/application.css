@@ -7,3 +7,7 @@ ul.hmenu {
 ul.hmenu li {
   display: inline;
 }
+
+div#sign-in-box {
+  display: none;
+}

@@ -5,7 +5,7 @@ Feature: Sign up
 
     Scenario: User signs up with invalid email
       When I go to the sign up page
-      And I fill in "Name" with "jodosha"
+      And I fill in "Full name" with "jodosha"
       And I fill in "Email" with "invalidemail"
       And I fill in "Password" with "password"
       And I fill in "Password confirmation" with "password"
@@ -14,17 +14,18 @@ Feature: Sign up
 
     Scenario: User signs up with invalid name
       When I go to the sign up page
-      And I fill in "Name" with ""
+      And I fill in "Full name" with ""
       And I fill in "Email" with "jodosha@gemsmineapp.com"
       And I fill in "Password" with "password"
       And I fill in "Password confirmation" with "password"
       And I press "Sign up"
       Then I should see error messages
 
-    Scenario: User signs up with already taken name
-      Given An user signed up with "jodosha" name
+    Scenario: User signs up with already taken domain name
+      Given A subdomain with "company" name
       When I go to the sign up page
-      And I fill in "Name" with "jodosha"
+      And I fill in "Subdomain" with "company"
+      And I fill in "Full name" with "jodosha"
       And I fill in "Email" with "jodosha@gemsmineapp.com"
       And I fill in "Password" with "password"
       And I fill in "Password confirmation" with "password"
@@ -33,7 +34,7 @@ Feature: Sign up
 
     Scenario: User signs up with invalid password
       When I go to the sign up page
-      And I fill in "Name" with "jodosha"
+      And I fill in "Full name" with "jodosha"
       And I fill in "Email" with "jodosha@gemsmineapp.com"
       And I fill in "Password" with "password"
       And I fill in "Password confirmation" with ""
@@ -42,7 +43,7 @@ Feature: Sign up
 
     Scenario: User signs up with valid data
       When I go to the sign up page
-      And I fill in "Name" with "jodosha"
+      And I fill in "Full name" with "jodosha"
       And I fill in "Email" with "email@person.com"
       And I fill in "Password" with "password"
       And I fill in "Password confirmation" with "password"

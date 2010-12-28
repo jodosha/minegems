@@ -5,23 +5,19 @@ end
 # Users
 
 Given /^An user signed up with "(.*)" name$/ do |name|
-  User.create!(
-    :name                  => name,
-    :email                 => "user@person.com",
-    :password              => "password",
-    :password_confirmation => "password",
-  )
+  Factory.create :user, :name => name
 end
 
 Given /^I signed up with "(.*)"$/ do |email_and_password|
   email, password = email_and_password.split '/'
+  Factory.create :user, :email => email, :password => password, :password_confirmation => password
+end
 
-  User.create!(
-    :name                  => "user",
-    :email                 => email,
-    :password              => password,
-    :password_confirmation => password,
-  )
+# Domains
+
+Given /^A subdomain with "(.*)" name$/ do |subdomain|
+  owner = Factory.create(:user)
+  Subdomain.create!(:name => subdomain, :owner => owner)
 end
 
 # Session

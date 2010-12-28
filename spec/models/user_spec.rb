@@ -9,7 +9,6 @@ describe User do
   specify { should have_many(:subdomains).through(:memberships) }
 
   specify { should validate_presence_of(:name) }
-  specify { should validate_uniqueness_of(:name) }
   specify { should validate_uniqueness_of(:email) }
 
   it "should have accessible attributes" do

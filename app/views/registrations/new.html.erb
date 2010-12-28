@@ -1,0 +1,50 @@
+<% javascript 'registrations/new' %>
+<h2>Sign up</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <fieldset>
+    <legend>Organization</legend>
+    <p><label for="subdomain_name">Name</label><br />
+    <input type="text" name="subdomain[name]" id="subdomain_name"></p>
+
+    <p><label for="subdomain_slug">Subdomain</label><br />
+    <input type="text" name="subdomain[slug]" id="subdomain_slug"></p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Account</legend>
+    <div id="sign-up-box">
+      <p><label for="user_name">Full name</label><br />
+      <%= f.text_field :name %></p>
+
+      <p><%= f.label :email %><br />
+      <%= f.text_field :email %></p>
+
+      <p><%= f.label :password %><br />
+      <%= f.password_field :password %></p>
+
+      <p><%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %></p>
+
+      <p>Already use MineGems? <a href="" class="sign-in">Sign in</a> with the account you already have.</p>
+    </div>
+
+    <div id="sign-in-box">
+      <p><%= f.label :email %><br />
+      <%= f.text_field :email, :disabled => 'disabled' %></p>
+
+      <p><%= f.label :password %><br />
+      <%= f.password_field :password, :disabled => 'disabled' %></p>
+
+      <p><input type="hidden" name="signin" id="signin" value="0" /></p>
+
+      <p>Don't have an account? <a href="" class="sign-up">Sign up</a> with email and password.</p>
+    </div>
+  </fieldset>
+
+  <p><%= f.submit "Sign up" %></p>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>
