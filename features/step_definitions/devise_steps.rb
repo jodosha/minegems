@@ -16,8 +16,7 @@ end
 # Domains
 
 Given /^A subdomain with "(.*)" name$/ do |subdomain|
-  owner = Factory.create(:user)
-  Subdomain.create!(:name => subdomain, :owner => owner)
+  Factory.create(:subdomain, :name => subdomain)
 end
 
 # Session
