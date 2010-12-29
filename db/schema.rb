@@ -23,25 +23,14 @@ ActiveRecord::Schema.define(:version => 20101228145821) do
   add_index "memberships", ["subdomain_id", "user_id", "role"], :name => "index_memberships_on_subdomain_id_and_user_id_and_role"
   add_index "memberships", ["subdomain_id", "user_id"], :name => "index_memberships_on_subdomain_id_and_user_id"
 
-  create_table "slugs", :force => true do |t|
-    t.string   "name"
-    t.integer  "sluggable_id"
-    t.integer  "sequence",                     :default => 1, :null => false
-    t.string   "sluggable_type", :limit => 40
-    t.string   "scope"
-    t.datetime "created_at"
-  end
-
-  add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
-  add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
-
   create_table "subdomains", :force => true do |t|
+    t.string   "tld"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "subdomains", ["name"], :name => "index_subdomains_on_name"
+  add_index "subdomains", ["tld"], :name => "index_subdomains_on_tld", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false

@@ -69,8 +69,6 @@ GEM
       rails (>= 3.0.0.beta4)
     ffi (0.6.3)
       rake (>= 0.8.7)
-    friendly_id (3.1.8)
-      babosa (~> 0.2.0)
     gherkin (2.3.3)
       json (~> 1.4.6)
     heroku (1.15.1)
@@ -160,12 +158,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  babosa
   capybara
   cucumber-rails
   database_cleaner
   devise
   factory_girl_rails
-  friendly_id
   heroku
   mysql2
   pg

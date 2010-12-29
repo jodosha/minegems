@@ -1,5 +1,6 @@
-Factory.sequence(:subdomain_name) { |n| "subdomain#{n}" }
+Factory.sequence(:subdomain_tld) { |n| "subdomain#{n}" }
 
 Factory.define :subdomain do |subdomain|
-  subdomain.name { Factory.next(:subdomain_name) }
+  subdomain.tld  { Factory.next(:subdomain_tld) }
+  subdomain.name { "Subdomain" }
 end
