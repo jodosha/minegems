@@ -11,4 +11,13 @@ class User < ActiveRecord::Base
 
   validates_presence_of   :name
   validates_uniqueness_of :email, :case_sensitive => false
+
+  def create_with_subdomain!(subdomain)
+    return false unless new_record? or valid?
+    subdomain = self.subdomains.build(subdomain)
+
+    if subdomain.valid?
+      save && subdomain.save and return true
+    end
+  end
 end

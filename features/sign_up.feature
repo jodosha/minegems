@@ -5,6 +5,8 @@ Feature: Sign up
 
     Scenario: User signs up with invalid email
       When I go to the sign up page
+      And I fill in "Name" with "Company Inc."
+      And I fill in "Subdomain" with "company"
       And I fill in "Full name" with "jodosha"
       And I fill in "Email" with "invalidemail"
       And I fill in "Password" with "password"
@@ -14,6 +16,8 @@ Feature: Sign up
 
     Scenario: User signs up with invalid name
       When I go to the sign up page
+      And I fill in "Name" with "Company Inc."
+      And I fill in "Subdomain" with "company"
       And I fill in "Full name" with ""
       And I fill in "Email" with "jodosha@gemsmineapp.com"
       And I fill in "Password" with "password"
@@ -22,8 +26,9 @@ Feature: Sign up
       Then I should see error messages
 
     Scenario: User signs up with already taken domain name
-      Given A subdomain with "company" name
+      Given A subdomain with "company" tld
       When I go to the sign up page
+      And I fill in "Name" with "Company Inc."
       And I fill in "Subdomain" with "company"
       And I fill in "Full name" with "jodosha"
       And I fill in "Email" with "jodosha@gemsmineapp.com"
@@ -34,6 +39,8 @@ Feature: Sign up
 
     Scenario: User signs up with invalid password
       When I go to the sign up page
+      And I fill in "Name" with "Company Inc."
+      And I fill in "Subdomain" with "company"
       And I fill in "Full name" with "jodosha"
       And I fill in "Email" with "jodosha@gemsmineapp.com"
       And I fill in "Password" with "password"
@@ -43,6 +50,8 @@ Feature: Sign up
 
     Scenario: User signs up with valid data
       When I go to the sign up page
+      And I fill in "Name" with "Company Inc."
+      And I fill in "Subdomain" with "company"
       And I fill in "Full name" with "jodosha"
       And I fill in "Email" with "email@person.com"
       And I fill in "Password" with "password"

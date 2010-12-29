@@ -9,8 +9,8 @@
     <p><label for="subdomain_name">Name</label><br />
     <input type="text" name="subdomain[name]" id="subdomain_name"></p>
 
-    <p><label for="subdomain_slug">Subdomain</label><br />
-    <input type="text" name="subdomain[slug]" id="subdomain_slug"></p>
+    <p><label for="subdomain_tld">Subdomain</label><br />
+    <input type="text" name="subdomain[tld]" id="subdomain_tld"></p>
   </fieldset>
 
   <fieldset>
@@ -38,10 +38,13 @@
       <p><%= f.label :password %><br />
       <%= f.password_field :password, :disabled => 'disabled' %></p>
 
-      <p><input type="hidden" name="signin" id="signin" value="0" /></p>
-
       <p>Don't have an account? <a href="" class="sign-up">Sign up</a> with email and password.</p>
     </div>
+
+    <p><input type="hidden" name="signin" id="signin" value="0" />
+    <input type="hidden" name="user[remember_me]" id="user_remember_me" value="0" />
+    <input name="utf8" type="hidden" value="&#x2713;" id="utf8" />
+    </p>
   </fieldset>
 
   <p><%= f.submit "Sign up" %></p>

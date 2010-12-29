@@ -15,8 +15,8 @@ end
 
 # Domains
 
-Given /^A subdomain with "(.*)" name$/ do |subdomain|
-  Factory.create(:subdomain, :name => subdomain)
+Given /^A subdomain with "(.*)" tld$/ do |tld|
+  Factory.create(:subdomain, :tld => tld)
 end
 
 # Session

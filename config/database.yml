@@ -21,7 +21,7 @@ test:
   encoding: utf8
 
 production:
-  <<: *development
+  development
 
 cucumber:
   <<: *test
