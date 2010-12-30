@@ -1,2 +1,28 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div id="statement">
+  <h2>Private hosting for your hidden gems.</h2>
+</div>
+<hr />
+<div class="span-16">
+  <div class="span-11">
+    <%= image_tag 'screenshot.png', :size => '640x395' %>
+  </div>
+  <div id="explanation" class="span-5 last">
+    <h3>Private, secure, reliable.</h3>
+    <p>We offer dedicated repositories for your closed source Ruby gems.</p>
+
+    <div id="signup-button">
+      <% link_to new_user_registration_path, :class => "button-big green signup" do %>
+      <span></span>Signup &amp; Pricing
+      <% end %>
+    </div>
+  </div>
+</div>
+<hr />
+<div class="span-16">
+  <div id="how-to" class="span-8">
+    <h3>How does it work?</h3>
+  </div>
+  <div id="customers" class="span-8 last">
+    <h3>Who's using GemsMine</h3>
+  </div>
+</div>

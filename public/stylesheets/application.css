@@ -1,3 +1,19 @@
+body {
+  background: #c1d0ce url(/images/background.png) repeat-x top left;
+}
+
+hr {
+  width: 98%;
+  margin: 10px;
+}
+
+div#content-wrap {
+  background-color: #f2f2f2;
+  -moz-box-shadow: 0 5px 15px #666;
+  -webkit-box-shadow: 0 5px 15px #666;
+  box-shadow: 0 5px 15px #666;
+}
+
 ul.hmenu {
   list-style: none;
   margin: 0 0 2em;
@@ -10,4 +26,82 @@ ul.hmenu li {
 
 div#sign-in-box {
   display: none;
+}
+
+div#statement {
+  text-align: center;
+  font-size: 1.8em;
+  color: #ccc;
+}
+
+div#statement h2 {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+div#explanation h3,
+div#how-to h3,
+div#customers h3 {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+div#explanation p {
+  font-size: 1.2em;
+}
+
+div#signup-button {
+  margin-left: 2.2em;
+}
+
+.green {
+  background: -moz-linear-gradient(center top , #6EA03B, #164800) repeat scroll 0 0 transparent;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#134000), to(#2D5C00));
+}
+.green:hover {
+  background: -moz-linear-gradient(center top , #578927, #134000) repeat scroll 0 0 transparent;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#578927), to(#134000));
+}
+.button-big {
+  text-decoration: none;
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-bottom-left-radius: 5px 5px;
+  border-bottom-right-radius: 5px 5px;
+  border-top-left-radius: 5px 5px;
+  border-top-right-radius: 5px 5px;
+  border: medium none;
+  display: block;
+  font-size: 18px;
+  height: 38px;
+  padding: 13px 0 0 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  width: 205px;
+}
+.button-big {
+  border: medium none;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  position: relative;
+}
+.button-big:active, .button-big:hover {
+    border: medium none;
+}
+a, button {
+  outline: medium none;
+}
+a:hover {
+  border-bottom: 1px solid #777777;
+  color: white;
+}
+
+.green span {
+}
+.button-big span {
+  background-image: url("/images/signup.png");
+  float: left;
+  height: 32px;
+  margin: -3px 15px 0 10px;
+  width: 32px;
 }

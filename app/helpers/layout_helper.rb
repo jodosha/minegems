@@ -6,4 +6,12 @@ module LayoutHelper
       end.join("\n").html_safe
     end
   end
+
+  def flash_messages
+    [ :notice, :alert ].map do |message|
+      if content = send(message)
+        content_tag(:div, content, :class => message.to_s)
+      end
+    end.join("\n").html_safe
+  end
 end

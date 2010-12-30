@@ -1,0 +1,211 @@
+/*------------------------------------------------------------------------------
+  @group Global Reset
+------------------------------------------------------------------------------*/
+* {
+  padding:0;
+  margin:0;
+}
+h1, h2, h3, h4, h5, h6, p, pre, blockquote, label, ul, ol, dl, fieldset, address { margin:1em 0; }
+li, dd { margin-left:5%; }
+fieldset { padding: .5em; }
+select option{ padding:0 5px; }
+
+.access{ display:none; } /* For accessibility related elements */
+.clear{ clear:both; height:0px; font-size:0px; line-height:0px; overflow:hidden; }
+a{ outline:none; }
+a img{ border:none; }
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+* html .clearfix {height: 1%;}
+.clearfix {display:inline-block;}
+.clearfix {display: block;}
+
+/* @end */
+
+/*------------------------------------------------------------------------------
+  @group Type & Styles
+------------------------------------------------------------------------------*/
+
+body{
+  font-family: Helvetica, Arial, sans-serif;
+  font-size:12px;
+  color:#333;
+  background:#f2f2f2;
+}
+
+a{
+  color:#0071b2;
+  text-decoration:none;
+}
+a:hover{
+  text-decoration:underline;
+}
+
+h1{
+  margin:15px 0;
+  font-size:20px;
+  color:#000;
+}
+
+/* @end */
+
+/*------------------------------------------------------------------------------
+  @group Sidebar
+------------------------------------------------------------------------------*/
+
+html, body{
+  overflow:auto;
+  height:100%;
+}
+
+#sidebar{
+  position:fixed;
+  top:0;
+  left:0;
+  height:100%;
+  width:280px;
+  background:#121212;
+}
+
+h2#logo{
+  margin:15px 15px;
+  font-size:20px;
+  color:#bbb;
+}
+
+#sidebar p.status{
+  margin:15px;
+  color:#999;
+  font-size:11px;
+}
+
+ul#nav{
+  margin:15px 0;
+  border-top:1px solid #000;
+  border-bottom:1px solid #212121;
+}
+ul#nav li{
+  list-style-type:none;
+  margin:0;
+  padding:10px 15px;
+  border-bottom:1px solid #000;
+  border-top:1px solid #212121;
+  cursor:pointer;
+}
+ul#nav li:hover{
+  background:#222;
+}
+ul#nav li.selected{
+  background:#f2f2f2;
+}
+ul#nav li strong{
+  display:block;
+  font-size:12px;
+  color:#fff;
+}
+ul#nav li.selected strong{
+  color:#000;
+}
+ul#nav li em{
+  display:block;
+  margin-top:2px;
+  font-style:normal;
+  font-size:11px;
+  color:#666;
+}
+ul#nav li.selected em{
+  color:#999;
+}
+
+/* @end */
+
+/*------------------------------------------------------------------------------
+  @group Main Area
+------------------------------------------------------------------------------*/
+
+#main{
+  margin-left:300px;
+  margin-right:20px;
+}
+
+ul.events{
+  margin:15px 0;
+}
+ul.events>li{
+  list-style-type:none;
+  margin:5px 0;
+  padding:5px;
+  background:#e6e6e6;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+}
+ul.events>li>.inner{
+  padding:10px 15px 15px;
+  background:#fafafa;
+  border:1px solid #d7d7d7;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+}
+
+ul.events .meta{
+  position:relative;
+  width:100%;
+  margin-top:2px;
+  margin-left:-15px;
+  margin-bottom:15px;
+  padding:0 15px 10px 15px;
+  border-bottom:1px solid #d7d7d7;
+}
+ul.events .meta h3{
+  margin:0;
+  font-size:12px;
+  font-weight:normal;
+}
+ul.events .meta h3 a{
+  font-weight:bold;
+}
+ul.events .meta h3 .sep{
+  color:#999;
+}
+
+ul.events .icon{
+  position:absolute;
+  top:-2px;
+  right:15px;
+  display:block;
+  width:16px;
+  height:16px;
+  background:0 0 no-repeat;
+}
+ul.events li.twitter .icon{ background-image:url(/images/icons/twitter.png); }
+ul.events li.hackernews .icon{ background-image:url(/images/icons/hackernews.png); }
+
+ul.events .meta ul.actions{
+  margin:0;
+  position:absolute;
+  top:0;
+  right:45px;
+  white-space:nowrap;
+}
+ul.events .meta ul.actions>li{
+  list-style-type:none;
+  margin:0 0 0 20px;
+  float:right;
+}
+
+ul.events p{
+  margin:0;
+  font-size:14px;
+  color:#666;
+}
+ul.events p+p{
+  margin-top:15px;
+}
+
+/* @end */
