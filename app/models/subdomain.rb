@@ -12,6 +12,10 @@ class Subdomain < ActiveRecord::Base
 
   before_validation :transform_tld
 
+  def self.search(query)
+    where(:tld => query).select(:tld)
+  end
+
   protected
     def transform_tld
       self.tld = tld.to_slug.normalize!(:to_ascii => true) unless tld.blank?

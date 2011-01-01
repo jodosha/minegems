@@ -44,7 +44,7 @@ div#error_explanation {
 }
 
 p.form-explanation {
-  margin: -2em 0 0 .5em;
+  margin: -2em 0 .8em .5em;
   color: #666;
   font-style: italic;
 }

@@ -1,4 +1,4 @@
-<% javascript 'registrations/new' %>
+<% javascript 'jquery/jquery.validations', 'registrations/new' %>
 <div class="prepend-2 span-12 append-2">
   <h2 class="bigger">Sign up</h2>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -7,10 +7,11 @@
     <fieldset>
       <legend>Organization</legend>
       <p><label for="subdomain_name">Name</label><br />
-      <input type="text" name="subdomain[name]" id="subdomain_name" class="title"></p>
+      <input type="text" name="subdomain[name]" id="subdomain_name" class="title required"></p>
+      <p class="form-explanation">Your organization name (eg. Acme Inc.)</p>
 
       <p><label for="subdomain_tld">Subdomain</label><br />
-      <input type="text" name="subdomain[tld]" id="subdomain_tld" class="title" autocomplete="off"></p>
+      <input type="text" name="subdomain[tld]" id="subdomain_tld" class="title required unique" autocomplete="off"></p>
       <p id="subdomain-tld" class="form-explanation">https://example.gemsmineapp.com</p>
     </fieldset>
 
@@ -18,16 +19,16 @@
       <legend>Account</legend>
       <div id="sign-up-box">
         <p><label for="user_name">Full name</label><br />
-        <%= f.text_field :name, :class => "title" %></p>
+        <%= f.text_field :name, :class => "title required" %></p>
 
         <p><%= f.label :email %><br />
-        <%= f.text_field :email, :class => "title" %></p>
+        <%= f.text_field :email, :class => "title required email" %></p>
 
         <p><%= f.label :password %><br />
-        <%= f.password_field :password, :class => "title" %></p>
+        <%= f.password_field :password, :class => "title required confirmation" %></p>
 
         <p><%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, :class => "title" %></p>
+        <%= f.password_field :password_confirmation, :class => "title required" %></p>
 
         <p>Already use MineGems? <a href="" class="sign-in">Sign in</a> with the account you already have.</p>
       </div>
@@ -48,7 +49,7 @@
       </p>
     </fieldset>
 
-    <p id="signup-button"><%= f.submit "Sign up", :disable_with => "Saving.." %></p>
+    <p id="signup-button"><%= f.submit "Sign up" %></p>
   <% end %>
   <%= render :partial => "devise/shared/links" %>
 </div>

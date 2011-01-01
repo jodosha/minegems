@@ -2,7 +2,11 @@ Mine::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
 
   root :to => "home#index"
-  resources :subdomains, :only => [ :create ]
+  resources :subdomains, :only => [ :create ] do
+    collection do
+      get 'search'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
