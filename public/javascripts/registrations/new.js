@@ -8,4 +8,9 @@ $(document).ready(function() {
 
     return false;
   });
+
+  $('input#subdomain_tld').keyup(function( ){
+    var value = 'https://' + $(this).val() + '.gemsmineapp.com';
+    $('p#subdomain-tld').text(value);
+  });
 });

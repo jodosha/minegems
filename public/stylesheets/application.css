@@ -7,11 +7,46 @@ hr {
   margin: 10px;
 }
 
+h2 {
+  font-size: 2.4em;
+  font-weight: bold;
+}
+
+.alert {
+  padding: .8em;
+  margin-bottom: 1em;
+  border: 2px solid #ddd;
+}
+.alert {
+  background: #FBE3E4;
+  color: #8a1f11;
+  border-color: #FBC2C4;
+}
+.alert a {
+  color: #8a1f11;
+}
+
 div#content-wrap {
+  padding: 1em;
   background-color: #f2f2f2;
   -moz-box-shadow: 0 5px 15px #666;
   -webkit-box-shadow: 0 5px 15px #666;
   box-shadow: 0 5px 15px #666;
+}
+
+div#error_explanation {
+  padding:.8em;
+  margin-bottom:1em;
+  border:2px solid #ddd;
+  background:#FBE3E4;
+  color:#8a1f11;
+  border-color:#FBC2C4;
+}
+
+p.form-explanation {
+  margin: -2em 0 0 .5em;
+  color: #666;
+  font-style: italic;
 }
 
 ul.hmenu {
@@ -30,7 +65,7 @@ div#sign-in-box {
 
 div#statement {
   text-align: center;
-  font-size: 1.8em;
+  font-size: 1.3em;
   color: #ccc;
 }
 
@@ -104,4 +139,7 @@ a:hover {
   height: 32px;
   margin: -3px 15px 0 10px;
   width: 32px;
+}
+p#signup-button {
+  float:right;
 }
