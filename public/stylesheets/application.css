@@ -49,6 +49,10 @@ p.form-explanation {
   font-style: italic;
 }
 
+span.validation-message {
+  color:#8a1f11;
+}
+
 ul.hmenu {
   list-style: none;
   margin: 0 0 2em;

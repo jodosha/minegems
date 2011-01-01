@@ -89,7 +89,7 @@
     if ( input.val() != "" ) {
       markAsValid(input, 'required')
     } else {
-      markAsInvalid(input, 'required')
+      markAsInvalid(input, 'required', 'This is a required field.')
     }
   }
 
@@ -97,7 +97,7 @@
     var input  = $(input);
     var result = $.getJSON(options.url + '?q=' + encodeURIComponent(input.val()), function( data ) {
       if ( data && data.length > 0 ) {
-        markAsInvalid(input, 'unique')
+        markAsInvalid(input, 'unique', 'It has been already taken.')
       } else {
         markAsValid(input, 'unique')
       }
@@ -111,7 +111,7 @@
     if ( input.val().match(regexp) ) {
       markAsValid(input, 'email')
     } else {
-      markAsInvalid(input, 'email')
+      markAsInvalid(input, 'email', 'A valid email address is required.')
     }
   }
 
@@ -123,16 +123,21 @@
       markAsValid(input, 'confirmation')
       markAsValid(confirmationInput, 'confirmation')
     } else {
-      markAsInvalid(input, 'confirmation')
-      markAsInvalid(confirmationInput, 'confirmation')
+      markAsInvalid(input, 'confirmation', 'It must match')
+      markAsInvalid(confirmationInput, 'confirmation', 'It must match')
     }
   }
 
   function markAsValid( input, type ) {
     input.removeClass('invalid-' + type)
+         .parent().find('.validation-message span.' + type).text('');
   }
 
-  function markAsInvalid( input, type ) {
+  function markAsInvalid( input, type, message ) {
     input.addClass('invalid-' + type)
+    var messageContainer = input.parent().find('.validation-message span.' + type);
+    if ( messageContainer.length == 0 ) {
+      input.parent().find('.validation-message').append('<span class="'+type+'"> '+message+'</span>');
+    }
   }
 }(jQuery));
