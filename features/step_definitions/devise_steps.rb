@@ -2,6 +2,13 @@ Then /^I should see error messages$/ do
   page.body.should match(/error(s)? prohibited/m)
 end
 
+# Paths
+
+Then /^I should see the "([^"]*)" login page$/ do |subdomain|
+  page.body.should match(%r{#{subdomain}})
+  page.body.should match(/login/)
+end
+
 # Users
 
 Given /^An user signed up with "(.*)" name$/ do |name|

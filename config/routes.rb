@@ -1,6 +1,10 @@
 Gemsmine::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
 
+  constraints(SubdomainRouter) do
+    match "/" => "dashboard#index"
+  end
+
   root :to => "home#index"
   resources :subdomains, :only => [ :create ] do
     collection do
