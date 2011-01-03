@@ -13,7 +13,7 @@ class Subdomain < ActiveRecord::Base
   before_validation :transform_tld
 
   def self.search(query)
-    where(:tld => query).select(:tld)
+    where(:tld => query).select([:tld, :name]).limit(1).first
   end
 
   protected

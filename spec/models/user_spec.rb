@@ -28,7 +28,7 @@ describe User do
       end
 
       context "and an invalid subdomain" do
-        let(:subdomain) { build_subdomain_params :name => "" }
+        let(:subdomain) { build_subdomain_params :tld => "" }
 
         it "should not create" do
           user.create_with_subdomain!(subdomain).should be_false
