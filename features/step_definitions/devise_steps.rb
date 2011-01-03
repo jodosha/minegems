@@ -16,8 +16,18 @@ Given /^An user signed up with "(.*)" name$/ do |name|
 end
 
 Given /^I signed up with "(.*)"$/ do |email_and_password|
+  create_user(email_and_password)
+end
+
+Given /^I signed in with "(.*)"$/ do |email_and_password|
   email, password = email_and_password.split '/'
-  Factory.create :user, :email => email, :password => password, :password_confirmation => password
+  user = create_user(email_and_password)
+
+  visit new_user_session_path
+  fill_in 'Email',    :with => email
+  fill_in 'Password', :with => password
+
+  click_button 'Sign in'
 end
 
 # Domains

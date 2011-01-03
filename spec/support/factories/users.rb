@@ -7,3 +7,8 @@ Factory.define :user do |user|
   user.password              { "secret" }
   user.password_confirmation { "secret" }
 end
+
+def create_user(email_and_password)
+  email, password = email_and_password.split '/'
+  Factory.create :user, :email => email, :password => password, :password_confirmation => password
+end

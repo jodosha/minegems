@@ -26,6 +26,10 @@ h2 {
   color: #8a1f11;
 }
 
+div#login-container {
+  margin-top: 5em;
+}
+
 div#content-wrap {
   padding: 1em;
   background-color: #f2f2f2;
@@ -51,6 +55,18 @@ p.form-explanation {
 
 span.validation-message {
   color:#8a1f11;
+}
+
+input.big-title {
+  margin:0.5em 0;
+  padding: 5px;
+  width: 450px;
+  border: 1px solid #bbb;
+  font-size:2em;
+}
+
+input.big-title:focus {
+  border: 1px solid #666;
 }
 
 ul.hmenu {
@@ -144,6 +160,6 @@ a:hover {
   margin: -3px 15px 0 10px;
   width: 32px;
 }
-p#signup-button {
-  float:right;
+.right {
+  float: right;
 }
