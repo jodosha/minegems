@@ -15,7 +15,7 @@ Gemsmine::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.default_url_options = { :host => 'minegems.local' }
+  config.action_mailer.default_url_options = { :host => 'lvh.me:3000' }
 
   # A dummy setup for development - no deliveries, but logged
   config.action_mailer.delivery_method = :smtp
