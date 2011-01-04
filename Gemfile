@@ -7,6 +7,7 @@ gem 'rails', '3.0.3'
 
 gem 'devise'
 gem 'babosa'
+gem 'redis', '~> 2.1.1'
 
 gem 'rspec-rails', '~> 2.3.1', :group => [ :development, :test ]
 gem 'ruby-debug19',            :group => [ :development, :test ]

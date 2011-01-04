@@ -1,7 +1,7 @@
 Gemsmine::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
 
-  constraints(SubdomainRouter) do
+  constraints(Gemsmine::Rack::SubdomainRouter) do
     match "/" => "dashboard#index"
   end
 

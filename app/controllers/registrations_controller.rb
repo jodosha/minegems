@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+  before_filter :require_no_subdomain
+
   # POST /users
   def create
     build_resource
