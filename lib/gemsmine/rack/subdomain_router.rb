@@ -9,6 +9,9 @@ module Gemsmine
       cattr_accessor :lookup_prefix
       self.lookup_prefix = "subdomains"
 
+      cattr_accessor :access_prefix
+      self.access_prefix = "site"
+
       def self.matches?(request)
         request.env['GEMSMINE_SITE'].present?
       end
@@ -26,6 +29,32 @@ module Gemsmine
           $redis.multi do |redis|
             Subdomain.all(:select => [:tld, :name]).each do |subdomain|
               update_lookup(subdomain, redis)
+            end
+          end
+        end
+      end
+
+      def self.access_granted?(site, user)
+        $redis.sismember("#{access_prefix}.#{site['tld']}", user.id)
+      end
+
+      def self.create_access(site, user, redis = $redis)
+        redis.sadd("#{access_prefix}.#{site.tld}", user.id)
+      end
+
+      def self.remove_access(site, user, redis = $redis)
+        redis.srem("#{access_prefix}.#{site.tld}", user.id)
+      end
+
+      def self.ensure_consistent_access!
+        unless $redis.keys("#{access_prefix}.*").size == Subdomain.count
+          $redis.multi do |redis|
+            Subdomain.all(:select => [:id, :tld], :include => :users).each do |subdomain|
+              redis.del("#{access_prefix}.#{subdomain.tld}")
+
+              subdomain.users.each do |user|
+                create_access(subdomain, user, redis)
+              end
             end
           end
         end

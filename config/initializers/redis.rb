@@ -6,3 +6,4 @@ else
 end
 
 Gemsmine::Rack::SubdomainRouter.ensure_consistent_lookup!
+Gemsmine::Rack::SubdomainRouter.ensure_consistent_access!
