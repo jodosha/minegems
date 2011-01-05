@@ -4,3 +4,5 @@ $redis = if Rails.env.test?
 else
   Redis.new
 end
+
+Subdomain.ensure_consistent_lookup!
