@@ -5,9 +5,19 @@ end
 # Paths
 
 Then /^I should see the "([^"]*)" login page$/ do |subdomain|
-  # it doesn't work because Capybara doesn't setup the request.env['GEMSMINE_SITE'] used in SitesHelper#site_name
-  # page.body.should match(%r{#{subdomain}})
+  page.body.should match(%r{#{subdomain}})
   page.body.should match(/login/)
+end
+
+When /^I visit the subdomained "(.*)" under "(.*)"$/ do |path, subdomain|
+  host = "#{subdomain}.#{$host}:#{$port}"
+  case path
+  when /signup page/
+    visit new_user_registration_url(:host => host)
+  else
+    raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
+      "Now, go and add a mapping in #{__FILE__}"
+  end
 end
 
 # Users

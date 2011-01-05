@@ -21,3 +21,8 @@ Feature: Routing
       Given A subdomain with "company" tld
       When I go to the "company" subdomain
       Then I go to the homepage
+
+    Scenario: User visits signup page with a domain
+      Given A subdomain with "company" tld
+      When I visit the subdomained "signup page" under "company"
+      Then I should see the "Company" login page

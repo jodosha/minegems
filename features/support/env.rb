@@ -20,11 +20,19 @@ require 'cucumber/rails/capybara_javascript_emulation' # Lets you click links wi
 
 Dir[Rails.root.join("spec/support/factories/*.rb")].each {|f| require f}
 require Rails.root.join("spec/support/routing")
+
+$host = 'lvh.me'
+$port = 60000
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
 # prefer to use XPath just remove this line and adjust any selectors in your
 # steps to use the XPath syntax.
+Capybara.app = Rack::Builder.parse_file(::File.join(Rails.root, 'config.ru')).first
 Capybara.default_selector = :css
+Capybara.configure do |config|
+  config.app_host    = $host
+  config.server_port = $port
+end
 
 # If you set this to false, any error raised from within your app will bubble 
 # up to your step definition and out to cucumber unless you catch it somewhere
