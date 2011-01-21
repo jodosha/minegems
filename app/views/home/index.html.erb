@@ -1,28 +1,130 @@
-<div id="statement">
-  <h2>Private hosting for your hidden gems.</h2>
-</div>
-<hr />
-<div class="span-16">
-  <div class="span-11">
-    <%= image_tag 'screenshot.png', :size => '640x395' %>
-  </div>
-  <div id="explanation" class="span-5 last">
-    <h3>Private, secure, reliable.</h3>
-    <p>We offer dedicated repositories for your closed source Ruby gems.</p>
-
-    <div id="signup-button">
-      <%= link_to new_user_registration_path, :class => "button-big green signup" do %>
-      <span></span>Signup &amp; Pricing
-      <% end %>
+<div class="presentation bar">
+  <div class="content">
+    <div class="maintitle bold">
+        Private hosting for your hidden gems
+    </div>
+    <div class="subtitle light">
+      <h1>We offer dedicated repositories for your closed source Ruby code.</h1>
+    </div>
+    <div class="bullets">
+      <div class="bullet1 clearAfter">
+        <div class="bulletleft"></div>
+        <div class="bulletright">
+          <div class="bullettext">
+            <strong>Craft</strong> your own gem
+          </div>
+        </div>
+      </div>
+      <div class="bullet2 clearAfter">
+        <div class="bulletleft"></div>
+        <div class="bulletright">
+          <div class="bullettext">
+            <strong>Push</strong> to our servers
+          </div>
+        </div>
+      </div>
+      <div class="bullet3 clearAfter">
+        <div class="bulletleft"></div>
+        <div class="bulletright">
+          <div class="bullettext">
+            <strong>Distribute</strong> across your applications
+          </div>
+        </div>
+      </div>
+      <div class="signupbutton">
+        <a href="<%= new_user_registration_path %>" title="Sign Up">
+          <%= image_tag 'home/SignUpButton.png', :alt => "Sign Up for Gemsmine", :size => "275x50", :border => "0" %>
+        </a>
+      </div>
+    </div>
+    <div class="screens">
+      <%= image_tag 'home/screens.png', :alt => "Private hosting for Ruby gems", :size => "514x360" %>
     </div>
   </div>
 </div>
-<hr />
-<div class="span-16">
-  <div id="how-to" class="span-8">
-    <h3>How does it work?</h3>
+<div class="quotes bar">
+<div class="content clearAfter">
+  <div class="quote1">
+    <div class="qtimg left">
+      <%= image_tag 'home/dhh.png', :alt => "David Heinneimer Hasson", :size => "50x50" %>
+    </div>
+    <div class="qttxt left">
+      <div class="quotetext">
+        "The product I always wanted to build instead of Basecamp."
+      </div>
+      <div class="quoteatt light">
+        - David Heinneimer Hasson<br />
+        Creator of Ruby on Rails and partner at 37signals
+      </div>
+    </div>
   </div>
-  <div id="customers" class="span-8 last">
-    <h3>Who's using GemsMine</h3>
+  <div class="quote2">
+    <div class="qtimg left">
+      <%= image_tag 'home/matz.png', :alt => "Yukiro Matsumoto", :size => "50x50" %>
+    </div>
+    <div class="qttxt left">
+      <div class="quotetext">
+        "This product has made my work on Ruby pointless."
+      </div>
+      <div class="quoteatt light">
+        - Yukiro Matsumoto<br />
+        Creator of Ruby
+      </div>
+    </div>
   </div>
+</div>
+</div>
+<div class="info bar">
+<div class="content">
+  <div class="infocontent one clearAfter">
+    <div class="homeinfoleft">
+      <div class="infotitle">
+        <h1>Gems Mine&trade; is for your company</h1>
+      </div>
+      <div class="infotext light">
+        Create your gems, distribute across your servers, share with your team
+        all <strong>without expose</strong> your code. <strong>Gems Mine</strong>&trade; offer <strong>private gem hosting</strong>,
+        <strong>collaborative tools</strong> for <strong>push</strong> your code and <strong>use</strong> it in your <strong>applications</strong>.
+      </div>
+      <div class="infotext light">
+        To keep the code undisclosed is probably the most annoying issue in the development cycle.
+        <strong>Gems Mine</strong>&trade; simplifies this process by providing the right set of tools you need
+        to deploy your applications using your <strong>private gems</strong>.
+      </div>
+      <br />
+      <a href="" title="Feature Tour">
+        <div class="graybar">
+          <div class="graybarheader bold">
+            Learn more about us
+          </div>
+          <div class="graybarimages">
+            <%= image_tag 'home/vidimage.png', :alt => "Budgeting and Projections", :size => "266x89" %>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="homeinforight">
+      <table>
+        <tr>
+          <td><img src="/images/home/iconekg.png" alt="Dashboard Status" /></td>
+          <td class="infotext top light" valign="top">
+            <h1>Monitor your business's vital stats</h1>
+          </td>
+        </tr>
+        <tr>
+          <td><img src="/images/home/icongroup.png" alt="Share Pro-Forma P&L" /></td>
+          <td class="infotext top light" valign="top">
+            <h1>Invite your investors, accountant, etc.</h1>
+          </td>
+        </tr>
+        <tr>
+          <td><img src="/images/home/iconpiggybank.png" alt="Business Budgeting" /></td>
+          <td class="infotext top light" valign="top">
+            <h1>Build and stick to a spending budget</h1>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
 </div>

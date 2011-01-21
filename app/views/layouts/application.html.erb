@@ -1,281 +1,59 @@
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>
-        
-    Financial dashboard and forecasting software for your business :: 60mo
-
+      Gems Mine – Private hosting for your hidden gems
     </title>
-    
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-    
-    <meta name="Description" content="60mo is an easy to use financial dashboard and financial forecasting suite that simplifies the management of your business." />
-
-    <meta name="Keywords" content="financial dashboard, financial forecasting, cash flow projections, business financial planning, financial projections, cash flow management, business forecasting, cash flow model, forecasting software, p and l, profit and loss statements, web-based, software, 60mo, SixtyMo" />
+    <meta name="Description" content="Gems Mine offers private hosting for Ruby gems" />
+    <meta name="Keywords" content="gems mine, ruby, ruby on rails, gem, gems, private, hosting, cloud, repository, deploy, deployment" />
     <link type="image/x-icon" href="/favicon.ico" rel="icon" />
-    
-        
-        <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"
-            media="all" />
-        
+    <%= stylesheet_link_tag 'main', :cache => true %>        
 </head>
 <body>
-    <!--[if lt IE 7]>  <div style='border: 1px solid #F7941D; background: #FEEFDA; text-align: center; clear: both; height: 75px; position: relative;'>    <div style='position: absolute; right: 3px; top: 3px; font-family: courier new; font-weight: bold;'><a href='#' onclick='javascript:this.parentNode.parentNode.style.display="none"; return false;'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-cornerx.jpg' style='border: none;' alt='Close this notice'/></a></div>    <div style='width: 640px; margin: 0 auto; text-align: left; padding: 0; overflow: hidden; color: black;'>      <div style='width: 75px; float: left;'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-warning.jpg' alt='Warning!'/></div>      <div style='width: 275px; float: left; font-family: Arial, sans-serif;'>        <div style='font-size: 14px; font-weight: bold; margin-top: 12px;'>You are using an outdated browser</div>        <div style='font-size: 12px; margin-top: 6px; line-height: 12px;'>For a better experience using this site, please upgrade to a modern web browser.</div>      </div>      <div style='width: 75px; float: left;'><a href='http://www.firefox.com' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-firefox.jpg' style='border: none;' alt='Get Firefox 3.5'/></a></div>      <div style='width: 75px; float: left;'><a href='http://www.browserforthebetter.com/download.html' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-ie8.jpg' style='border: none;' alt='Get Internet Explorer 8'/></a></div>      <div style='width: 73px; float: left;'><a href='http://www.apple.com/safari/download/' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-safari.jpg' style='border: none;' alt='Get Safari 4'/></a></div>      <div style='float: left;'><a href='http://www.google.com/chrome' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-chrome.jpg' style='border: none;' alt='Get Google Chrome'/></a></div>    </div>  </div>  <![endif]-->
-    <div class="header bar">
-        <div class="content clearAfter">
-            <div class="logo">
-                <a href="/" title="Home">
-                    <img src="/images/home/logo.png" alt="60mo" border="0" /></a>
-            </div>
-            <div class="nav light">
-                <ul>
-                    <li><a href="/Site/Login" class="login" title="Log In">LOG IN</a></li>
-                    <li><a href="/Site/Signup" title="Sign Up">SIGN UP</a></li>
-                    <li><a href="/About" title="About Us">ABOUT</a></li>
-                    <li><a href="/Pricing" title="Plans & Pricing">PLANS &amp; PRICING</a></li>
-                    <li><a href="/Tour" title="Feature Tour">FEATURES</a></li>
-                </ul>
-            </div>
-        </div>
+  <!--[if lt IE 7]>  <div style='border: 1px solid #F7941D; background: #FEEFDA; text-align: center; clear: both; height: 75px; position: relative;'>    <div style='position: absolute; right: 3px; top: 3px; font-family: courier new; font-weight: bold;'><a href='#' onclick='javascript:this.parentNode.parentNode.style.display="none"; return false;'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-cornerx.jpg' style='border: none;' alt='Close this notice'/></a></div>    <div style='width: 640px; margin: 0 auto; text-align: left; padding: 0; overflow: hidden; color: black;'>      <div style='width: 75px; float: left;'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-warning.jpg' alt='Warning!'/></div>      <div style='width: 275px; float: left; font-family: Arial, sans-serif;'>        <div style='font-size: 14px; font-weight: bold; margin-top: 12px;'>You are using an outdated browser</div>        <div style='font-size: 12px; margin-top: 6px; line-height: 12px;'>For a better experience using this site, please upgrade to a modern web browser.</div>      </div>      <div style='width: 75px; float: left;'><a href='http://www.firefox.com' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-firefox.jpg' style='border: none;' alt='Get Firefox 3.5'/></a></div>      <div style='width: 75px; float: left;'><a href='http://www.browserforthebetter.com/download.html' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-ie8.jpg' style='border: none;' alt='Get Internet Explorer 8'/></a></div>      <div style='width: 73px; float: left;'><a href='http://www.apple.com/safari/download/' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-safari.jpg' style='border: none;' alt='Get Safari 4'/></a></div>      <div style='float: left;'><a href='http://www.google.com/chrome' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-chrome.jpg' style='border: none;' alt='Get Google Chrome'/></a></div>    </div>  </div>  <![endif]-->
+  <div class="header bar">
+    <div class="content clearAfter">
+      <div class="logo">
+        <a href="/" title="Home">
+          <%= image_tag 'home/logo.png', :alt => "Gems Mine", :border => "0", :size => "200x45" %>
+        </a>
+      </div>
+      <div class="nav light">
+        <ul>
+          <li><a href="/about" title="About Us">ABOUT</a></li>
+          <li><a href="/signup" title="Pricing & Signup">PRICING &amp; SIGNUP</a></li>
+          <li><a href="/tour" title="Feature Tour">FEATURES</a></li>
+        </ul>
+      </div>
     </div>
-    <div id="content">
-        
-    <div class="presentation bar">
-        <div class="content">
-            <div class="maintitle bold">
-                Manage your business's finances and plans
-            </div>
-            <div class="subtitle light">
-                <h1>
-                    Real-time financial dashboard, budgeting, forecasting, and more!</h1>
-            </div>
-            <div class="bullets">
-                <div class="bullet1 clearAfter">
-                    <div class="bulletleft">
-                    </div>
-                    <div class="bulletright">
-                        <div class="bullettext">
-                            <strong>Analyze</strong> your business's spending and income, and compare to forecasts
-                        </div>
-                    </div>
-                </div>
-                <div class="bullet2 clearAfter">
-                    <div class="bulletleft">
-                    </div>
-                    <div class="bulletright">
-                        <div class="bullettext">
-                            <strong>Budget</strong> for the future of your organization with our proprietary
-                            forecasting engine
-                        </div>
-                    </div>
-                </div>
-                <div class="bullet3 clearAfter">
-                    <div class="bulletleft">
-                    </div>
-                    <div class="bulletright">
-                        <div class="bullettext">
-                            <strong>Manage</strong> employees, shareholders, customers, vendors, and more
-                        </div>
-                    </div>
-                </div>
-                <div class="signupbutton">
-                    <a href="/Site/SignUp" title="Sign Up">
-                        <img src="/images/home/SignUpButton.png" width="275" height="50" border="0" alt="Sign Up for 60mo" /></a>
-                </div>
-            </div>
-            <div class="screens">
-                <img src="/images/home/screens.png" alt="Financial Dashboard and Financial Forecasting"
-                    width="514" height="360" />
-            </div>
-        </div>
+  </div>
+  <div id="content">
+    <%= yield %>
+  </div>
+  <div class="footer bar">
+    <div class="content">
+      <div class="footerlinks light">
+        <a href="/" title="Home">HOME</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href="/tour" title="Feature Tour">FEATURES</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href="/signup" title="Pricing & Sign up">PRICING &amp; SIGN UP</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href="http://blog.gemsmineapp.com" title="Gems Mine Blog">BLOG</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href="/about" title="About Gems Mine">ABOUT</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href="http://twitter.com/gemsmine">TWITTER</a>
+      </div>
+      <div class="footerlinkssubleft">
+        <a href="http://support.gemsmineapp.com" title="Support">SUPPORT</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href="/privacy" title="Privacy Policy">PRIVACY</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href="/security" title="Security Info">SECURITY</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+        <a href="/terms" title="Terms of Use">TERMS OF USE</a>
+      </div>
+      <div class="footerlinkssubright">
+        &copy; 2011&nbsp;<a href="/" title="Home">Bootstrapp</a>, Inc. – All Rights Reserved
+      </div>
+      <div class="clearBoth footerseals"></div>
     </div>
-    <div class="quotes bar">
-        <div class="content clearAfter">
-            <div class="quote1">
-                <div class="qtimg left">
-                    <img src="/images/home/paul.png" alt="Financial Forecasting" width="50" />
-                </div>
-                <div class="qttxt left">
-                    <div class="quotetext">
-                        "This product will change the way you manage your business forever."
-                    </div>
-                    <div class="quoteatt light">
-                        - Paul Feezel, VP of Operations<br />
-                        Rachel Systems
-                    </div>
-                </div>
-            </div>
-            <div class="quote2">
-                <div class="qtimg left">
-                    <img src="/images/home/adam.png" alt="Financial Dashboard" width="50" />
-                </div>
-                <div class="qttxt left">
-                    <div class="quotetext">
-                        "I can't get this type of visibility out of QuickBooks or Excel spreadsheets. Nice."
-                    </div>
-                    <div class="quoteatt light">
-                        - Adam Metz, Principle<br />
-                        METZ Consulting
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="info bar">
-        <div class="content">
-            <div class="infocontent one clearAfter">
-                <div class="homeinfoleft">
-                    <div class="infotitle">
-                        <h1>
-                            60mo is Your Company's Virtual CFO</h1>
-                    </div>
-                    <div class="infotext light">
-                        Track your income, monitor your spending, create and stick to a budget, and forecast
-                        the future of your business. With 60mo you'll get a <strong>financial dashboard</strong>,
-                        <strong>forecasting software</strong> tool, and a <strong>budgeting software</strong>
-                        tool rolled into one.</div>
-                    <div class="infotext light">
-                        Finances are probably the most tedious part of managing a business. 60mo demystifies
-                        the process by providing nearly real-time integrations with your bank account and
-                        credits cards, automatically categorizing transaction that you import, and reconciling
-                        them with your accounting software's data.</div>
-                    <div class="infotext light">
-                        Whether you're just starting up and need a pro-forma P&amp;L to show investors or
-                        you're a profitable business that needs to plan for the future, 60mo's proprietary
-                        forecasting engine allows you to create a custom set of projections for your
-                        financial dashboard.</div>
-                    <br />
-                    <a href="/Tour" title="Feature Tour">
-                        <div class="graybar">
-                            <div class="graybarheader bold">
-                                Learn more about 60mo
-                            </div>
-                            <div class="graybarimages">
-                                <img src="/images/home/vidimage.png" alt="Budgeting and Projections" width="266"
-                                    height="89" />
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="homeinforight">
-                    <table>
-                        <tr>
-                            <td>
-                                <img src="/images/home/iconekg.png" alt="Dashboard Status" />
-                            </td>
-                            <td class="infotext top light" valign="top">
-                                <h1>
-                                    Monitor your business's vital stats</h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="/images/home/icongroup.png" alt="Share Pro-Forma P&L" />
-                            </td>
-                            <td class="infotext top light" valign="top">
-                                <h1>
-                                    Invite your investors, accountant, etc.</h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="/images/home/iconpiggybank.png" alt="Business Budgeting" />
-                            </td>
-                            <td class="infotext top light" valign="top">
-                                <h1>
-                                    Build and stick to a spending budget</h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="/images/home/iconinbox.png" alt="Integrations with Banks and Credit Cards" />
-                            </td>
-                            <td class="infotext top light" valign="top">
-                                <h1>
-                                    Integrate banks and accounting software</h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="/images/home/icongears.png" alt="Auotomated and Free" />
-                            </td>
-                            <td class="infotext top light" valign="top">
-                                <h1>
-                                    Automatic categorization of expenses</h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="/images/home/iconstats.png" alt="Reporting and Charts" />
-                            </td>
-                            <td class="infotext top light" valign="top">
-                                <h1>
-                                    Visualize spending and income</h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="/images/home/icongameplan.png" alt="Scenarios and Plans" />
-                            </td>
-                            <td class="infotext top light" valign="top">
-                                <h1>
-                                    Create "What If?" scenarios and plans</h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="/images/home/iconcloud.png" alt="SaaS Cloud Based" />
-                            </td>
-                            <td class="infotext top light" valign="top">
-                                <h1>
-                                    100% web-based, secure, and private</h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="/images/home/icondisplay.png" alt="Compatible and Web-Based" />
-                            </td>
-                            <td class="infotext top light" valign="top">
-                                <h1>
-                                    Access from any computer, anytime</h1>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    </div>
-    <div class="footer bar">
-        <div class="content">
-            <div class="footerlinks light">
-                <a href="/" title="Home">HOME</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/Tour"
-                    title="Feature Tour">FEATURES</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/Pricing"
-                        title="Pricing">PLANS &amp; PRICING</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="http://blog.60mo.com"
-                            title="60mo Blog">BLOG</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/About" title="About 60mo">ABOUT</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
-                                href="/Site/SignUp" title="Sign Up">SIGN UP</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
-                                    href="/Site/Login" class="login" title="Log In">LOG IN</a>
-            </div>
-            <div class="footerlinkssubleft">
-                <a href="http://support.60mo.com" title="Support">SUPPORT</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
-                    href="/Privacy" title="Privacy Policy">PRIVACY</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
-                        href="/Security" title="Security Info">SECURITY</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a
-                            href="/Terms" title="Terms of Use">TERMS OF USE</a>
-            </div>
-            <div class="footerlinkssubright">
-                &copy; 2009 - 2011&nbsp;&nbsp;&nbsp;<a href="/" title="Home">60MO</a>, Inc. All
-                Rights Reserved
-            </div>
-            <div class="clearBoth footerseals">
-            </div>
-        </div>
-    </div>
-    <div class="calluscorner">
-    </div>
-    </div>
+  </div>
+  <div class="calluscorner"></div>
+</div>
 </body>
 </html>
