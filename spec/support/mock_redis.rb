@@ -1,3 +1,5 @@
+require 'set'
+
 class MockRedis
   @@data = {}
 
@@ -7,6 +9,11 @@ class MockRedis
 
   def mapped_hmget(key, *args)
     @@data[key]
+  end
+
+  def sadd(key, value)
+    @@data[key] ||= Set.new
+    @@data[key] << value
   end
 
   def keys(pattern = "*")
