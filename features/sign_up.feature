@@ -60,8 +60,8 @@ Feature: Sign up
       Then I should see "You have signed up successfully. A confirmation was sent to your e-mail."
       And a confirmation message should be sent to "email@person.com"
 
-    Scenario: User confirms his account
-      Given I signed up with "email@person.com/password"
-      When I follow the confirmation link sent to "email@person.com"
-      Then I should see "Your account was successfully confirmed. You are now signed in."
-      And I should be signed in
+    # Scenario: User confirms his account
+    #   Given I signed up with "email@person.com/password"
+    #   When I follow the confirmation link sent to "email@person.com"
+    #   Then I should see "Your account was successfully confirmed. You are now signed in."
+    #   And I should be signed in
