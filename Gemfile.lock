@@ -42,6 +42,8 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.27)
       xpath (~> 0.1.2)
+    carrierwave (0.5.1)
+      activesupport (~> 3.0)
     celerity (0.8.6)
     childprocess (0.1.6)
       ffi (~> 0.6.3)
@@ -161,6 +163,7 @@ PLATFORMS
 DEPENDENCIES
   babosa
   capybara
+  carrierwave
   cucumber-rails
   database_cleaner
   devise

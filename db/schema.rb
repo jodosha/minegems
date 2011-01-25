@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101228145821) do
+ActiveRecord::Schema.define(:version => 20110125121113) do
 
   create_table "memberships", :force => true do |t|
     t.integer  "subdomain_id"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(:version => 20101228145821) do
 
   add_index "memberships", ["subdomain_id", "user_id", "role"], :name => "index_memberships_on_subdomain_id_and_user_id_and_role"
   add_index "memberships", ["subdomain_id", "user_id"], :name => "index_memberships_on_subdomain_id_and_user_id"
+
+  create_table "rubygems", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file"
+  end
 
   create_table "subdomains", :force => true do |t|
     t.string   "tld"
