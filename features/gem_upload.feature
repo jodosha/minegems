@@ -6,5 +6,5 @@ Feature: Gem upload
   Scenario: User upload a new gem
     Given I am on the new gem page
     When I attach "test-0.0.0.gem"
-    And I press "Upload gem" 
-    Then I should see "Gem was successful registered"
+    And I press "Upload gem"
+    Then I go to the gems page

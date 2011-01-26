@@ -15,6 +15,8 @@ module NavigationHelpers
       root_url(:host => "#{$1}.#{$host}:#{$port}")
     when /the new gem page/
       new_gem_path
+    when /the gems page/
+      gems_path
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"
