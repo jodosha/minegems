@@ -7,4 +7,4 @@ Feature: Gem upload
     Given I am on the new gem page
     When I attach "test-0.0.0.gem"
     And I press "Upload gem"
-    Then I go to the gems page
+    Then I should see "Gem was successful registered"
