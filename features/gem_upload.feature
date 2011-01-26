@@ -8,3 +8,9 @@ Feature: Gem upload
     When I attach "test-0.0.0.gem"
     And I press "Upload gem"
     Then I should see "Gem was successful registered"
+
+  Scenario: User upload an invalid gem
+    Given I am on the new gem page
+    When I attach "invalid-0.0.0.gem"
+    And I press "Upload gem"
+    Then I should see "There was errors preventing this gem being registered"
