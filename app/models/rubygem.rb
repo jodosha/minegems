@@ -5,8 +5,20 @@ class Rubygem < ActiveRecord::Base
   validates_with GemValidator
   before_validation :create_data_from_gemspec
 
+  scope :by_name, lambda { |name|
+    where("name = ?", name)
+  }
+
+  def self.create_from_file(file)
+    rg = new :file => file
+    rubygem = by_name(rg.name)
+    rubygem = rubygem.any? ? rubygem.first : rg
+    rubygem.file = file
+    rubygem.save
+  end
+
   def version(number)
-    versions.first(:conditions => { :number => number })
+    versions.first(:conditions => [ "versions.number = ?", number ])
   end
 
   def spec
@@ -17,9 +29,13 @@ class Rubygem < ActiveRecord::Base
     end
   end
 
+  def name
+    @name ||= read_attribute(:name) || spec.try(:name)
+  end
+
   private
     def create_data_from_gemspec
-      self.name = spec.try(:name)
+      self.name = name
       self.versions.build(:number => spec.try(:version).try(:version))
     end
 
