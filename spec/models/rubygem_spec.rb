@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Rubygem do
   specify { should validate_presence_of(:file) }
+  specify { should validate_presence_of(:name) }
+  specify { should have_many(:versions) }
 
   context "given a valid gemspec" do
     let(:rubygem) { Rubygem.new(:file => rubygem_file('test-0.0.0.gem')) }

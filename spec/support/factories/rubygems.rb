@@ -1,3 +1,7 @@
+Factory.define :rubygem do |f|
+  f.file nil
+end
+
 def rubygem_params(attributes = {})
   {
     'file' => rubygem_file('test-0.0.0.gem')
