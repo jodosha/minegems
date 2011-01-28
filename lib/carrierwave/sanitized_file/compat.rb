@@ -2,7 +2,8 @@ module CarrierWave
   module SanitizedFileCompat
     def pos
       if is_path?
-        File.open(@file).pos
+        @file = File.open(@file)
+        pos
       else
         @file.pos
       end
@@ -10,14 +11,25 @@ module CarrierWave
 
     def eof?
       if is_path?
-        File.open(@file).eof?
+        @file = File.open(@file)
+        eof?
       else
         @file.eof?
       end
     end
   end
 
-  class SanitizedFile
+  SanitizedFile.class_eval do
     include SanitizedFileCompat
+
+    def read(length = nil)
+      if is_path?
+        @file = File.open(@file, "rb")
+        read(length)
+      else
+        @file.rewind if @file.respond_to?(:rewind)
+        @file.read(length)
+      end
+    end
   end
 end
