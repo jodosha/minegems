@@ -1,7 +1,7 @@
 class Rubygem < ActiveRecord::Base
   mount_uploader :file, RubygemUploader
   validates_presence_of :file
-  validates :file, :gem => true
+  validates_with GemValidator
 
   def spec
     @spec ||= begin
