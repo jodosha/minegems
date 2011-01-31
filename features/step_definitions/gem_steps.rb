@@ -3,7 +3,7 @@ When /^I attach "([^"]*)"$/ do |rubygem|
 end
 
 When /^I create a new gem "([^"]*)"$/ do |rubygem|
-  Rubygem.create_from_file(rubygem_file(rubygem))
+  Rubygem.create_version(rubygem_file(rubygem))
 end
 
 Then /^a gem "([^"]*)" should exist$/ do |rubygem|
@@ -15,11 +15,11 @@ Then /^a version "([^"]*)" should exist for "([^"]*)" gem$/ do |version, rubygem
 end
 
 Given /^a gem "([^"]*)"$/ do |rubygem|
-  Factory.create(:rubygem, :file => rubygem_file(rubygem))
+  Rubygem.create_version(rubygem_file(rubygem))
 end
 
 When /^I upgrade a gem "([^"]*)"$/ do |rubygem|
-  Rubygem.create_from_file(rubygem_file(rubygem))
+  Rubygem.create_version(rubygem_file(rubygem))
 end
 
 Then /^an unique "([^"]*)" gem should exist$/ do |rubygem|

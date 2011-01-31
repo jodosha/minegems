@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110128162124) do
+ActiveRecord::Schema.define(:version => 20110131121209) do
 
   create_table "memberships", :force => true do |t|
     t.integer  "subdomain_id"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(:version => 20110128162124) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "file"
   end
 
   create_table "subdomains", :force => true do |t|
@@ -67,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20110128162124) do
     t.string   "number"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "file"
   end
 
 end

@@ -3,7 +3,7 @@ class GemValidator < ActiveModel::Validator
   self.required_attributes = %w(name version summary require_paths)
 
   def validate(record)
-    gemspec = record.spec
+    gemspec = record.gemspec
 
     if gemspec.nil?
       record.errors[:gemspec] << "is empty" and return

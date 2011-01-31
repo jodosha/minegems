@@ -10,9 +10,9 @@ class GemsController < ApplicationController
 
   # POST /gems
   def create
-    @rubygem = Rubygem.new(params[:gem])
+    @rubygem = Rubygem.create_version(params[:gem][:file])
 
-    if @rubygem.save
+    if @rubygem.valid?
       redirect_to gems_path, :notice => "Gem was successful registered"
     else
       flash[:error] = "There was errors preventing this gem being registered"

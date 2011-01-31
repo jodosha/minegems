@@ -1,7 +1,6 @@
 <%= form_for @rubygem, :as => :gem, :url => gems_path, :html => { :multipart => true } do |f| %>
 <div>
   <%= f.file_field :file %>
-  <%= f.hidden_field :file_cache %>
 </div>
 <div>
   <%= f.submit 'Upload gem' %>
