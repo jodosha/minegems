@@ -43,8 +43,27 @@ end
 
 # Domains
 
+Then /^I should be redirected to (.+) path$/ do |page_name|
+  page.current_path.should == path_to(page_name)
+end
+
 Given /^A subdomain with "(.*)" tld$/ do |tld|
   Factory.create(:subdomain, :tld => tld)
+end
+
+Given /^I am authenticated as a "([^"]*)" member$/ do |tld|
+  email, password = "email@person.com", "password"
+  subdomain = Factory.create(:subdomain, :tld => tld)
+  user      = create_user("#{email}/#{password}")
+  user.confirm!
+  subdomain.users << user
+  subdomain.save
+
+  visit new_user_session_url(:host => "#{tld}.#{$host}", :port => $port)
+  fill_in 'Email',    :with => email
+  fill_in 'Password', :with => password
+
+  click_button 'Sign in'
 end
 
 # Session

@@ -1,9 +1,11 @@
 require 'spec_helper'
 
 describe GemsController do
+  login_user
+
   describe "GET 'new'" do
     before :each do
-      get 'new'
+      get :new
     end
 
     it "should be successful" do

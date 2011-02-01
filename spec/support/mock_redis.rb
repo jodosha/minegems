@@ -25,4 +25,8 @@ class MockRedis
   def multi
     yield self
   end
+
+  def sismember(set, key)
+    @@data[set].include?(key)
+  end
 end

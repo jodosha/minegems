@@ -8,9 +8,11 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
     when /the homepage/
-      root_path
+      root_url(:host => $host, :port => $port)
     when /the sign up page/
       new_user_registration_path
+    when /the sign in page/
+      new_user_session_path
     when /the "(.*)" subdomain/
       root_url(:host => "#{$1}.#{$host}:#{$port}")
     when /the new gem page/

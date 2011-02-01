@@ -1,14 +1,18 @@
 class GemsController < ApplicationController
-  # GET /gems
+  before_filter :authenticate_user!
+  before_filter :ensure_site
+  before_filter :ensure_site_access
+
+  # GET http://bootstrapp.gemsmineapp.com/gems
   def index
   end
 
-  # GET /gems/new
+  # GET http://bootstrapp.gemsmineapp.com/gems/new
   def new
     @rubygem = Rubygem.new
   end
 
-  # POST /gems
+  # POST http://bootstrapp.gemsmineapp.com/gems
   def create
     @rubygem = Rubygem.create_version(params[:gem][:file])
 

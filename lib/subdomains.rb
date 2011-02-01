@@ -7,6 +7,7 @@ module Subdomains
     end
 
     def ensure_site
+puts "request.env['GEMSMINE_SITE'] #{request.env['GEMSMINE_SITE']}"
       if ( @site = request.env['GEMSMINE_SITE'] ).blank?
         redirect_to root_url # TODO application_root_url
       end

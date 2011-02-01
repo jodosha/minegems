@@ -10,3 +10,7 @@ end
 def build_subdomain_params(options = {})
   Factory.build(:subdomain, options).attributes
 end
+
+def last_subdomain_tld
+  Subdomain.last.tld
+end
