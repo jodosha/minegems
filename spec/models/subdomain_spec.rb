@@ -8,6 +8,7 @@ describe Subdomain do
 
   specify { should have_many(:memberships).dependent(:destroy) }
   specify { should have_many(:users).through(:memberships) }
+  specify { should have_many(:rubygems).dependent(:destroy) }
 
   specify { should validate_uniqueness_of(:tld) }
   specify { should validate_presence_of(:tld) }

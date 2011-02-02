@@ -6,10 +6,10 @@ class Version < ActiveRecord::Base
   delegate :name, :gemspec, :version_number, :process!, :to => :file
   before_validation :extract_data
 
-  def self.create_from_file(file)
+  def self.create_from_file(file, subdomain)
     version = new :file => file
     version.process!
-    rubygem = Rubygem.find_or_create_by_name(version.name)
+    rubygem = Rubygem.find_or_create_by_name_and_subdomain_id(version.name, subdomain.id)
     rubygem.versions << version
     rubygem.save
 

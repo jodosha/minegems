@@ -10,6 +10,7 @@ Feature: Gem upload
     When I attach "test-0.0.0.gem"
     And I press "Upload gem"
     Then I should see "Gem was successful registered"
+    And "test/0.0.0" gem should exist for "bootstrapp"
 
   Scenario: Anonymous user upload a new gem
     When I go to the "bootstrapp" new gem page
@@ -26,10 +27,9 @@ Feature: Gem upload
   @javascript
   Scenario: User upgrade an existing gem
     Given I am authenticated as a "bootstrapp" member
-    And a gem "test-0.0.0.gem"
+    And a gem "test-0.0.0.gem" by "bootstrapp"
     And I am on the "bootstrapp" new gem page
     When I attach "test-0.0.1.gem"
     And I press "Upload gem"
     Then I should see "Gem was successful registered"
-    Then an unique "test" gem should exist
-    And a version "0.0.1" should exist for "test" gem
+    And "test/0.0.1" gem should exist for "bootstrapp"

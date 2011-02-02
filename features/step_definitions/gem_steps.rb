@@ -2,28 +2,20 @@ When /^I attach "([^"]*)"$/ do |rubygem|
   attach_file('gem_file', path_to_gem(rubygem))
 end
 
-When /^I create a new gem "([^"]*)"$/ do |rubygem|
-  Rubygem.create_version(rubygem_file(rubygem))
+Given /^a gem "([^"]*)" by "([^"]*)"$/ do |rubygem, subdomain|
+  subdomain = Subdomain.by_tld(subdomain).first
+  Rubygem.create_version(rubygem_file(rubygem), subdomain)
 end
 
-Then /^a gem "([^"]*)" should exist$/ do |rubygem|
-  Rubygem.by_name(rubygem).should_not be_empty
-end
+Then /^"([^"]*)" gem should exist for "([^"]*)"$/ do |rubygem, subdomain|
+  rubygem, version = rubygem.split '/'
+  subdomain = Subdomain.by_tld(subdomain).first
+  rubygems  = Rubygem.by_name(rubygem)
 
-Then /^a version "([^"]*)" should exist for "([^"]*)" gem$/ do |version, rubygem|
-  Rubygem.by_name(rubygem).first.version(version).should_not be_nil
-end
-
-Given /^a gem "([^"]*)"$/ do |rubygem|
-  Rubygem.create_version(rubygem_file(rubygem))
-end
-
-When /^I upgrade a gem "([^"]*)"$/ do |rubygem|
-  Rubygem.create_version(rubygem_file(rubygem))
-end
-
-Then /^an unique "([^"]*)" gem should exist$/ do |rubygem|
-  Rubygem.by_name(rubygem).size.should == 1
+  rubygems.should_not be_empty
+  rubygems.size.should == 1
+  rubygems.first.version(version).should_not be_nil
+  subdomain.rubygems.should include(rubygems.first)
 end
 
 module RubygemsHelper

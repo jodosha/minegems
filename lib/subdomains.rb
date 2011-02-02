@@ -17,4 +17,8 @@ module Subdomains
         redirect_to root_url # TODO application_root_url
       end
     end
+
+    def load_site
+      @site = ::Subdomain.by_tld(@site['tld']).first
+    end
 end

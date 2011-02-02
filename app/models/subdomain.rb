@@ -3,6 +3,7 @@ class Subdomain < ActiveRecord::Base
 
   has_many :memberships, :dependent => :destroy
   has_many :users, :through => :memberships
+  has_many :rubygems, :dependent => :destroy
 
   validates_uniqueness_of :tld, :case_sensitive => false
   validates_length_of     :tld, :name, :maximum => 64
@@ -10,6 +11,10 @@ class Subdomain < ActiveRecord::Base
   validates :tld, :ascii => true
 
   before_validation :transform_tld
+
+  scope :by_tld, lambda { |tld|
+    where("tld = ?", tld)
+  }
 
   def self.search(query)
     where(:tld => query).select([:tld, :name]).limit(1).first
