@@ -14,9 +14,9 @@ module NavigationHelpers
     when /the sign in page/
       new_user_session_path
     when /the "(.*)" subdomain/
-      root_url(:host => "#{$1}.#{$host}:#{$port}")
-    when /the new gem page/
-      new_gem_path
+      root_url(:host => "#{$1}.#{$host}", :port => $port)
+    when /the "(.*)" new gem page/
+      new_gem_url(:host => "#{$1}.#{$host}", :port => $port)
     when /the gems page/
       gems_path
     else

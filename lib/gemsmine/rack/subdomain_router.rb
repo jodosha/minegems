@@ -68,8 +68,6 @@ module Gemsmine
         request = ActionDispatch::Request.new(env)
 
         if self.class.valid?(request)
-puts request.subdomain
-puts self.class.lookup(request.subdomain).inspect
           env['GEMSMINE_SITE'] = self.class.lookup(request.subdomain)
         end
 
