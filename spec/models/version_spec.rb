@@ -38,6 +38,7 @@ describe Version do
   it "should extract data from gemspec" do
     version = Version.create(:file => rubygem_file('test-0.0.0.gem'))
     version.number.should == "0.0.0"
+    version.should_not be_prerelease
   end
 
   it "should set as a pre-release" do

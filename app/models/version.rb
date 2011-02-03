@@ -20,5 +20,6 @@ class Version < ActiveRecord::Base
     def extract_data
       self.number     = version_number
       self.prerelease = prerelease_version
+      true
     end
 end
