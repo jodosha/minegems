@@ -2,7 +2,7 @@ class Rubygem < ActiveRecord::Base
   belongs_to :subdomain
   has_many :versions
   validates_presence_of :name, :subdomain_id
-  # before_validation :create_data_from_gemspec
+  validates_uniqueness_of :name
 
   scope :by_name, lambda { |name|
     where("name = ?", name)
@@ -15,10 +15,4 @@ class Rubygem < ActiveRecord::Base
   def version(number)
     versions.first(:conditions => [ "versions.number = ?", number ])
   end
-
-  private
-    def create_data_from_gemspec
-      self.name = name
-      self.versions.build(:number => spec.try(:version).try(:version))
-    end
 end

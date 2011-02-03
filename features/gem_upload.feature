@@ -17,14 +17,6 @@ Feature: Gem upload
     Then I should be redirected to the sign in page path
 
   @javascript
-  Scenario: User upload an invalid gem
-    Given I am authenticated as a "bootstrapp" member
-    And I am on the "bootstrapp" new gem page
-    When I attach "invalid-0.0.0.gem"
-    And I press "Upload gem"
-    Then I should see "There was errors preventing this gem being registered"
-
-  @javascript
   Scenario: User upgrade an existing gem
     Given I am authenticated as a "bootstrapp" member
     And a gem "test-0.0.0.gem" by "bootstrapp"
@@ -33,3 +25,21 @@ Feature: Gem upload
     And I press "Upload gem"
     Then I should see "Gem was successful registered"
     And "test/0.0.1" gem should exist for "bootstrapp"
+
+  @javascript
+  Scenario: User upload an invalid gem
+    Given I am authenticated as a "bootstrapp" member
+    And I am on the "bootstrapp" new gem page
+    When I attach "invalid-0.0.0.gem"
+    And I press "Upload gem"
+    Then I should see "There was errors preventing this gem being registered"
+
+  @javascript
+  Scenario: User upload gem with already taken name
+    Given a gem "test-0.0.0.gem" by "acme"
+    And I am authenticated as a "bootstrapp" member
+    And I am on the "bootstrapp" new gem page
+    When I attach "test-0.0.0.gem"
+    And I press "Upload gem"
+    Then I should see "There was errors preventing this gem being registered"
+    And "test/0.0.0" gem should not exist for "bootstrapp"

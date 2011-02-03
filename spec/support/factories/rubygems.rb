@@ -1,5 +1,10 @@
+Factory.sequence :rubygem_name do |n|
+  "gem#{n}"
+end
+
 Factory.define :rubygem do |f|
-  f.file nil
+  f.name      { Factory.next(:rubygem_name) }
+  f.subdomain { |a| a.association(:subdomain) }
 end
 
 def rubygem_params(attributes = {})
