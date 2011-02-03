@@ -12,6 +12,15 @@ Feature: Gem upload
     Then I should see "Gem was successful registered"
     And "test/0.0.0" gem should exist for "bootstrapp"
 
+  @javascript
+  Scenario: User upload a pre-release gem
+    Given I am authenticated as a "bootstrapp" member
+    And I am on the "bootstrapp" new gem page
+    When I attach "test-0.0.1.beta1.gem"
+    And I press "Upload gem"
+    Then I should see "Gem was successful registered"
+    And "test/0.0.1.beta1" gem prerelease should exist for "bootstrapp"
+
   Scenario: Anonymous user upload a new gem
     When I go to the "bootstrapp" new gem page
     Then I should be redirected to the sign in page path

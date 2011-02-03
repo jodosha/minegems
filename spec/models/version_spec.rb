@@ -39,4 +39,9 @@ describe Version do
     version = Version.create(:file => rubygem_file('test-0.0.0.gem'))
     version.number.should == "0.0.0"
   end
+
+  it "should set as a pre-release" do
+    version = Version.create(:file => rubygem_file('test-0.0.1.beta1.gem'))
+    version.should be_prerelease
+  end
 end

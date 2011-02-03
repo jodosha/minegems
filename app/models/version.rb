@@ -3,7 +3,7 @@ class Version < ActiveRecord::Base
   mount_uploader :file, RubygemUploader
   validates_with GemValidator
   validates_presence_of :file, :number
-  delegate :name, :gemspec, :version_number, :process!, :to => :file
+  delegate :name, :gemspec, :prerelease_version, :version_number, :process!, :to => :file
   before_validation :extract_data
 
   def self.create_from_file(file, subdomain)
@@ -18,6 +18,7 @@ class Version < ActiveRecord::Base
 
   private
     def extract_data
-      self.number = version_number
+      self.number     = version_number
+      self.prerelease = prerelease_version
     end
 end

@@ -8,13 +8,12 @@ Given /^a gem "([^"]*)" by "([^"]*)"$/ do |rubygem, subdomain|
 end
 
 Then /^"([^"]*)" gem should exist for "([^"]*)"$/ do |rubygem, subdomain|
-  rubygems, version = find_gem(rubygem)
-  subdomain = Subdomain.by_tld(subdomain).first
+  assert_valid_gem_for_subdomain(rubygem, subdomain)
+end
 
-  rubygems.should_not be_empty
-  rubygems.size.should == 1
-  rubygems.first.version(version).should_not be_nil
-  subdomain.rubygems.should include(rubygems.first)
+Then /^"([^"]*)" gem prerelease should exist for "([^"]*)"$/ do |rubygem, subdomain|
+  rubygem, version, subdomain = assert_valid_gem_for_subdomain(rubygem, subdomain)
+  rubygem.version(version).should be_prerelease
 end
 
 Then /^"([^"]*)" gem should not exist for "([^"]*)"$/ do |rubygem, subdomain|
@@ -36,6 +35,18 @@ module RubygemsHelper
     rubygems = Rubygem.by_name(rubygem)
 
     [ rubygems, version ]
+  end
+
+  def assert_valid_gem_for_subdomain(rubygem, subdomain)
+    rubygems, version = find_gem(rubygem)
+    subdomain = Subdomain.by_tld(subdomain).first
+
+    rubygems.should_not be_empty
+    rubygems.size.should == 1
+    rubygems.first.version(version).should_not be_nil
+    subdomain.rubygems.should include(rubygems.first)
+
+    [rubygems.first, version, subdomain]
   end
 end
 

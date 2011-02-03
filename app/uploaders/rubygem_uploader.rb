@@ -10,9 +10,7 @@ class RubygemUploader < CarrierWave::Uploader::Base
 
   def gemspec
     @gemspec ||= begin
-      if file.present?
-        Gem::Format.from_io(file_stream).spec rescue nil
-      end
+      Gem::Format.from_io(file_stream).spec rescue nil
     end
   end
 
@@ -21,7 +19,15 @@ class RubygemUploader < CarrierWave::Uploader::Base
   end
 
   def version_number
-    gemspec.try(:version).try(:version)
+    gem_version.try(:version)
+  end
+
+  def prerelease_version
+    gem_version.try(:prerelease?) || true
+  end
+
+  def gem_version
+    gemspec.try(:version)
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
