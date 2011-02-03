@@ -44,6 +44,14 @@ Feature: Gem upload
     Then I should see "There was errors preventing this gem being registered"
 
   @javascript
+  Scenario: User upload an non-gem file
+    Given I am authenticated as a "bootstrapp" member
+    And I am on the "bootstrapp" new gem page
+    When I attach "gem.jpeg"
+    And I press "Upload gem"
+    Then I should see "There was errors preventing this gem being registered"
+
+  @javascript
   Scenario: User upload gem with already taken name
     Given a gem "test-0.0.0.gem" by "acme"
     And I am authenticated as a "bootstrapp" member
