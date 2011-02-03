@@ -4,6 +4,7 @@ describe Version do
   specify { should belong_to(:rubygem) }
   specify { should validate_presence_of(:file) }
   specify { should validate_presence_of(:number) }
+  specify { should validate_presence_of(:platform) }
 
   context "given a valid gemspec" do
     let(:version) { Version.new(:file => rubygem_file('test-0.0.0.gem')) }
@@ -39,6 +40,7 @@ describe Version do
     version = Version.create(:file => rubygem_file('test-0.0.0.gem'))
     version.number.should == "0.0.0"
     version.should_not be_prerelease
+    version.platform.should == "ruby"
   end
 
   it "should set as a pre-release" do

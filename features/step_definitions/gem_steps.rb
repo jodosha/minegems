@@ -13,7 +13,7 @@ end
 
 Then /^"([^"]*)" gem prerelease should exist for "([^"]*)"$/ do |rubygem, subdomain|
   rubygem, version, subdomain = assert_valid_gem_for_subdomain(rubygem, subdomain)
-  rubygem.version(version).should be_prerelease
+  version.should be_prerelease
 end
 
 Then /^"([^"]*)" gem should not exist for "([^"]*)"$/ do |rubygem, subdomain|
@@ -39,11 +39,13 @@ module RubygemsHelper
 
   def assert_valid_gem_for_subdomain(rubygem, subdomain)
     rubygems, version = find_gem(rubygem)
+    version = rubygems.first.version(version)
     subdomain = Subdomain.by_tld(subdomain).first
 
     rubygems.should_not be_empty
     rubygems.size.should == 1
-    rubygems.first.version(version).should_not be_nil
+    version.should_not be_nil
+    version.platform.should == "ruby"
     subdomain.rubygems.should include(rubygems.first)
 
     [rubygems.first, version, subdomain]

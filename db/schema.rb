@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110203104812) do
+ActiveRecord::Schema.define(:version => 20110203120401) do
 
   create_table "memberships", :force => true do |t|
     t.integer  "subdomain_id"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20110203104812) do
     t.datetime "updated_at"
     t.string   "file"
     t.boolean  "prerelease", :default => false, :null => false
+    t.string   "platform"
   end
 
 end

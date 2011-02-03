@@ -22,8 +22,12 @@ class RubygemUploader < CarrierWave::Uploader::Base
     gem_version.try(:version)
   end
 
-  def prerelease_version
+  def version_prerelease
     gem_version.try(:prerelease?) || false # force false when nil
+  end
+
+  def version_platform
+    gemspec.try(:platform)
   end
 
   def gem_version
