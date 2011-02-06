@@ -31,29 +31,29 @@ class Subdomain < ActiveRecord::Base
     update_prerelease_specs_index!
   end
 
-  def update_specs_index!
-    self.specs_index.vault     = versions.map(&:to_index)
-    self.specs_index.file_name = 'specs.4.8.gz'
-
-    self.specs_index.save!
-  end
-
-  def update_latest_specs_index!
-    self.latest_specs_index.vault     = versions.latest.map(&:to_index)
-    self.latest_specs_index.file_name = 'latest_specs.4.8.gz'
-
-    self.latest_specs_index.save!
-  end
-
-  def update_prerelease_specs_index!
-    self.prerelease_specs_index.vault     = versions.prerelease.map(&:to_index)
-    self.prerelease_specs_index.file_name = 'prerelease_specs.4.8.gz'
-
-    self.prerelease_specs_index.save!
-  end
-
   protected
     def transform_tld
       self.tld = tld.to_slug.normalize!(:to_ascii => true) unless tld.blank?
+    end
+
+    def update_specs_index!
+      self.specs_index.vault     = versions.map(&:to_index)
+      self.specs_index.file_name = 'specs.4.8.gz'
+
+      self.specs_index.save!
+    end
+
+    def update_latest_specs_index!
+      self.latest_specs_index.vault     = versions.latest.map(&:to_index)
+      self.latest_specs_index.file_name = 'latest_specs.4.8.gz'
+
+      self.latest_specs_index.save!
+    end
+
+    def update_prerelease_specs_index!
+      self.prerelease_specs_index.vault     = versions.prerelease.map(&:to_index)
+      self.prerelease_specs_index.file_name = 'prerelease_specs.4.8.gz'
+
+      self.prerelease_specs_index.save!
     end
 end
