@@ -16,6 +16,14 @@ class Version < ActiveRecord::Base
     version
   end
 
+  def to_gem_version
+    Gem::Version.new(number)
+  end
+
+  def to_index
+    [ rubygem.name, to_gem_version, platform ]
+  end
+
   private
     def extract_data
       self.number     = version_number

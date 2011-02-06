@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110203120401) do
+ActiveRecord::Schema.define(:version => 20110203193432) do
 
   create_table "memberships", :force => true do |t|
     t.integer  "subdomain_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20110203120401) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "specs_index"
   end
 
   add_index "subdomains", ["tld"], :name => "index_subdomains_on_tld", :unique => true

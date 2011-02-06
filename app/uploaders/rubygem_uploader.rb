@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class RubygemUploader < CarrierWave::Uploader::Base
-  storage :file
+  storage :grid_fs
   process :gemspec
 
   def store_dir
