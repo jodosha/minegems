@@ -13,8 +13,9 @@ class Subdomain < ActiveRecord::Base
 
   before_validation :transform_tld
 
-  mount_uploader :specs_index,        IndexUploader
-  mount_uploader :latest_specs_index, IndexUploader
+  mount_uploader :specs_index,            IndexUploader
+  mount_uploader :latest_specs_index,     IndexUploader
+  mount_uploader :prerelease_specs_index, IndexUploader
 
   scope :by_tld, lambda { |tld|
     where("tld = ?", tld)
@@ -27,6 +28,7 @@ class Subdomain < ActiveRecord::Base
   def update_index!
     update_specs_index!
     update_latest_specs_index!
+    update_prerelease_specs_index!
   end
 
   def update_specs_index!
@@ -41,6 +43,13 @@ class Subdomain < ActiveRecord::Base
     self.latest_specs_index.file_name = 'latest_specs.4.8.gz'
 
     self.latest_specs_index.save!
+  end
+
+  def update_prerelease_specs_index!
+    self.prerelease_specs_index.vault     = versions.prerelease.map(&:to_index)
+    self.prerelease_specs_index.file_name = 'prerelease_specs.4.8.gz'
+
+    self.prerelease_specs_index.save!
   end
 
   protected

@@ -7,9 +7,10 @@ class Version < ActiveRecord::Base
   before_validation :extract_data
   after_save        :reorder_versions
 
-  scope :by_number, order('number')
-  scope :release,   where(:prerelease => false)
-  scope :latest,    where(:latest     => true)
+  scope :by_number,  order('number')
+  scope :prerelease, where(:prerelease => true)
+  scope :release,    where(:prerelease => false)
+  scope :latest,     where(:latest     => true)
 
   def self.create_from_file(file, subdomain)
     version = new :file => file
