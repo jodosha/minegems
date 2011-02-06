@@ -9,6 +9,7 @@ class Version < ActiveRecord::Base
 
   scope :by_number, order('number')
   scope :release,   where(:prerelease => false)
+  scope :latest,    where(:latest     => true)
 
   def self.create_from_file(file, subdomain)
     version = new :file => file
