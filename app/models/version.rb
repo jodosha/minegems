@@ -33,6 +33,13 @@ class Version < ActiveRecord::Base
     end
   end
 
+  def platform_as_number
+    case self.platform
+      when 'ruby' then 1
+      else             0
+    end
+  end
+
   def to_gem_version
     Gem::Version.new(number)
   end
