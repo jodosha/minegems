@@ -4,6 +4,6 @@
 # else
 #   Redis.new :thread_safe => true
 # end
-$redis = Redis.new
+$redis = Redis.new :thread_safe => true
 Gemsmine::Rack::SubdomainRouter.ensure_consistent_lookup!
 Gemsmine::Rack::SubdomainRouter.ensure_consistent_access!
