@@ -25,6 +25,16 @@ Then /^"([^"]*)" gem should not exist for "([^"]*)"$/ do |rubygem, subdomain|
   subdomain.rubygems.should_not include(rubygems.first)
 end
 
+Then /^"([^"]*)" gem is latest version$/ do |rubygem|
+  rubygems, version = find_gem(rubygem)
+  version.should be_latest
+end
+
+Then /^"([^"]*)" gem is not latest version$/ do |rubygem|
+  rubygems, version = find_gem(rubygem)
+  version.should_not be_latest
+end
+
 module RubygemsHelper
   def path_to_gem(rubygem)
     ::File.dirname(__FILE__) + "/../../spec/support/factories/gems/#{rubygem}"
@@ -33,13 +43,13 @@ module RubygemsHelper
   def find_gem(rubygem)
     rubygem, version = rubygem.split '/'
     rubygems = Rubygem.by_name(rubygem)
+    version  = rubygems.first.version(version)
 
     [ rubygems, version ]
   end
 
   def assert_valid_gem_for_subdomain(rubygem, subdomain)
     rubygems, version = find_gem(rubygem)
-    version = rubygems.first.version(version)
     subdomain = Subdomain.by_tld(subdomain).first
 
     rubygems.should_not be_empty

@@ -20,6 +20,7 @@ Feature: Gem upload
     And I press "Upload gem"
     Then I should see "Gem was successful registered"
     And "test/0.0.1.beta1" gem prerelease should exist for "bootstrapp"
+    And "test/0.0.1.beta1" gem is not latest version
 
   Scenario: Anonymous user upload a new gem
     When I go to the "bootstrapp" new gem page
@@ -34,6 +35,7 @@ Feature: Gem upload
     And I press "Upload gem"
     Then I should see "Gem was successful registered"
     And "test/0.0.1" gem should exist for "bootstrapp"
+    And "test/0.0.1" gem is latest version
 
   @javascript
   Scenario: User upload an invalid gem

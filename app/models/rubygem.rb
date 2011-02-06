@@ -15,4 +15,15 @@ class Rubygem < ActiveRecord::Base
   def version(number)
     versions.first(:conditions => [ "versions.number = ?", number ])
   end
+
+  def reorder_versions
+    self.reload.versions.update_all(:latest => false)
+
+    self.versions.release.inject(Hash.new { |h, k| h[k] = [] }) { |platforms, version|
+      platforms[version.platform] << version
+      platforms
+    }.each_value do |platforms|
+      Version.update_all({:latest => true}, {:id => platforms.sort.last.id})
+    end
+  end
 end

@@ -5,6 +5,10 @@ class Version < ActiveRecord::Base
   validates_presence_of :file, :number, :platform
   delegate :name, :gemspec, :version_prerelease, :version_number, :version_platform, :process!, :to => :file
   before_validation :extract_data
+  after_save        :reorder_versions
+
+  scope :by_number, order('number')
+  scope :release,   where(:prerelease => false)
 
   def self.create_from_file(file, subdomain)
     version = new :file => file
@@ -14,6 +18,17 @@ class Version < ActiveRecord::Base
     rubygem.save
 
     version
+  end
+
+  def <=>(other)
+    self_version  = self.to_gem_version
+    other_version = other.to_gem_version
+
+    if self_version == other_version
+      self.platform_as_number <=> other.platform_as_number
+    else
+      self_version <=> other_version
+    end
   end
 
   def to_gem_version
@@ -30,5 +45,9 @@ class Version < ActiveRecord::Base
       self.prerelease = version_prerelease
       self.platform   = version_platform
       true
+    end
+
+    def reorder_versions
+      rubygem.reorder_versions
     end
 end
