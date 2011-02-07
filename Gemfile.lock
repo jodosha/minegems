@@ -198,3 +198,4 @@ DEPENDENCIES
   rspec-rails (~> 2.3.1)
   ruby-debug19
   shoulda
+  sinatra
