@@ -1,7 +1,7 @@
 <h2><%= site_name %></h2>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :email %><br />
-  <%= f.text_field :email, :class => "big-title" %></p>
+  <p><%= f.label :login %><br />
+  <%= f.text_field :login, :class => "big-title" %></p>
 
   <p><%= f.label :password %><br />
   <%= f.password_field :password, :class => "big-title" %></p>

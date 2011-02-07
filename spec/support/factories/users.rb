@@ -1,9 +1,10 @@
-Factory.sequence(:name)  { |n| "user#{n}" }
-Factory.sequence(:email) { |n| "user#{n}@domain.com" }
+Factory.sequence(:email)    { |n| "user#{n}@domain.com" }
+Factory.sequence(:username) { |n| "username#{n}" }
 
 Factory.define :user do |user|
-  user.name                  { Factory.next(:name) }
+  user.name                  { "Luca" }
   user.email                 { Factory.next(:email) }
+  user.username              { Factory.next(:username) }
   user.password              { "secret" }
   user.password_confirmation { "secret" }
 end

@@ -9,10 +9,12 @@ describe User do
   specify { should have_many(:subdomains).through(:memberships) }
 
   specify { should validate_presence_of(:name) }
+  specify { should validate_presence_of(:username) }
   specify { should validate_uniqueness_of(:email) }
+  specify { should validate_uniqueness_of(:username) }
 
   it "should have accessible attributes" do
-    @user.accessible_attributes.should == [ :name, :email, :password, :password_confirmation, :remember_me ]
+    @user.accessible_attributes.should == [ :name, :email, :username, :login, :password, :password_confirmation, :remember_me ]
   end
 
   describe "create_with_subdomain!" do

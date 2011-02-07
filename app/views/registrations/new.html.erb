@@ -24,6 +24,10 @@
         <%= f.text_field :name, :class => "title required" %>
         <span class="validation-message"></span></p>
 
+        <p><%= f.label :username %><br />
+        <%= f.text_field :username, :class => "title required unique" %>
+        <span class="validation-message"></span></p>
+
         <p><%= f.label :email %><br />
         <%= f.text_field :email, :class => "title required email" %>
         <span class="validation-message"></span></p>
