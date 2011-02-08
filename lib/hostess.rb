@@ -2,7 +2,7 @@ class Hostess < ::Sinatra::Base
   include Subdomains
 
   cattr_accessor :grid_fs
-  self.grid_fs  = Mongo::GridFileSystem.new($mongo)
+  self.grid_fs = Mongo::GridFileSystem.new($mongo)
 
   %w[/specs.4.8.gz
      /latest_specs.4.8.gz

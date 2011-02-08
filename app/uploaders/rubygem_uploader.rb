@@ -1,11 +1,11 @@
 # encoding: utf-8
 
 class RubygemUploader < CarrierWave::Uploader::Base
-  storage :grid_fs
+  storage :s3
   process :gemspec
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "gems"
   end
 
   def gemspec
