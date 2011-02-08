@@ -15,7 +15,7 @@ CarrierWave.configure do |config|
   config.s3_access_key_id     = "0WSTNF8GVS4A9AQAWWG2"
   config.s3_secret_access_key = "P0hnVy1Z8BMySyErifaCTxH4h84NRMjlHEmn8HGC"
   config.s3_bucket            = s3_bucket
-  config.s3_access_policy     = :public_read
+  config.s3_access_policy     = :private
 
   config.grid_fs_connection = $mongo
   config.grid_fs_access_url = '/'
