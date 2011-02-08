@@ -1,7 +1,8 @@
 class Hostess < ::Sinatra::Base
-  before do
-    # TODO auth via http or token?
-    env['warden'].authenticate!
+  unless Rails.env.test?
+    before do
+      env['warden'].authenticate!
+    end
   end
 
   %w[/specs.4.8.gz

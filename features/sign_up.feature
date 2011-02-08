@@ -7,7 +7,8 @@ Feature: Sign up
       When I go to the sign up page
       And I fill in "Name" with "Company Inc."
       And I fill in "Subdomain" with "company"
-      And I fill in "Full name" with "jodosha"
+      And I fill in "Full name" with "Luca Guidi"
+      And I fill in "Username" with "jodosha"
       And I fill in "Email" with "invalidemail"
       And I fill in "Password" with "password"
       And I fill in "Password confirmation" with "password"
@@ -19,6 +20,19 @@ Feature: Sign up
       And I fill in "Name" with "Company Inc."
       And I fill in "Subdomain" with "company"
       And I fill in "Full name" with ""
+      And I fill in "Username" with "jodosha"
+      And I fill in "Email" with "jodosha@gemsmineapp.com"
+      And I fill in "Password" with "password"
+      And I fill in "Password confirmation" with "password"
+      And I press "Sign up"
+      Then I should see error messages
+
+    Scenario: User signs up with invalid nickname
+      When I go to the sign up page
+      And I fill in "Name" with "Company Inc."
+      And I fill in "Subdomain" with "company"
+      And I fill in "Full name" with "Luca"
+      And I fill in "Username" with ""
       And I fill in "Email" with "jodosha@gemsmineapp.com"
       And I fill in "Password" with "password"
       And I fill in "Password confirmation" with "password"
@@ -30,7 +44,8 @@ Feature: Sign up
       When I go to the sign up page
       And I fill in "Name" with "Company Inc."
       And I fill in "Subdomain" with "company"
-      And I fill in "Full name" with "jodosha"
+      And I fill in "Full name" with "Luca"
+      And I fill in "Username" with "jodosha"
       And I fill in "Email" with "jodosha@gemsmineapp.com"
       And I fill in "Password" with "password"
       And I fill in "Password confirmation" with "password"
@@ -41,7 +56,8 @@ Feature: Sign up
       When I go to the sign up page
       And I fill in "Name" with "Company Inc."
       And I fill in "Subdomain" with "company"
-      And I fill in "Full name" with "jodosha"
+      And I fill in "Full name" with "Luca"
+      And I fill in "Username" with "jodosha"
       And I fill in "Email" with "jodosha@gemsmineapp.com"
       And I fill in "Password" with "password"
       And I fill in "Password confirmation" with ""
@@ -52,7 +68,8 @@ Feature: Sign up
       When I go to the sign up page
       And I fill in "Name" with "Company Inc."
       And I fill in "Subdomain" with "company"
-      And I fill in "Full name" with "jodosha"
+      And I fill in "Full name" with "Luca"
+      And I fill in "Username" with "jodosha"
       And I fill in "Email" with "email@person.com"
       And I fill in "Password" with "password"
       And I fill in "Password confirmation" with "password"

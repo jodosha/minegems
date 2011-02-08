@@ -35,7 +35,7 @@ Given /^I signed in with "(.*)"$/ do |email_and_password|
   user = create_user(email_and_password)
 
   visit new_user_session_path
-  fill_in 'Email',    :with => email
+  fill_in 'Login',    :with => email
   fill_in 'Password', :with => password
 
   click_button 'Sign in'
@@ -60,7 +60,7 @@ Given /^I am authenticated as a "([^"]*)" member$/ do |tld|
   subdomain.save
 
   visit new_user_session_url(:host => "#{tld}.#{$host}", :port => $port)
-  fill_in 'Email',    :with => email
+  fill_in 'Login',    :with => email
   fill_in 'Password', :with => password
 
   click_button 'Sign in'
