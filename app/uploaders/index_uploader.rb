@@ -3,21 +3,15 @@ require 'fileutils'
 
 class IndexUploader < CarrierWave::Uploader::Base
   storage :grid_fs
-  process :marshal
   attr_accessor :vault, :file_name
 
   def store_dir
     "indices/#{model.tld}"
   end
 
-  def marshal
-    ensure_paths!
-    @file = io(compress!)
-  end
-
   def save!
-    process!
-    store!(@file)
+    ensure_paths!
+    store!(io(compress!))
   end
 
   private
@@ -44,7 +38,6 @@ class IndexUploader < CarrierWave::Uploader::Base
     def io(string)
       file = ::File.open(model_cache_index, 'w')
       file.write(string)
-
-      CarrierWave::SanitizedFile.new(file.path)
+      CarrierWave::SanitizedFile.new(file)
     end
 end
