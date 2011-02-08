@@ -7,10 +7,13 @@ class Version < ActiveRecord::Base
   before_validation :extract_data
   after_save        :reorder_versions, :full_nameify!
 
-  scope :by_number,  order('number')
-  scope :prerelease, where(:prerelease => true)
-  scope :release,    where(:prerelease => false)
-  scope :latest,     where(:latest     => true)
+  scope :by_number,      order('number')
+  scope :prerelease,     where(:prerelease => true)
+  scope :release,        where(:prerelease => false)
+  scope :latest,         where(:latest     => true)
+  scope :by_full_name, lambda { |full_name|
+    where("full_name = ?", full_name)
+  }
 
   def self.create_from_file(file, subdomain)
     version = new :file => file

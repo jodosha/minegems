@@ -21,11 +21,11 @@ class Hostess < ::Sinatra::Base
     warden.authenticate!
     set_site!
 
-    if name = Version.rubygem_name_for(full_name)
+    if version = @site.versions.by_full_name(full_name).first
       # TODO download counter
-      serve_via_s3
+      serve_via_s3(version)
     else
-      not_found("This is the gem you are looking for!.")
+      not_found("This is not the gem you are looking for!.")
     end
   end
 
@@ -38,12 +38,18 @@ class Hostess < ::Sinatra::Base
       begin
         self.class.grid_fs.open("indices/#{@site.tld}#{env['PATH_INFO']}", 'r').read
       rescue Mongo::GridFileNotFound => e
-        not_found("This is the spec you are looking for!.")
+        # TODO log this critical situation
+        not_found("This is not the spec you are looking for!.")
       end
     end
 
-    def serve_via_s3
-      
+    def serve_via_s3(version)
+      begin
+        version.file.read
+      rescue Excon::Errors::NotFound => e
+        # TODO log this critical situation
+        not_found("This is not the gem you are looking for!.")
+      end
     end
 
     def request
@@ -55,7 +61,7 @@ class Hostess < ::Sinatra::Base
     end
 
     def full_name
-      @full_name ||= params[:splat].to_s.chomp('.gem')
+      @full_name ||= params[:splat].first.chomp('.gem')
     end
 
     def not_found(message)
