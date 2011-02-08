@@ -17,13 +17,33 @@ class Hostess < ::Sinatra::Base
     end
   end
 
+  get "/gems/*.gem" do
+    warden.authenticate!
+    set_site!
+
+    if name = Version.rubygem_name_for(full_name)
+      # TODO download counter
+      serve_via_s3
+    else
+      not_found("This is the gem you are looking for!.")
+    end
+  end
+
+  get "/downloads/*.gem" do
+    redirect "/gems/#{params[:splat]}.gem"
+  end
+
   protected
     def serve_via_grid_fs
       begin
         self.class.grid_fs.open("indices/#{@site.tld}#{env['PATH_INFO']}", 'r').read
       rescue Mongo::GridFileNotFound => e
-        raise Sinatra::NotFound
+        not_found("This is the spec you are looking for!.")
       end
+    end
+
+    def serve_via_s3
+      
     end
 
     def request
@@ -32,6 +52,14 @@ class Hostess < ::Sinatra::Base
 
     def current_user
       @current_user ||= warden.authenticate(:scope => :user)
+    end
+
+    def full_name
+      @full_name ||= params[:splat].to_s.chomp('.gem')
+    end
+
+    def not_found(message)
+      error 404, message
     end
 
     def warden

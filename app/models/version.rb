@@ -5,7 +5,7 @@ class Version < ActiveRecord::Base
   validates_presence_of :file, :number, :platform
   delegate :name, :gemspec, :version_prerelease, :version_number, :version_platform, :process!, :to => :file
   before_validation :extract_data
-  after_save        :reorder_versions
+  after_save        :reorder_versions, :full_nameify!
 
   scope :by_number,  order('number')
   scope :prerelease, where(:prerelease => true)
@@ -20,6 +20,14 @@ class Version < ActiveRecord::Base
     rubygem.save
 
     version
+  end
+
+  def self.rubygem_name_for(full_name)
+    $redis.hget(info_key(full_name), :name)
+  end
+
+  def self.info_key(full_name)
+    "v:#{full_name}"
   end
 
   def <=>(other)
@@ -48,6 +56,10 @@ class Version < ActiveRecord::Base
     [ rubygem.name, to_gem_version, platform ]
   end
 
+  def platformed?
+    platform != "ruby"
+  end
+
   private
     def extract_data
       self.number     = version_number
@@ -58,5 +70,19 @@ class Version < ActiveRecord::Base
 
     def reorder_versions
       rubygem.reorder_versions
+    end
+
+    def full_nameify!
+      self.full_name = "#{rubygem.name}-#{number}"
+      self.full_name << "-#{platform}" if platformed?
+
+      Version.update_all({:full_name => full_name}, {:id => id})
+
+      $redis.hmset(Version.info_key(full_name),
+                   :name, rubygem.name,
+                   :number, number,
+                   :platform, platform)
+
+      true
     end
 end
