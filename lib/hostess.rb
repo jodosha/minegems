@@ -1,7 +1,10 @@
 class Hostess < ::Sinatra::Base
   unless Rails.env.test?
+    include Subdomains
+
     before do
-      env['warden'].authenticate!
+      warden.authenticate!
+      set_site!
     end
   end
 
@@ -17,5 +20,30 @@ class Hostess < ::Sinatra::Base
 
   protected
     def serve_via_grid_fs
+      begin
+        grid_fs.open("indices/#{@site.tld}#{env['PATH_INFO']}", 'r').read
+      rescue Mongo::GridFileNotFound => e
+        raise Sinatra::NotFound
+      end
+    end
+
+    def grid_fs
+      @grid_fs ||= Mongo::GridFileSystem.new($mongo)
+    end
+
+    def request
+      @request ||= Rack::Request.new(env)
+    end
+
+    def current_user
+      @current_user ||= warden.authenticate(:scope => :user)
+    end
+
+    def warden
+      env['warden']
+    end
+
+    def root_url
+      'https://gemsmineapp.com'
     end
 end

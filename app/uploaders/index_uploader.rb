@@ -7,7 +7,7 @@ class IndexUploader < CarrierWave::Uploader::Base
   attr_accessor :vault, :file_name
 
   def store_dir
-    "indices/#{model.id}"
+    "indices/#{model.tld}"
   end
 
   def marshal

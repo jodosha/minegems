@@ -21,4 +21,10 @@ module Subdomains
     def load_site
       @site = ::Subdomain.by_tld(@site['tld']).first
     end
+
+    def set_site!
+      ensure_site
+      ensure_site_access
+      load_site
+    end
 end
