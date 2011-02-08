@@ -1,21 +1,17 @@
 class Hostess < ::Sinatra::Base
+  include Subdomains
+
   cattr_accessor :grid_fs
   self.grid_fs  = Mongo::GridFileSystem.new($mongo)
-
-  unless Rails.env.test?
-    include Subdomains
-
-    before do
-      warden.authenticate!
-      set_site!
-    end
-  end
 
   %w[/specs.4.8.gz
      /latest_specs.4.8.gz
      /prerelease_specs.4.8.gz
   ].each do |index|
     get index do
+      warden.authenticate!
+      set_site!
+
       content_type('application/x-gzip')
       serve_via_grid_fs
     end
