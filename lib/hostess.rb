@@ -13,7 +13,19 @@ class Hostess < ::Sinatra::Base
       set_site!
 
       content_type('application/x-gzip')
-      serve_via_grid_fs
+      serve_via_grid_fs('indices')
+    end
+  end
+
+  get "/quick/Marshal.4.8/*.gemspec.rz" do
+    warden.authenticate!
+    set_site!
+
+    if Version.rubygem_name_for(full_name)
+      content_type('application/x-deflate')
+      serve_via_grid_fs('quick', "/Marshal.4.8/#{full_name}.gemspec.rz")
+    else
+      not_found("This is not the gem you are looking for!.")
     end
   end
 
@@ -34,9 +46,9 @@ class Hostess < ::Sinatra::Base
   end
 
   protected
-    def serve_via_grid_fs
+    def serve_via_grid_fs(prefix, path = env['PATH_INFO'])
       begin
-        self.class.grid_fs.open("indices/#{@site.tld}#{env['PATH_INFO']}", 'r').read
+        self.class.grid_fs.open("/#{prefix}/#{@site.tld}#{path}", 'r').read
       rescue Mongo::GridFileNotFound => e
         # TODO log this critical situation
         not_found("This is not the spec you are looking for!.")

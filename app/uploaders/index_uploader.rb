@@ -6,7 +6,7 @@ class IndexUploader < CarrierWave::Uploader::Base
   attr_accessor :vault, :file_name
 
   def store_dir
-    "indices/#{model.tld}"
+    "/indices/#{model.tld}"
   end
 
   def save!
@@ -31,7 +31,7 @@ class IndexUploader < CarrierWave::Uploader::Base
       "#{cache_dir}/indices/#{model.id}"
     end
 
-    def model_cache_spec
+    def model_cache_index
       model_cache_dir + '/' + file_name
     end
 

@@ -5,7 +5,7 @@ class SpecUploader < CarrierWave::Uploader::Base
   storage :grid_fs
 
   def store_dir
-    "/quick/Marshal.4.8/#{model.rubygem.subdomain.tld}"
+    "/quick/#{model.rubygem.subdomain.tld}/Marshal.4.8"
   end
 
   def save!
