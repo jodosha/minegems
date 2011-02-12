@@ -31,7 +31,7 @@ class IndexUploader < CarrierWave::Uploader::Base
       "#{cache_dir}/indices/#{model.id}"
     end
 
-    def model_cache_index
+    def model_cache_spec
       model_cache_dir + '/' + file_name
     end
 

@@ -1,11 +1,13 @@
+# encoding: utf-8
 class Version < ActiveRecord::Base
   belongs_to :rubygem
   mount_uploader :file, RubygemUploader
+  mount_uploader :spec, SpecUploader
   validates_with GemValidator
   validates_presence_of :file, :number, :platform
   delegate :name, :gemspec, :version_prerelease, :version_number, :version_platform, :process!, :to => :file
   before_validation :extract_data
-  after_save        :reorder_versions, :full_nameify!
+  after_save        :reorder_versions, :full_nameify!, :store_spec!
 
   scope :by_number,      order('number')
   scope :prerelease,     where(:prerelease => true)
@@ -73,6 +75,10 @@ class Version < ActiveRecord::Base
 
     def reorder_versions
       rubygem.reorder_versions
+    end
+
+    def store_spec!
+      self.spec.save!
     end
 
     def full_nameify!

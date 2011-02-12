@@ -38,14 +38,8 @@ class RubygemUploader < CarrierWave::Uploader::Base
     %w(gem)
   end
 
-  # Override the filename of the uploaded files:
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
-
   private
     def file_stream
-      # FIXME this is a bit hackish, because by-passes Carrierwave public API
       @file_stream ||= begin
         f = file.instance_variable_get(:@file)
         f.is_a?(String) ? ::File.open(f) : f
