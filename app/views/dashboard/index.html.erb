@@ -1,1 +1,32 @@
-<h1><%= site_name %></h1>
+<div class="span-16">
+  <div class="span-14">
+    <h1><%= site_name %></h1>
+  </div>
+  <div class="span-2 last">
+    <h3><%= @plan %></h3>
+  </div>
+</div>
+<div class="span-16">
+  <div class="span-8">
+    <%= @rubygems.size %>
+  </div>
+  <div class="span-8 last">
+    <%= @downloads %>
+  </div>
+</div>
+<div class="span-16">
+  <div class="span-8">
+    <%= @collaborators_count %>
+  </div>
+  <div class="span-8 last">
+    <%= @downloads %>
+  </div>
+</div>
+<hr />
+<div class="span-16">
+  <ul>
+  <% for rubygem in @rubygems %>
+  <li><%= link_to(rubygem.name, gem_path(rubygem)) %></li>
+  <% end %>
+  </ul>
+</div>

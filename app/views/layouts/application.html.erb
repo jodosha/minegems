@@ -1,61 +1,31 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-    <title>
-      Gems Mine – Private hosting for your hidden gems
-    </title>
-    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-    <meta name="Description" content="Gems Mine offers private hosting for Ruby gems" />
-    <meta name="Keywords" content="gems mine, ruby, ruby on rails, gem, gems, private, hosting, cloud, repository, deploy, deployment" />
-    <link type="image/x-icon" href="/favicon.ico" rel="icon" />
-    <%= stylesheet_link_tag 'main', :cache => true %>        
+  <title>GemsMine – Private Gems Hosting</title>
+  <%= stylesheet_link_tag 'blueprint/screen', 'blueprint/typography', 'application' %>
+  <%= csrf_meta_tag %>
 </head>
 <body>
-  <!--[if lt IE 7]>  <div style='border: 1px solid #F7941D; background: #FEEFDA; text-align: center; clear: both; height: 75px; position: relative;'>    <div style='position: absolute; right: 3px; top: 3px; font-family: courier new; font-weight: bold;'><a href='#' onclick='javascript:this.parentNode.parentNode.style.display="none"; return false;'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-cornerx.jpg' style='border: none;' alt='Close this notice'/></a></div>    <div style='width: 640px; margin: 0 auto; text-align: left; padding: 0; overflow: hidden; color: black;'>      <div style='width: 75px; float: left;'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-warning.jpg' alt='Warning!'/></div>      <div style='width: 275px; float: left; font-family: Arial, sans-serif;'>        <div style='font-size: 14px; font-weight: bold; margin-top: 12px;'>You are using an outdated browser</div>        <div style='font-size: 12px; margin-top: 6px; line-height: 12px;'>For a better experience using this site, please upgrade to a modern web browser.</div>      </div>      <div style='width: 75px; float: left;'><a href='http://www.firefox.com' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-firefox.jpg' style='border: none;' alt='Get Firefox 3.5'/></a></div>      <div style='width: 75px; float: left;'><a href='http://www.browserforthebetter.com/download.html' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-ie8.jpg' style='border: none;' alt='Get Internet Explorer 8'/></a></div>      <div style='width: 73px; float: left;'><a href='http://www.apple.com/safari/download/' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-safari.jpg' style='border: none;' alt='Get Safari 4'/></a></div>      <div style='float: left;'><a href='http://www.google.com/chrome' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-chrome.jpg' style='border: none;' alt='Get Google Chrome'/></a></div>    </div>  </div>  <![endif]-->
-  <div class="header bar">
-    <div class="content clearAfter">
-      <div class="logo">
-        <a href="/" title="Home">
-          <%= image_tag 'home/logo.png', :alt => "Gems Mine", :border => "0", :size => "200x45" %>
-        </a>
+  <div id="container" class="container">
+    <div id="header" class="span-16">
+      <div id="logotype" class="span-12">
+        <%= image_tag 'logo.png', :size => '154x54' %>
       </div>
-      <div class="nav light">
-        <ul>
-          <li><a href="/about" title="About Us">ABOUT</a></li>
-          <li><a href="/signup" title="Pricing & Signup">PRICING &amp; SIGNUP</a></li>
-          <li><a href="/tour" title="Feature Tour">FEATURES</a></li>
-        </ul>
+      <div id="logo" class="span-4 last">
+        menu
+      </div>
+    </div>
+    <div id="content-wrap" class="span-16">
+      <div id="content">
+        <%= flash_messages %>
+        <%= yield %>
+      </div>
+      <div id="footer">
+        Copyright &copy; 2010 <a href="http://sushistarweb.com?rel=gemsmine">Sushistar</a>.<br />
       </div>
     </div>
   </div>
-  <div id="content">
-    <%= flash[:notice] %>
-    <%= flash[:error] %>
-    <%= yield %>
-  </div>
-  <div class="footer bar">
-    <div class="content">
-      <div class="footerlinks light">
-        <a href="/" title="Home">HOME</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a href="/tour" title="Feature Tour">FEATURES</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a href="/signup" title="Pricing & Sign up">PRICING &amp; SIGN UP</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a href="http://blog.gemsmineapp.com" title="Gems Mine Blog">BLOG</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a href="/about" title="About Gems Mine">ABOUT</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a href="http://twitter.com/gemsmine">TWITTER</a>
-      </div>
-      <div class="footerlinkssubleft">
-        <a href="http://support.gemsmineapp.com" title="Support">SUPPORT</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a href="/privacy" title="Privacy Policy">PRIVACY</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a href="/security" title="Security Info">SECURITY</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-        <a href="/terms" title="Terms of Use">TERMS OF USE</a>
-      </div>
-      <div class="footerlinkssubright">
-        &copy; 2011&nbsp;<a href="/" title="Home">Bootstrapp</a>, Inc. – All Rights Reserved
-      </div>
-      <div class="clearBoth footerseals"></div>
-    </div>
-  </div>
-  <div class="calluscorner"></div>
-</div>
+  <%= javascript_include_tag :defaults %>
+  <%= yield :javascript %>
 </body>
 </html>

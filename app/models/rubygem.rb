@@ -4,6 +4,7 @@ class Rubygem < ActiveRecord::Base
   validates_presence_of :name, :subdomain_id
   validates_uniqueness_of :name
 
+  scope :latest, order('created_at DESC')
   scope :by_name, lambda { |name|
     where("name = ?", name)
   }
@@ -14,6 +15,10 @@ class Rubygem < ActiveRecord::Base
 
   def version(number)
     versions.first(:conditions => [ "versions.number = ?", number ])
+  end
+
+  def to_param
+    name
   end
 
   def reorder_versions
