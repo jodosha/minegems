@@ -20,7 +20,7 @@ class GemsController < ApplicationController
     if @rubygem.valid?
       redirect_to gems_path, :notice => "Gem was successful registered"
     else
-      flash[:error] = "There was errors preventing this gem being registered"
+      flash[:alert] = "There was errors preventing this gem being registered"
       render :new
     end
   end

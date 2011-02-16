@@ -46,7 +46,7 @@ describe GemsController do
       end
 
       it "should set flash error" do
-        flash[:error].should == "There was errors preventing this gem being registered"
+        flash[:alert].should == "There was errors preventing this gem being registered"
       end
     end
 
