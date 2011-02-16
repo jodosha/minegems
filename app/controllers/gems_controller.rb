@@ -2,7 +2,7 @@ class GemsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :ensure_site
   before_filter :ensure_site_access
-  before_filter :load_site, :only => [ :create ]
+  before_filter :load_site
 
   # GET https://bootstrapp.gemsmineapp.com/gems
   def index

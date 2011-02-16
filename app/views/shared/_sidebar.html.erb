@@ -2,31 +2,26 @@
   <div id="sidebar-glow"></div>
   <div id="header">
   <a id="portrait" href="/">
-    <img src="http://25.media.tumblr.com/avatar_9318cab29a1a_96.png" alt="" />
+    <%= organization_avatar(@site) %>
     <span class="frame"></span>
   </a>
 
   <div id="title">
     <div class="top"></div>
     <div class="content">
-      <span class="tagline">A theme by Pixel Union</span>
-        <h1><a href="/">Carbon</a></h1>
+      <h1><a href="/"><%= @site.name %></a></h1>
+      <span class="tagline">Gems Mine&trade;</span>
     </div>
     <div class="bottom"></div>
   </div>
-
-  <p class="info">Designed by <a href="http://markjardine.com/">Mark Jardine</a> and inspired by industrial design. Ready to go with your social links and Disqus support. <a href="http://www.tumblr.com/theme/16510">Buy it now</a>.</p>    
 </div>
 
   <div id="mylinks">
     <ul>
-      <li><a href="http://twitter.com/KillSpillOrg"><span class="icon twitter"></span><strong>Twitter</strong><br />Follow Me</a></li>
-      <li><a href="http://facebook.com"><span class="icon facebook"></span><strong>Facebook</strong><br />Friend Me (if you know me)</a></li>
-      <li><a href="http://flickr.com"><span class="icon flickr"></span><strong>Flickr</strong><br />View my Photos</a></li>
-      <li class="nolabel"><a href="/about"><span class="icon page"></span><strong>About me</strong></a></li>
-      <li><a href="mailto:hello@example.com"><span class="icon email"></span><strong>Email</strong><br />Send a message</a></li>
-      <li class="nolabel"><a href="/ask"><span class="icon ask"></span><strong>Ask me anything</strong></a></li>
-      <li class="nolabel"><a href="/archive"><span class="icon page"></span><strong>Archive</strong></a></li>
+      <li class="nolabel"><a href="/"><span class=""></span><strong>Dashboard</strong></a></li>
+      <li class="nolabel"><a href="/gems"><span class=""></span><strong>Gems</strong></a></li>
+      <li class="nolabel"><a href="/settings"><span class=""></span><strong>Settings</strong></a></li>
+      <li class="nolabel"><a href="http://gemsmineapp.com/help"><span class=""></span><strong>Help</strong></a></li>
     </ul>
   </div>
 </div>

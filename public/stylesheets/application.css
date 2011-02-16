@@ -33,7 +33,7 @@ body { height:100%; font-family:helvetica,arial,sans-serif; min-width:960px; }
 
 #container { width:1060px; min-width:1060px; height:100%; }
 
-#sidebar { position: relative; float:left; width:354px; height:100%; position:fixed; top: 0; left: 0; background:url(/images/bg_sidebar.png) repeat-y; }
+#sidebar { position: relative; float:left; width:279px; height:100%; position:fixed; top: 0; left: 0; background:url(/images/bg_sidebar.png) repeat-y; }
 #sidebar-glow { position: absolute; z-index: 1; width: 279px; height: 274px; background: url(/images/sidebar_top.png) no-repeat 0 0;}
 
 #header { position: relative; z-index: 2; width: 279px; padding: 12px 0 15px; }
@@ -69,7 +69,7 @@ body { height:100%; font-family:helvetica,arial,sans-serif; min-width:960px; }
 #mylinks ul li:last-child a { border-bottom-left-radius:8px; border-bottom-right-radius:8px; -webkit-border-bottom-left-radius:8px; -webkit-border-bottom-right-radius:8px; -moz-border-radius-bottomleft:8px; -moz-border-radius-bottomright:8px; background:none; }
 #mylinks ul li:last-child { border-bottom: none; border-bottom-left-radius:10px; border-bottom-right-radius:10px; -webkit-border-bottom-left-radius:10px; -webkit-border-bottom-right-radius:10px; -moz-border-radius-bottomleft:8px; -moz-border-radius-bottomright:8px; }
 
-#content { margin-left:354px; padding:50px 0 50px 0; float:left; }
+#content { margin-left:279px; padding:50px 0 50px 0; float:left; }
 
 /* Search and RSS */
 #helper { margin:0 0 15px 25px; float:left; width:685px; padding-bottom:25px; background:url(/images/divider.png) repeat-x 0 bottom; }
