@@ -17,6 +17,8 @@ module NavigationHelpers
       root_url(:host => "#{$1}.#{$host}", :port => $port)
     when /the "(.*)" new gem page/
       new_gem_url(:host => "#{$1}.#{$host}", :port => $port)
+    when /the "(.*)" gems page/
+      gems_url(:host => "#{$1}.#{$host}", :port => $port)
     when /the gems page/
       gems_path
     else

@@ -6,6 +6,7 @@ class GemsController < ApplicationController
 
   # GET https://bootstrapp.gemsmineapp.com/gems
   def index
+    @rubygems = @site.rubygems.latest
   end
 
   # GET https://bootstrapp.gemsmineapp.com/gems/new

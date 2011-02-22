@@ -1,1 +1,9 @@
-gems
+<% unless @rubygems.empty? %>
+<ul>
+<% for rubygem in @rubygems %>
+<li><%= link_to rubygem.name, gem_path(rubygem) %></li>
+<% end %>
+</ul>
+<% else %>
+<p>You haven't added any gems yet. You can <%= link_to "upload", new_gem_path %> it now.</p>
+<% end %>
