@@ -9,6 +9,12 @@ class GemsController < ApplicationController
     @rubygems = @site.rubygems.latest
   end
 
+  # GET https://bootstrapp.gemsmineapp.com/gems/planisphere
+  def show
+    @rubygem = @site.rubygems.by_name(params[:id]).first
+    raise ActiveRecord::RecordNotFound unless @rubygem
+  end
+
   # GET https://bootstrapp.gemsmineapp.com/gems/new
   def new
     @rubygem = Rubygem.new

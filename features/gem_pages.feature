@@ -9,3 +9,10 @@ Feature: Gem pages
     And a gem "test-0.0.0.gem" by "bootstrapp"
     When I go to the "bootstrapp" gems page
     Then I should see "test"
+
+  @javascript
+  Scenario: User visits single gem page
+    Given I am authenticated as a "bootstrapp" member
+    And a gem "test-0.0.0.gem" by "bootstrapp"
+    When I go to the "bootstrapp" "test" gem page
+    Then I should see "test"
