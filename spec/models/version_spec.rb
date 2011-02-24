@@ -34,6 +34,8 @@ describe Version do
     @version.number.should == "0.0.0"
     @version.should_not be_prerelease
     @version.platform.should == "ruby"
+    @version.summary.should_not be_nil
+    @version.description.should_not be_nil
   end
 
   it "should set as a pre-release" do

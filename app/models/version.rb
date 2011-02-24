@@ -5,7 +5,8 @@ class Version < ActiveRecord::Base
   mount_uploader :spec, SpecUploader
   validates_with GemValidator
   validates_presence_of :file, :number, :platform
-  delegate :name, :gemspec, :version_prerelease, :version_number, :version_platform, :process!, :to => :file
+  delegate :name, :gemspec, :version_prerelease, :version_number,
+    :version_platform, :version_summary, :version_description, :process!, :to => :file
   before_validation :extract_data
   after_save        :reorder_versions, :full_nameify!, :store_spec!
 
@@ -67,9 +68,11 @@ class Version < ActiveRecord::Base
 
   private
     def extract_data
-      self.number     = version_number
-      self.prerelease = version_prerelease
-      self.platform   = version_platform
+      self.number      = version_number
+      self.prerelease  = version_prerelease
+      self.platform    = version_platform
+      self.summary     = version_summary
+      self.description = version_description
       true
     end
 

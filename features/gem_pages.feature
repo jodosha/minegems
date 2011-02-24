@@ -3,6 +3,7 @@ Feature: Gem pages
   As a user
   I want to see them
 
+  @javascript
   Scenario: User visits gems page
     Given I am authenticated as a "bootstrapp" member
     And a gem "test-0.0.0.gem" by "bootstrapp"

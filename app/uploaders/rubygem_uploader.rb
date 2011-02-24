@@ -30,6 +30,14 @@ class RubygemUploader < CarrierWave::Uploader::Base
     gemspec.try(:platform)
   end
 
+  def version_summary
+    gemspec.try(:summary)
+  end
+
+  def version_description
+    gemspec.try(:description)
+  end
+
   def gem_version
     gemspec.try(:version)
   end

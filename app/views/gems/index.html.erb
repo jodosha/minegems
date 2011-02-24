@@ -1,9 +1,16 @@
-<% unless @rubygems.empty? %>
-<ul>
-<% for rubygem in @rubygems %>
-<li><%= link_to rubygem.name, gem_path(rubygem) %></li>
-<% end %>
-</ul>
-<% else %>
-<p>You haven't added any gems yet. You can <%= link_to "upload", new_gem_path %> it now.</p>
-<% end %>
+<div id="gems" class="list">
+  <h1 class="title">Gems</h1>
+  <% unless @rubygems.empty? %>
+  <ul>
+  <% for rubygem in @rubygems %>
+  <li class="">
+    <a href="<%= gem_path(rubygem) %>">
+      <span class=""></span><strong><%= rubygem.name_with_version %></strong><br><%= rubygem.summary %>
+    </a>
+  </li>
+  <% end %>
+  </ul>
+  <% else %>
+  <p>You haven't added any gems yet. You can <%= link_to "upload", new_gem_path %> it now.</p>
+  <% end %>
+</div>

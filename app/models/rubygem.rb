@@ -3,6 +3,7 @@ class Rubygem < ActiveRecord::Base
   has_many :versions, :dependent => :destroy
   validates_presence_of :name, :subdomain_id
   validates_uniqueness_of :name
+  delegate :summary, :to => :latest_version
 
   scope :latest, order('created_at DESC')
   scope :by_name, lambda { |name|
@@ -19,6 +20,14 @@ class Rubygem < ActiveRecord::Base
 
   def to_param
     name
+  end
+
+  def name_with_version
+    "#{name} (#{latest_version.number})"
+  end
+
+  def latest_version
+    @latest_version ||= versions.latest.first || versions.first
   end
 
   def reorder_versions
