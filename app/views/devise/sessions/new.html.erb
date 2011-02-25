@@ -1,16 +1,25 @@
-<h2><%= site_name %></h2>
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :login %><br />
-  <%= f.text_field :login, :class => "big-title" %></p>
+<div id="sign-in" class="box">
+  <div id="title"><h1><%= site_name %></h1></div>
+  <hr />
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <%= flash_messages %>
+    <%= devise_error_messages! %>
+    <fieldset>
+      <div>
+        <p><%= f.label :login %><br />
+        <%= f.text_field :login, :class => "title big-title" %></p>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password, :class => "big-title" %></p>
+        <p><%= f.label :password %><br />
+        <%= f.password_field :password, :class => "title big-title" %></p>
 
-  <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
-  <% end -%>
+        <% if devise_mapping.rememberable? -%>
+          <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
+        <% end -%>
+      </div>
+    </fieldset>
 
-  <p><%= f.submit "Sign in", :class => "right" %></p>
-<% end %>
-<hr />
-<%= render :partial => "devise/shared/links" %>
+    <p><%= f.submit "Sign in", :class => "right" %></p>
+    <hr />
+    <%= render :partial => "devise/shared/links" %>
+  <% end %>
+</div>

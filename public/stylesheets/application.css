@@ -81,6 +81,18 @@ h3.subtitle { text-align: left; font-size: 14px; }
 .box hr { width: 98%; color: #7f878f; background-color: #7f878f; }
 .box div { padding: 5px; }
 .box .shadow { color:#fff; text-shadow:#333 0 1px 0; }
+.box form input { color: #333; text-align:left; text-transform: none; text-shadow: none; margin-bottom: 10px; }
+.box form p.form-explanation { color: #7f878f; margin-top: -8px; margin-bottom: 10px; }
+.box form fieldset { padding: 5px; }
+.box form legend { text-align: left; font-size: 14px;}
+.box form a, .box form a:visited { color: #fff; }
+.box form span.validation-message { color:#fff; text-shadow:#5b656e 0 -1px 0; text-decoration:none; background-color: #911; } 
+#session-container { text-align: center; }
+#sign-in-box { display: none; }
+#sign-in { width: 50%; text-align: left; position: absolute; top: 150px; }
+div.notice, div.alert { padding: 5px; color: #fff; text-shadow:#666 0 -1px 0; border: 1px solid #ccc; }
+div.notice { background-color: #3a3; }
+div.alert { background-color: #911; }
 
 /* Search and RSS */
 #helper { margin:0 0 15px 25px; float:left; width:685px; padding-bottom:25px; background:url(/images/divider.png) repeat-x 0 bottom; }
