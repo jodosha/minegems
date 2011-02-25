@@ -72,6 +72,10 @@ h3.subtitle { text-align: left; font-size: 14px; }
 .list ul li:last-child { border-bottom: none; border-bottom-left-radius:10px; border-bottom-right-radius:10px; -webkit-border-bottom-left-radius:10px; -webkit-border-bottom-right-radius:10px; -moz-border-radius-bottomleft:8px; -moz-border-radius-bottomright:8px; }
 
 #content { margin-left:329px; padding:50px 0 50px 0; }
+#session { position: absolute; top: 5px; right:5px; font-size:12px; font-weight:bold; color: #fff; vertical-align: middle; }
+#session img { float: left; margin: 2px 5px 2px 2px; }
+#session a, #session a:visited { text-decoration: none; color: #fff; }
+#session a:active, #session a:hover { color: #333; }
 #gems { width: 100%; }
 .box { color: #fff; padding: 10px; }
 .box hr { width: 98%; color: #7f878f; background-color: #7f878f; }
@@ -113,7 +117,7 @@ h3.subtitle { text-align: left; font-size: 14px; }
 .section .post.text .post_type a { background-image:url(http://static.tumblr.com/lakznp6/EJjlbl3jg/postmarker_text.png); }
 .section .post.image .post_type a { background-image:url(http://static.tumblr.com/lakznp6/LEBlbl3in/postmarker_img.png); }
 .section .post.chat .post_type a { background-image:url(http://static.tumblr.com/lakznp6/rEolbl3i8/postmarker_chat.png); }
-.section .post .caption { background:url(/images/bg_caption.png); border:1px solid #676f78; border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px; color:#202327; padding:7px 10px; float:left; min-width:35px; font-size:11px; text-shadow:#888e96 0 1px 0; position:relative; margin-bottom:20px; clear:both; }
+.section .post .caption, .caption { background:url(/images/bg_caption.png); border:1px solid #676f78; border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px; color:#202327; padding:7px 10px; float:left; min-width:35px; font-size:11px; text-shadow:#888e96 0 1px 0; position:relative; margin-bottom:20px; clear:both; }
 .section .post .caption:before { content:url(/images/caption_top.png); position:absolute; top:-13px; left:15px; }
 .section .post .caption p { margin-bottom:.7em; }
 .section .post .caption p:last-child { margin-bottom: 0; }
