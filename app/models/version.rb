@@ -5,10 +5,14 @@ class Version < ActiveRecord::Base
   mount_uploader :spec, SpecUploader
   validates_with GemValidator
   validates_presence_of :file, :number, :platform
-  delegate :name, :gemspec, :version_prerelease, :version_number,
-    :version_platform, :version_summary, :version_description, :process!, :to => :file
+  validate :authors_format, :on => :create
   before_validation :extract_data
+  after_validation  :join_authors
   after_save        :reorder_versions, :full_nameify!, :store_spec!
+
+  delegate :name, :gemspec, :version_prerelease, :version_number,
+    :version_platform, :version_summary, :version_description, :version_authors,
+    :process!, :to => :file
 
   scope :by_number,      order('number')
   scope :prerelease,     where(:prerelease => true)
@@ -73,7 +77,18 @@ class Version < ActiveRecord::Base
       self.platform    = version_platform
       self.summary     = version_summary
       self.description = version_description
+      self.authors     = version_authors
       true
+    end
+
+    def authors_format
+      if !authors.is_a?(Array) || authors.any? { |a| !a.is_a?(String) }
+        errors.add :authors, "must be an Array of Strings"
+      end
+    end
+
+    def join_authors
+      self.authors = authors.join(", ") if authors.is_a?(Array)
     end
 
     def reorder_versions

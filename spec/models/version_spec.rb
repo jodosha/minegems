@@ -31,12 +31,23 @@ describe Version do
   end
 
   it "should extract data from gemspec" do
-    @version.number.should == "0.0.0"
     @version.should_not be_prerelease
-    @version.platform.should == "ruby"
-    @version.summary.should_not be_nil
-    @version.description.should_not be_nil
+    @version.number.should      == "0.0.0"
+    @version.platform.should    == "ruby"
+    @version.summary.should     == "Testing gem"
+    @version.description.should == "Testing gem"
+    @version.authors.should     == "Luca Guidi"
   end
+
+  # it "should validates authors format" do
+  #   version = version_with_invalid_spec(:authors => "Max Power")
+  #   version.should be_invalid
+  # 
+  #   version = version_with_invalid_spec(:authors => ["Luca Guidi", 23])
+  #   version.should be_invalid
+  # 
+  #   version.errors[:authors].should == ["must be an Array of Strings"]
+  # end
 
   it "should set as a pre-release" do
     version = Version.create_from_file(rubygem_file('test-0.0.1.beta1.gem'), @subdomain)

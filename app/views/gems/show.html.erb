@@ -1,1 +1,11 @@
-<h1 class="title"><%= @rubygem.name_with_version %></h1>
+<div id="gem" class="box">
+  <div>
+    <h1 class="title shadow"><%= @rubygem.name_with_version %></h1>
+    <h2 class="subtitle shadow"><%= @rubygem.summary %></h2>
+  </div>
+  <hr />
+  <div>
+    <h3 class="subtitle shadow">Authors</h3>
+    <p class="shadow"><%= @rubygem.latest_version.authors %></p>
+  </div>
+</div>

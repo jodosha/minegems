@@ -1,5 +1,5 @@
 <div id="gems" class="list">
-  <h1 class="title">Gems</h1>
+  <h1 class="title shadow">Gems</h1>
   <% unless @rubygems.empty? %>
   <ul>
   <% for rubygem in @rubygems %>
@@ -11,6 +11,8 @@
   <% end %>
   </ul>
   <% else %>
-  <p>You haven't added any gems yet. You can <%= link_to "upload", new_gem_path %> it now.</p>
+  <div class="box">
+    <p class="shadow">You haven't added any gems yet. You can <%= link_to "upload", new_gem_path %> it now.</p>
+  </div>
   <% end %>
 </div>

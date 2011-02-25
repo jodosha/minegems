@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110224112708) do
+ActiveRecord::Schema.define(:version => 20110225101602) do
 
   create_table "memberships", :force => true do |t|
     t.integer  "subdomain_id"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20110224112708) do
     t.string   "spec"
     t.string   "summary"
     t.string   "description"
+    t.text     "authors"
   end
 
 end
