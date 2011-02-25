@@ -20,11 +20,11 @@ module LayoutHelper
   end
 
   def gravatar(user)
-    %(<img src="#{gravatar_url(user.email)}" width="96px" height="96px" />).html_safe
+    %(<img src="#{gravatar_url(user.email)}" width="12px" height="12px" />).html_safe
   end
 
   private
     def gravatar_url(email)
-      "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}?d=identicon"
+      "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}?d=identicon&s=12"
     end
 end
