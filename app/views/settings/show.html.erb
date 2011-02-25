@@ -1,0 +1,17 @@
+<h2 class="title">Settings</h2>
+<div class="box">
+  <h3 class="subtitle">Change your password</h3>
+  <hr />
+
+  <%= form_for(:user, :url => settings_path, :html => { :method => :put }) do |f| %>
+    <div>
+    <p><%= f.label :password %><br />
+    <%= f.password_field :password, :class => "title" %></p>
+
+    <p><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, :class => "title" %></p>
+    </div>
+
+    <p><%= f.submit "Change my password" %></p>
+  <% end %>
+</div>

@@ -13,6 +13,7 @@ Gemsmine::Application.routes.draw do
   end
 
   resources :gems
+  resource  :settings, :only => [ :show, :update ]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
