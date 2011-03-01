@@ -52,6 +52,7 @@ body { height:100%; font-family:helvetica,arial,sans-serif; min-width:960px; }
 .title, .subtitle { padding: 0.1em 0 0; font: normal 28px/32px Helvetica, Arial, sans-serif; font-weight: bold; color: #fff; text-transform: uppercase; text-align: center; text-shadow: 0 -1px 0 #000; }
 h2.subtitle { text-align: center; font-size: 16px; }
 h3.subtitle { text-align: left; font-size: 14px; }
+.big { font-size: 18px; }
 
 #header p.info { font-size:12px; line-height:1.5em; width:220px; text-align:center; padding:0 30px; margin: 0; color:#a9c3e4; text-shadow:#112a49 0 -1px 0; -webkit-text-stroke:.5px transparent; }
 #header p.info a { color:#fff; text-decoration: none;}

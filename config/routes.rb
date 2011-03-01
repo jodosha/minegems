@@ -13,6 +13,7 @@ Minegems::Application.routes.draw do
   end
 
   resources :gems
+  resources :early_birds, :only => [ :create ]
   resource  :settings, :only => [ :show, :update ]
 
   # The priority is based upon order of creation:

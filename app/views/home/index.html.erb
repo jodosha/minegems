@@ -2,4 +2,13 @@
 <div id="home" class="center">
   <%= image_tag 'logo.png', :alt => "Mine Gems" %>
   <h2 class="title">Private hosting for your hidden gems.</h2>
+  <%= form_for :early_bird, :url => early_birds_path do |f| %>
+  <div class="box">
+    <p class="big">
+      <label for="early_bird_email">We are in private beta. Please leave your email address to be contacted as soon as possible.</label><br />
+      <%= f.text_field :email, :class => "big" %>
+      <%= f.submit "Keep me informed" %>
+    </p>
+  </div>
+  <% end %>
 </div>

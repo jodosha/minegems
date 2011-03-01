@@ -1,2 +1,4 @@
 html { background:#111E2C; text-align: center; }
 #content { margin: 0; }
+#home .box { margin-top: 25px; }
+#home form input { margin-top: 10px; padding: 5px; }
