@@ -7,6 +7,14 @@ module LayoutHelper
     end
   end
 
+  def stylesheet(*stylesheets)
+    content_for :stylesheet do
+      stylesheets.map do |stylesheet|
+        stylesheet_link_tag stylesheet
+      end.join("\n").html_safe
+    end
+  end
+
   def flash_messages
     [ :notice, :alert ].map do |message|
       if content = send(message)
