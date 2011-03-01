@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Gemsmine::Application.load_tasks
+Minegems::Application.load_tasks

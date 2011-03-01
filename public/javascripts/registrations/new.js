@@ -26,7 +26,7 @@ $(document).ready(function() {
   });
 
   $('input#subdomain_tld').keyup(function( ){
-    var value = 'https://' + $(this).val() + '.gemsmineapp.com';
+    var value = 'https://' + $(this).val() + '.minege.ms';
     $('p#subdomain-tld').text(value);
   });
 });

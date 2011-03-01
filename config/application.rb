@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module Gemsmine
+module Minegems
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -15,7 +15,7 @@ module Gemsmine
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += %W(#{config.root}/lib/activemodel/validators)
-    config.autoload_paths += %W(#{config.root}/lib/gemsmine/rack)
+    config.autoload_paths += %W(#{config.root}/lib/minegems/rack)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -36,7 +36,7 @@ module Gemsmine
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
-    config.middleware.use 'Gemsmine::Rack::SubdomainRouter'
+    config.middleware.use 'Minegems::Rack::SubdomainRouter'
     config.middleware.use 'Hostess'
 
     # Configure sensitive parameters which will be filtered from the log file.

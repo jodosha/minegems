@@ -3,7 +3,7 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "no-reply@minegemsapp.com"
+  config.mailer_sender = "no-reply@minege.ms"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -32,7 +32,7 @@ Devise.setup do |config|
   # config.http_authenticatable_on_xhr = true
 
   # The realm used in Http Basic Authentication
-  config.http_authentication_realm = "Gems Mine"
+  config.http_authentication_realm = "Mine Gems"
 
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 10. If

@@ -1,5 +1,5 @@
 module SitesHelper
   def site_name
-    ( request.env['GEMSMINE_SITE'] ||= {} )['name']
+    ( request.env['MINEGEMS_SITE'] ||= {} )['name']
   end
 end

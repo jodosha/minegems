@@ -85,6 +85,6 @@ class Hostess < ::Sinatra::Base
     end
 
     def root_url
-      'https://gemsmineapp.com'
+      'http://minege.ms'
     end
 end
