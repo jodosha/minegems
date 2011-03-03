@@ -13,5 +13,5 @@ end
 
 $redis = Redis.new(redis_options)
 
-# Minegems::Rack::SubdomainRouter.ensure_consistent_lookup!
-# Minegems::Rack::SubdomainRouter.ensure_consistent_access!
+Minegems::Rack::SubdomainRouter.ensure_consistent_lookup!
+Minegems::Rack::SubdomainRouter.ensure_consistent_access!
