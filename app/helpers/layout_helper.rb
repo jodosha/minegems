@@ -1,4 +1,21 @@
 module LayoutHelper
+  GOOGLE_ANALYTICS = <<-CODE
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-21800011-1']);
+    _gaq.push(['_setDomainName', '.minege.ms']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+  CODE
+
   def javascript(*scripts)
     content_for :javascript do
       scripts.map do |script|
@@ -29,6 +46,12 @@ module LayoutHelper
 
   def gravatar(user)
     %(<img src="#{gravatar_url(user.email)}" width="12px" height="12px" />).html_safe
+  end
+
+  def google_analytics
+    if Rails.env.production?
+      GOOGLE_ANALYTICS.html_safe
+    end
   end
 
   private
