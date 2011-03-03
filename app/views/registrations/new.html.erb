@@ -45,7 +45,9 @@
         <%= f.password_field :password_confirmation, :class => "title required" %>
         <span class="validation-message"></span></p>
 
-        <p>Already signed up with <strong>Mine Gems&trade;</strong>? <a href="" class="sign-in">Use the account you already have</a>.</p>
+        <p><%= f.label :registration_code %><br />
+        <%= f.password_field :registration_code, :class => "title required" %></p>
+        <p class="form-explanation">We are in private beta, you need a <a href="/">registration code</a> for sign up.</p>
       </div>
 
       <div id="sign-in-box">

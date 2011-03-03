@@ -3,7 +3,7 @@ class CreateEarlyBirds < ActiveRecord::Migration
     create_table :early_birds do |t|
       t.string :email
       t.string :code
-      t.time :activated_at
+      t.datetime :activated_at
 
       t.timestamps
     end

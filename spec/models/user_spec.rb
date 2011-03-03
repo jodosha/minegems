@@ -14,7 +14,7 @@ describe User do
   specify { should validate_uniqueness_of(:username) }
 
   it "should have accessible attributes" do
-    @user.accessible_attributes.should == [ :name, :email, :username, :login, :password, :password_confirmation, :remember_me ]
+    @user.accessible_attributes.should == [ :name, :email, :username, :login, :password, :password_confirmation, :remember_me, :registration_code ]
   end
 
   describe "create_with_subdomain!" do

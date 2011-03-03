@@ -22,7 +22,7 @@ Feature: Beta
 
   Scenario: User requires registration code with already taken email
     Given I am on the homepage
-    And an early bird registered with "user@example.com"
+    And an early bird registered with "user@example.com/abcdef"
     When I fill in "email" with "user@example.com"
     And I press "Keep me informed"
     Then I should see "Sorry, but you have already subscribed with this email address."

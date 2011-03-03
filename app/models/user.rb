@@ -4,14 +4,20 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessor :login
-  attr_accessible :name, :email, :username, :login, :password, :password_confirmation, :remember_me
+  attr_accessor :login, :registration_code
+  attr_accessible :name, :email, :username, :login, :password, :password_confirmation, :remember_me, :registration_code
 
   has_many :memberships, :dependent => :destroy
   has_many :subdomains, :through => :memberships
 
   validates_presence_of   :name, :username
   validates_uniqueness_of :email, :username, :case_sensitive => false
+  validate :registration_code_presence, :on => :create
+  after_create :reset_registration_code
+
+  def self.search(query)
+    where(:username => query).select([:username]).limit(1).first
+  end
 
   def create_with_subdomain!(subdomain)
     return false unless new_record? or valid?
@@ -67,4 +73,19 @@ class User < ActiveRecord::Base
     def self.find_record(login)
       where(attributes).where(["username = :value OR email = :value", { :value => login }]).first
     end
+
+    private
+      def registration_code_presence
+        if registration_code.blank?
+          errors.add(:registration_code, "can't be blank")
+        else
+          early_bird = EarlyBird.first(:conditions => ['email = ? AND code = ?', email, registration_code])
+          errors.add(:registration_code, "is invalid") if early_bird.nil?
+        end
+      end
+
+      def reset_registration_code
+        early_bird = EarlyBird.first(:conditions => ['email = ? AND code = ?', email, registration_code])
+        early_bird.update_attributes :code => nil, :activated_at => Time.now
+      end
 end

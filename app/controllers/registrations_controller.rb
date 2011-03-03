@@ -1,5 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   before_filter :require_no_subdomain
+  respond_to :json, :only => [ :search ]
 
   # POST /users
   def create
@@ -13,5 +14,10 @@ class RegistrationsController < Devise::RegistrationsController
       clean_up_passwords(resource)
       render_with_scope :new
     end
+  end
+
+  # GET /users/search.json?q=jodosha
+  def search
+    respond_with User.search(params[:q])
   end
 end

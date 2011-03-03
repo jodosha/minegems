@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20110303080234) do
   create_table "early_birds", :force => true do |t|
     t.string   "email"
     t.string   "code"
-    t.time     "activated_at"
+    t.datetime "activated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

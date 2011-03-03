@@ -4,15 +4,15 @@ class EarlyBird < ActiveRecord::Base
   validates_format_of     :email, :message => "We need a valid email address to keep in touch with you.",
     :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i, :allow_blank => true
 
-  before_create :generate_code
+  before_create :set_code
 
   private
-    def generate_code
-      self.code = unique_code
+    def set_code
+      self.code ||= generate_code
     end
 
     # borrowed by Devise
-    def unique_code #:nodoc:
+    def generate_code #:nodoc:
       loop do
         code = Devise.friendly_token
         break code unless self.class.find(:first, :conditions => { :code => code })

@@ -11,6 +11,9 @@ $(document).ready(function() {
     fields: {
       subdomain_tld: {
         url: '/subdomains/search.json'
+      },
+      user_username: {
+        url: '/users/search.json'
       }
     }
   });
