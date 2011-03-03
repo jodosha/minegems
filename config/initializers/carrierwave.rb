@@ -5,7 +5,7 @@ $mongo = if Rails.env.production?
   require 'uri'
   uri = URI(ENV['MONGOHQ_URL'])
   db  = uri.path
-  connection, _ = Mongo::Connection.from_uri uri
+  connection, _ = Mongo::Connection.from_uri uri.to_s
   connection.db(db)
 else
   Mongo::Connection.new.db('gemsmine')
