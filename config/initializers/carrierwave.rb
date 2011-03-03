@@ -4,7 +4,7 @@ require Rails.root.join('lib', 'carrierwave', 'uploader', 'compat')
 $mongo = if Rails.env.production?
   require 'uri'
   uri = URI(ENV['MONGOHQ_URL'])
-  db  = uri.path
+  db  = uri.path.gsub('/', '')
   connection, _ = Mongo::Connection.from_uri uri.to_s
   connection.db(db)
 else
