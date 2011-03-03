@@ -1,0 +1,9 @@
+<div id="early_bird" class="box center">
+<% if @message == :success %>
+<p>Thanks for being interested in Mine Gems&trade;, you will be contacted soon.</p>
+<% else %>
+<p><%= @message %></p>
+<% end %>
+<hr />
+<p style="float:right;">Back to the <%= link_to "home page", root_path %></p>
+</div>

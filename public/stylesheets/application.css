@@ -94,6 +94,8 @@ h3.subtitle { text-align: left; font-size: 14px; }
 div.notice, div.alert { padding: 5px; color: #fff; text-shadow:#666 0 -1px 0; border: 1px solid #ccc; }
 div.notice { background-color: #3a3; }
 div.alert { background-color: #911; }
+#early_bird { font-size:18px; }
+#early_bird a, #early_bird a:visited { color: #fff; }
 
 /* Search and RSS */
 #helper { margin:0 0 15px 25px; float:left; width:685px; padding-bottom:25px; background:url(/images/divider.png) repeat-x 0 bottom; }

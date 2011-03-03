@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110225101602) do
+ActiveRecord::Schema.define(:version => 20110303080234) do
+
+  create_table "early_birds", :force => true do |t|
+    t.string   "email"
+    t.string   "code"
+    t.time     "activated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "memberships", :force => true do |t|
     t.integer  "subdomain_id"

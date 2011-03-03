@@ -1,0 +1,2 @@
+module EarlyBirdsHelper
+end
