@@ -6,7 +6,7 @@ end
 When /^I send the registration code for "([^"]*)"$/ do |email_and_code|
   email, code = email_and_code.split '/'
   beta = EarlyBird.where(:email => email).limit(1).first
-  Beta.registration_code(beta).deliver
+  beta.send_registration_code
 end
 
 Then /^I should receive an email at "([^"]*)"$/ do |email|

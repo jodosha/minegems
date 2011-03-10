@@ -6,6 +6,10 @@ class EarlyBird < ActiveRecord::Base
 
   before_create :set_code
 
+  def send_registration_code
+    Beta.registration_code(self).deliver
+  end
+
   private
     def set_code
       self.code ||= generate_code
