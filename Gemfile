@@ -31,6 +31,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'shoulda'
+  gem 'email_spec'
 end
 
 group :production do

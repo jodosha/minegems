@@ -26,3 +26,8 @@ Feature: Beta
     When I fill in "email" with "user@example.com"
     And I press "Keep me informed"
     Then I should see "Sorry, but you have already subscribed with this email address."
+
+  Scenario: User receives registration code via mail
+    Given an early bird registered with "user@example.com/abcdef"
+    When I send the registration code for "user@example.com"
+    Then I should receive an email at "user@example.com"

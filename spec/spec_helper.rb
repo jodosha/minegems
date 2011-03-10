@@ -16,4 +16,7 @@ RSpec.configure do |config|
 
   config.include Devise::TestHelpers, :type => :controller
   config.extend  DeviseMacros,        :type => :controller
+
+  config.include EmailSpec::Helpers
+  config.include EmailSpec::Matchers
 end

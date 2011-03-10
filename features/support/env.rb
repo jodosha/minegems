@@ -20,6 +20,7 @@ require 'cucumber/rails/capybara_javascript_emulation' # Lets you click links wi
 
 Dir[Rails.root.join("spec/support/factories/*.rb")].each {|f| require f}
 require Rails.root.join("spec/support/routing")
+require 'email_spec/cucumber'
 
 $host = 'lvh.me'
 $port = 60000
