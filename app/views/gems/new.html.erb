@@ -1,8 +1,10 @@
-<%= form_for @rubygem, :as => :gem, :url => gems_path, :html => { :multipart => true } do |f| %>
-<div>
-  <%= f.file_field :file %>
+<div class="box">
+  <%= form_for @rubygem, :as => :gem, :url => gems_path, :html => { :multipart => true } do |f| %>
+  <div>
+    <%= f.file_field :file %>
+  </div>
+  <div>
+    <%= f.submit 'Upload gem' %>
+  </div>
+  <% end %>
 </div>
-<div>
-  <%= f.submit 'Upload gem' %>
-</div>
-<% end %>
