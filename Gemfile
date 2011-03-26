@@ -16,6 +16,7 @@ gem 'fog'
 gem 'carrierwave'
 gem 'resque'
 gem 'sinatra'
+gem 'devise_aes_encryptable'
 
 gem 'rspec-rails', '~> 2.3.1', :group => [ :development, :test ]
 gem 'ruby-debug19',            :group => [ :development, :test ]
