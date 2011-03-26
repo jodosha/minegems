@@ -41,6 +41,10 @@ Given /^I signed in with "(.*)"$/ do |email_and_password|
   click_button 'Sign in'
 end
 
+Then /^a deploy user should exist for "([^"]*)"$/ do |subdomain|
+  User.find_by_email("#{subdomain}@minege.ms").should_not be_nil
+end
+
 # Domains
 
 Then /^I should be redirected to (.+) path$/ do |page_name|
@@ -76,7 +80,7 @@ end
 
 Then /^a confirmation message should be sent to "(.*)"$/ do |email|
   user = User.find_by_email(email)
-  sent = ActionMailer::Base.deliveries.last
+  sent = ActionMailer::Base.deliveries.first
   sent.to.should == [user.email]
   sent.subject.should match(/confirm/i)
   user.confirmation_token.should_not be_blank

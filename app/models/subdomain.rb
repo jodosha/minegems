@@ -3,6 +3,7 @@ class Subdomain < ActiveRecord::Base
 
   has_many :memberships, :dependent => :destroy
   has_many :users, :through => :memberships
+  has_one  :deploy_user, :through => :memberships, :conditions => ["role = 'deploy'"], :source => :user
   has_many :rubygems, :dependent => :destroy
   has_many :versions, :through => :rubygems
 
@@ -12,6 +13,7 @@ class Subdomain < ActiveRecord::Base
   validates :tld, :ascii => true
 
   before_validation :transform_tld
+  after_create      :assign_deploy_user
 
   mount_uploader :specs_index,            IndexUploader
   mount_uploader :latest_specs_index,     IndexUploader
@@ -55,5 +57,21 @@ class Subdomain < ActiveRecord::Base
       self.prerelease_specs_index.file_name = 'prerelease_specs.4.8.gz'
 
       self.prerelease_specs_index.save!
+    end
+
+  private
+    def assign_deploy_user
+      password = ActiveSupport::SecureRandom.hex(8)
+      user = User.create!({
+        :name                  => "#{self.name} deploy",
+        :email                 => "#{self.tld}@minege.ms",
+        :username              => "#{self.tld}-deploy",
+        :password              => password,
+        :password_confirmation => password,
+        :deploy                => true
+      })
+      user.confirm!
+
+      Membership.create!(:subdomain => self, :user => user, :role => 'deploy')
     end
 end

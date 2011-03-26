@@ -105,8 +105,8 @@ Feature: Sign up
     Scenario: User signs up with valid data
       Given an early bird registered with "jodosha@minege.ms/beefc0d3"
       When I go to the sign up page
-      And I fill in "Name" with "Company Inc."
-      And I fill in "Subdomain" with "company"
+      And I fill in "Name" with "Bootstrapp Inc."
+      And I fill in "Subdomain" with "bootstrapp"
       And I fill in "Full name" with "Luca"
       And I fill in "Username" with "jodosha"
       And I fill in "Email" with "jodosha@minege.ms"
@@ -116,6 +116,7 @@ Feature: Sign up
       And I press "Sign up"
       Then I should see "You have signed up successfully. A confirmation was sent to your e-mail."
       And a confirmation message should be sent to "jodosha@minege.ms"
+      And a deploy user should exist for "bootstrapp"
 
     # Scenario: User confirms his account
     #   Given I signed up with "jodosha@minege.ms/password"

@@ -5,16 +5,18 @@ describe User do
     @user = Factory.create :user
   end
 
+  # Associations
   specify { should have_many(:memberships).dependent(:destroy) }
   specify { should have_many(:subdomains).through(:memberships) }
 
+  # Validations
   specify { should validate_presence_of(:name) }
   specify { should validate_presence_of(:username) }
   specify { should validate_uniqueness_of(:email) }
   specify { should validate_uniqueness_of(:username) }
 
   it "should have accessible attributes" do
-    @user.accessible_attributes.should == [ :name, :email, :username, :login, :password, :password_confirmation, :remember_me, :registration_code ]
+    @user.accessible_attributes.should == [ :name, :email, :username, :login, :password, :password_confirmation, :remember_me, :registration_code, :deploy ]
   end
 
   describe "create_with_subdomain!" do
