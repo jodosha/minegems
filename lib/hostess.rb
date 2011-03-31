@@ -9,6 +9,7 @@ class Hostess < ::Sinatra::Base
      /prerelease_specs.4.8.gz
   ].each do |index|
     get index do
+      set_deploy_user!
       warden.authenticate!
       set_site!
 
@@ -18,6 +19,7 @@ class Hostess < ::Sinatra::Base
   end
 
   get "/quick/Marshal.4.8/*.gemspec.rz" do
+    set_deploy_user!
     warden.authenticate!
     set_site!
 
@@ -30,6 +32,7 @@ class Hostess < ::Sinatra::Base
   end
 
   get "/gems/*.gem" do
+    set_deploy_user!
     warden.authenticate!
     set_site!
 
