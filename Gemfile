@@ -16,14 +16,15 @@ gem 'fog'
 gem 'carrierwave'
 gem 'resque'
 gem 'sinatra'
+gem 'heroku'
 gem 'devise_aes_encryptable'
+gem 'resque-heroku-autoscaler'
 
 gem 'rspec-rails', '~> 2.3.1', :group => [ :development, :test ]
 gem 'ruby-debug19',            :group => [ :development, :test ]
 
 group :development do
   gem 'mysql2'
-  gem 'heroku'
 end
 
 group :test do
