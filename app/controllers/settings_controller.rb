@@ -6,6 +6,7 @@ class SettingsController < ApplicationController
 
   # GET /settings
   def show
+    @deploy_password = ::Devise::Encryptors::Aes256.decrypt(@site.deploy_user.encrypted_password, Devise.pepper)
   end
 
   # PUT /settings

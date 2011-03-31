@@ -18,5 +18,11 @@
 
  $(document).ready(function() {
    $('.center').center();
+   $('#show_deploy_password').click(function( ){
+     var input = $('#deploy_password');
+     var type  = input.attr('type') == 'password' ? 'text' : 'password'
+     input.replaceWith('<input type="'+type+'" value="'+input.val()+'" class="title" id="deploy_password" />');
+     $(this).val(type == 'password' ? 'Show' : 'Hide');
+   });
  });
 }(jQuery));
