@@ -15,6 +15,7 @@ Minegems::Application.routes.draw do
   resources :gems
   resources :early_birds, :only => [ :index, :create ]
   resource  :settings, :only => [ :show, :update ]
+  match '/ping' => 'ping#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
