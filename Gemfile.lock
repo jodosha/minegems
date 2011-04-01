@@ -97,6 +97,9 @@ GEM
       json (~> 1.4.6)
       launchy (~> 0.3.2)
       rest-client (>= 1.4.0, < 1.7.0)
+    hoptoad_notifier (2.4.9)
+      activesupport
+      builder
     i18n (0.5.0)
     json (1.4.6)
     json_pure (1.5.1)
@@ -215,6 +218,7 @@ DEPENDENCIES
   factory_girl_rails
   fog
   heroku
+  hoptoad_notifier
   mongo (= 1.2.4)
   mongo_ext
   mysql2

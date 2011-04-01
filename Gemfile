@@ -17,6 +17,7 @@ gem 'carrierwave'
 gem 'resque'
 gem 'sinatra'
 gem 'heroku'
+gem 'hoptoad_notifier'
 gem 'devise_aes_encryptable'
 gem 'resque-heroku-autoscaler'
 
