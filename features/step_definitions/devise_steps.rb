@@ -34,7 +34,7 @@ Given /^I signed in with "(.*)"$/ do |email_and_password|
   email, password = email_and_password.split '/'
   user = create_user(email_and_password)
 
-  visit new_user_session_path
+  visit new_user_session_url(:host => $host, :port => $port)
   fill_in 'Login',    :with => email
   fill_in 'Password', :with => password
 

@@ -1,16 +1,16 @@
 source 'http://rubygems.org'
 
 gem 'bundler', '1.0.10'
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.8.rc2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'devise'
+gem 'devise', '1.1.7'
 gem 'babosa'
 gem 'redis', '~> 2.1.1'
-gem 'bson_ext', '1.2.4'
-gem 'mongo', '1.2.4'
+gem 'bson_ext', '1.3.1'
+gem 'mongo', '1.3.1'
 gem 'mongo_ext'
 gem 'fog'
 gem 'carrierwave'
@@ -21,11 +21,13 @@ gem 'hoptoad_notifier'
 gem 'devise_aes_encryptable'
 gem 'resque-heroku-autoscaler'
 
-gem 'rspec-rails', '~> 2.3.1', :group => [ :development, :test ]
-gem 'ruby-debug19',            :group => [ :development, :test ]
+group :development, :test do
+  gem 'rspec-rails', '~> 2.6.1'
+  gem 'ruby-debug19'
+end
 
 group :development do
-  gem 'mysql2'
+  gem 'mysql2', '0.2.7'
 end
 
 group :test do
