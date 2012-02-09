@@ -6,7 +6,6 @@ class Subdomain < ActiveRecord::Base
   has_many :users, :through => :memberships
   has_many :rubygems, :dependent => :destroy
   has_many :versions, :through => :rubygems
-  has_one  :deploy_user, :through => :memberships, :conditions => ["role = 'deploy'"], :source => :user
 
   validates_uniqueness_of :tld, :case_sensitive => false
   validates_length_of     :tld, :name, :maximum => 64
@@ -24,6 +23,10 @@ class Subdomain < ActiveRecord::Base
 
   def self.search(query)
     where(:tld => query).select([:tld, :name]).limit(1).first
+  end
+
+  def deploy_user
+    users.where("#{Membership.table_name}.role" => "deploy").first
   end
 
   def update_index!
