@@ -18,16 +18,8 @@ gem 'sinatra'
 gem 'heroku'
 gem 'hoptoad_notifier'
 gem 'devise_aes_encryptable'
+gem 'pg'
 gem 'resque-heroku-autoscaler'
-
-group :development, :test do
-  gem 'rspec-rails', '~> 2.6.1'
-  gem 'ruby-debug19'
-end
-
-group :development do
-  gem 'mysql2', '0.2.7'
-end
 
 group :test do
   gem 'cucumber-rails'
@@ -38,6 +30,7 @@ group :test do
   gem 'email_spec'
 end
 
-group :production do
-  gem 'pg'
+group :development, :test do
+  gem 'rspec-rails', '~> 2.6.1'
+  gem 'ruby-debug19'
 end
