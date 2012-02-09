@@ -1,9 +1,5 @@
-Factory.sequence :rubygem_name do |n|
-  "gem#{n}"
-end
-
 Factory.define :rubygem do |f|
-  f.name      { Factory.next(:rubygem_name) }
+  f.sequence(:name) { |n| "gem#{n}" }
   f.subdomain { |a| a.association(:subdomain) }
 end
 

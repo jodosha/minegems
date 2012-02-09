@@ -1,14 +1,10 @@
-Factory.sequence(:email)    { |n| "user#{n}@domain.com" }
-Factory.sequence(:username) { |n| "username#{n}" }
-Factory.sequence(:registration_code) { |n| n }
-
 Factory.define :user do |user|
-  user.name                  { "Luca" }
-  user.email                 { Factory.next(:email) }
-  user.username              { Factory.next(:username) }
-  user.password              { "secret" }
-  user.password_confirmation { "secret" }
-  user.registration_code     { Factory.next(:registration_code) }
+  user.name                   { "Luca" }
+  user.sequence(:email)       { |n| "user#{n}@domain.com" }
+  user.sequence(:username)    { |n| "username#{n}" }
+  user.password               { "secret" }
+  user.password_confirmation  { "secret" }
+  user.sequence(:registration_code) { |n| n }
 
   user.after_build do |u|
     Factory.create(:early_bird, :email => u.email, :code => u.registration_code)

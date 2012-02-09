@@ -51,7 +51,7 @@ describe User do
       let(:user) { Factory.build(:user) }
 
       context "and a valid subdomain" do
-        let(:subdomain) { build_subdomain_params }
+        let(:subdomain) { Factory.build(:subdomain).attributes }
 
         it "should create" do
           user.create_with_subdomain!(subdomain).should be_true
@@ -59,7 +59,7 @@ describe User do
       end
 
       context "and an invalid subdomain" do
-        let(:subdomain) { build_subdomain_params :tld => "" }
+        let(:subdomain) { Factory.build(:subdomain, :tld => "").attributes }
 
         it "should not create" do
           user.create_with_subdomain!(subdomain).should be_false
@@ -71,7 +71,7 @@ describe User do
       let(:user) { Factory.build(:user, :password => "") }
 
       context "and a valid subdomain" do
-        let(:subdomain) { build_subdomain_params }
+        let(:subdomain) { Factory.build(:subdomain).attributes }
 
         it "should not create" do
           user.create_with_subdomain!(subdomain).should be_false
@@ -79,7 +79,7 @@ describe User do
       end
 
       context "and an invalid subdomain" do
-        let(:subdomain) { build_subdomain_params :name => "" }
+        let(:subdomain) { Factory.build(:subdomain, :name => "").attributes }
 
         it "should not create" do
           user.create_with_subdomain!(subdomain).should be_false
