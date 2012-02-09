@@ -24,10 +24,10 @@ group :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 1.0.0'
-  gem 'email_spec'
+  gem 'email_spec', '~> 1.2.0'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.6.1'
-  gem 'ruby-debug19'
+  gem 'rspec-rails', '~> 2.8.0'
+  gem 'ruby-debug19', require: false
 end
