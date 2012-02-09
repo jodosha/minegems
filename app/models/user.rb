@@ -13,8 +13,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of   :name, :username
   validates_uniqueness_of :email, :username, :case_sensitive => false
-  validate :registration_code_presence, :on => :create
-  after_create :reset_registration_code
+
 
   def self.search(query)
     where(:username => query).select([:username]).limit(1).first

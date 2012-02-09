@@ -1,4 +1,5 @@
 class Subdomain < ActiveRecord::Base
+
   attr_accessible :tld, :name
 
   has_many :memberships, :dependent => :destroy
