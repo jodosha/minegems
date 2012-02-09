@@ -4,9 +4,9 @@ class Subdomain < ActiveRecord::Base
 
   has_many :memberships, :dependent => :destroy
   has_many :users, :through => :memberships
-  has_one  :deploy_user, :through => :memberships, :conditions => ["role = 'deploy'"], :source => :user
   has_many :rubygems, :dependent => :destroy
   has_many :versions, :through => :rubygems
+  has_one  :deploy_user, :through => :memberships, :conditions => ["role = 'deploy'"], :source => :user
 
   validates_uniqueness_of :tld, :case_sensitive => false
   validates_length_of     :tld, :name, :maximum => 64

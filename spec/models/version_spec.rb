@@ -6,10 +6,10 @@ describe Version do
     @version   = Version.create_from_file(rubygem_file('test-0.0.0.gem'), @subdomain)
   end
 
-  specify { should belong_to(:rubygem) }
-  specify { should validate_presence_of(:file) }
-  specify { should validate_presence_of(:number) }
-  specify { should validate_presence_of(:platform) }
+  it { should belong_to(:rubygem) }
+  it { should validate_presence_of(:file) }
+  it { should validate_presence_of(:number) }
+  it { should validate_presence_of(:platform) }
 
   context "given a valid gemspec" do
     let(:version) { Version.new(:file => rubygem_file('test-0.0.0.gem')) }

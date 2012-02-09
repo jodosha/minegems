@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Membership do
-  specify { should belong_to(:subdomain) }
-  specify { should belong_to(:user) }
+
+  describe "associations" do
+    it { should belong_to(:subdomain) }
+    it { should belong_to(:user) }
+  end
+
 end

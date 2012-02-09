@@ -1,8 +1,11 @@
 class Rubygem < ActiveRecord::Base
+
   belongs_to :subdomain
   has_many :versions, :dependent => :destroy
+
   validates_presence_of :name, :subdomain_id
   validates_uniqueness_of :name
+
   delegate :summary, :to => :latest_version
 
   scope :latest, order('created_at DESC')

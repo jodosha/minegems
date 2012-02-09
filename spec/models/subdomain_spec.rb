@@ -2,46 +2,58 @@
 require 'spec_helper'
 
 describe Subdomain do
-  before do
-    @subdomain = Factory.create :subdomain
+
+  subject { Factory.build(:subdomain) }
+
+  describe "associations" do
+    it { should have_many(:memberships).dependent(:destroy) }
+    it { should have_many(:users).through(:memberships) }
+    it { should have_many(:rubygems).dependent(:destroy) }
+    it { should have_many(:versions).through(:rubygems) }
+    it { should have_one(:deploy_user).through(:memberships) } # .source(:user).conditions(["role = 'deploy'"])
   end
 
-  # Associations
-  specify { should have_many(:memberships).dependent(:destroy) }
-  specify { should have_many(:users).through(:memberships) }
-  specify { should have_one(:deploy_user).through(:memberships) } # .source(:user).conditions(["role = 'deploy'"])
-  specify { should have_many(:rubygems).dependent(:destroy) }
-
-  # Validations
-  specify { should validate_uniqueness_of(:tld) }
-  specify { should validate_presence_of(:tld) }
-  specify { should validate_presence_of(:name) }
-  specify { should ensure_length_of(:name).is_at_most(64) }
-  specify { should ensure_length_of(:tld).is_at_most(64) }
-
-  it "should have accessible attributes" do
-    @subdomain.accessible_attributes.should == [ :tld, :name ]
-  end
-
-  describe "tld validation" do
-    let(:subdomain) { Factory.build :subdomain, :tld => tld}
-
-    context "given an ASCII string" do
-      let(:tld) { "sushistar" }
-
-      it "should be valid" do
-        subdomain.should be_valid
-      end
+  describe "validations" do
+    it "is valid with factory" do
+      subject.should be_valid
     end
 
-    context "given a non-ASCII string" do
-      let(:tld) { "寿司の星" }
+    describe ":name" do
+      it { should validate_presence_of(:name) }
+      it { should ensure_length_of(:name).is_at_most(64) }
+    end
 
-      it "should not be valid" do
-        subdomain.should_not be_valid
+    describe ":tld" do
+      let(:subdomain) { Factory.build :subdomain, :tld => tld }
+
+      it { should validate_presence_of(:tld) }
+      it { should ensure_length_of(:tld).is_at_most(64) }
+
+      it "validates uniqueness" do
+        subject = Factory.create(:subdomain)
+        subject.should validate_uniqueness_of(:tld)
+      end
+
+      context "given an ASCII string" do
+        let(:tld) { "sushistar" }
+
+        it "is valid" do
+          subdomain.should be_valid
+        end
+      end
+
+      context "given a non-ASCII string" do
+        let(:tld) { "寿司の星" }
+
+        it "is not valid" do
+          subdomain.should_not be_valid
+        end
       end
     end
   end
+
+  it { should allow_mass_assignment_of(:tld) }
+  it { should allow_mass_assignment_of(:name) }
 
   describe "after create" do
     it "should create a deploy user" do

@@ -1,23 +1,50 @@
 require 'spec_helper'
 
 describe User do
-  before do
-    @user = Factory.create :user
+
+  subject { Factory.build(:user) }
+
+  describe "associations" do
+    it { should have_many(:memberships).dependent(:destroy) }
+    it { should have_many(:subdomains).through(:memberships) }
   end
 
-  # Associations
-  specify { should have_many(:memberships).dependent(:destroy) }
-  specify { should have_many(:subdomains).through(:memberships) }
+  describe "validations" do
+    it "is valid with factory" do
+      subject.should be_valid
+    end
 
-  # Validations
-  specify { should validate_presence_of(:name) }
-  specify { should validate_presence_of(:username) }
-  specify { should validate_uniqueness_of(:email) }
-  specify { should validate_uniqueness_of(:username) }
+    describe ":name" do
+      it { should validate_presence_of(:name) }
+    end
 
-  it "should have accessible attributes" do
-    @user.accessible_attributes.should == [ :name, :email, :username, :login, :password, :password_confirmation, :remember_me, :registration_code, :deploy ]
+    describe ":username" do
+      it { should validate_presence_of(:username) }
+
+      it "validates uniqueness" do
+        subject = Factory.create(:user)
+        subject.should validate_uniqueness_of(:username)
+      end
+    end
+
+    describe ":email" do
+      it "validates uniqueness" do
+        subject = Factory.create(:user)
+        subject.should validate_uniqueness_of(:email)
+      end
+    end
   end
+
+  it { should allow_mass_assignment_of(:name) }
+  it { should allow_mass_assignment_of(:email) }
+  it { should allow_mass_assignment_of(:username) }
+  it { should allow_mass_assignment_of(:login) }
+  it { should allow_mass_assignment_of(:password) }
+  it { should allow_mass_assignment_of(:password_confirmation) }
+  it { should allow_mass_assignment_of(:remember_me) }
+  it { should allow_mass_assignment_of(:registration_code) }
+  it { should allow_mass_assignment_of(:deploy) }
+
 
   describe "create_with_subdomain!" do
     context "given a valid user" do
@@ -61,11 +88,11 @@ describe User do
     end
 
     context "given an already existing record" do
-      let(:user) { @user }
+      let(:user) { Factory.build(:user) }
       let(:subdomain) { Factory.build(:subdomain) }
 
       it "should return false" do
-        @user.create_with_subdomain!(subdomain).should be_false
+        user.create_with_subdomain!(subdomain).should be_false
       end
     end
   end
