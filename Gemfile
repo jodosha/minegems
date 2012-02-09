@@ -19,7 +19,7 @@ gem 'pg'
 gem 'resque-heroku-autoscaler'
 
 group :test do
-  gem 'cucumber-rails'
+  # gem 'cucumber-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
