@@ -1,10 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.8.rc4'
+gem 'rails', '3.2.1'
 
 gem 'airbrake', '~> 3.0.0'
-gem 'devise', '1.1.7'
 gem 'babosa'
+gem 'bcrypt-ruby', '~> 3.0.0', :require => 'bcrypt'
+gem 'devise', '~> 1.1'
 gem 'redis', '~> 2.1.1'
 gem 'bson_ext', '1.3.1'
 gem 'mongo', '1.3.1'
