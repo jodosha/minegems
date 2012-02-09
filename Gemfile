@@ -2,9 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.8.rc4'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'airbrake', '~> 3.0.0'
 gem 'devise', '1.1.7'
 gem 'babosa'
 gem 'redis', '~> 2.1.1'
@@ -16,7 +14,6 @@ gem 'carrierwave'
 gem 'resque'
 gem 'sinatra'
 gem 'heroku'
-gem 'hoptoad_notifier'
 gem 'devise_aes_encryptable'
 gem 'pg'
 gem 'resque-heroku-autoscaler'
