@@ -20,9 +20,7 @@ class Subdomain < ActiveRecord::Base
   mount_uploader :latest_specs_index,     IndexUploader
   mount_uploader :prerelease_specs_index, IndexUploader
 
-  scope :by_tld, lambda { |tld|
-    where("tld = ?", tld)
-  }
+  scope :by_tld, lambda { |tld| where("tld = ?", tld) }
 
   def self.search(query)
     where(:tld => query).select([:tld, :name]).limit(1).first
@@ -35,6 +33,7 @@ class Subdomain < ActiveRecord::Base
   end
 
   protected
+
     def transform_tld
       self.tld = tld.to_slug.normalize!(:to_ascii => true) unless tld.blank?
     end
@@ -61,8 +60,9 @@ class Subdomain < ActiveRecord::Base
     end
 
   private
+
     def assign_deploy_user
-      password = ActiveSupport::SecureRandom.hex(8)
+      password = SecureRandom.hex(8)
       user = User.create!({
         :name                  => "#{self.name} deploy",
         :email                 => "#{self.tld}@minege.ms",
@@ -75,4 +75,5 @@ class Subdomain < ActiveRecord::Base
 
       Membership.create!(:subdomain => self, :user => user, :role => 'deploy')
     end
+
 end

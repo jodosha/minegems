@@ -24,11 +24,14 @@ class User < ActiveRecord::Base
     subdomain = self.subdomains.build(subdomain)
 
     if subdomain.valid?
-      save && subdomain.save and return true
+      save && subdomain.save
+    else
+      false
     end
   end
 
   protected
+
     def self.find_for_database_authentication(conditions)
       login = conditions.delete(:login)
       where(conditions).where(["username = :value OR email = :value", { :value => login }]).first
@@ -75,6 +78,7 @@ class User < ActiveRecord::Base
     end
 
     private
+
       def registration_code_presence
         return true if self.deploy
 
