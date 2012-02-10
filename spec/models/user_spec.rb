@@ -88,8 +88,8 @@ describe User do
     end
 
     context "given an already existing record" do
-      let(:user) { Factory.build(:user) }
-      let(:subdomain) { Factory.build(:subdomain) }
+      let(:user) { Factory(:user) }
+      let(:subdomain) { Factory(:subdomain).attributes }
 
       it "should return false" do
         user.create_with_subdomain!(subdomain).should be_false
