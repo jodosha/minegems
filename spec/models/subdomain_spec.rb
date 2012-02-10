@@ -10,7 +10,6 @@ describe Subdomain do
     it { should have_many(:users).through(:memberships) }
     it { should have_many(:rubygems).dependent(:destroy) }
     it { should have_many(:versions).through(:rubygems) }
-    it { should have_one(:deploy_user).through(:memberships) } # .source(:user).conditions(["role = 'deploy'"])
   end
 
   describe "validations" do

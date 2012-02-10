@@ -6,7 +6,6 @@ class Subdomain < ActiveRecord::Base
   has_many :users, :through => :memberships
   has_many :rubygems, :dependent => :destroy
   has_many :versions, :through => :rubygems
-  has_one  :deploy_user, :through => :memberships, :conditions => ["role = 'deploy'"], :source => :user
 
   validates_uniqueness_of :tld, :case_sensitive => false
   validates_length_of     :tld, :name, :maximum => 64
@@ -20,12 +19,14 @@ class Subdomain < ActiveRecord::Base
   mount_uploader :latest_specs_index,     IndexUploader
   mount_uploader :prerelease_specs_index, IndexUploader
 
-  scope :by_tld, lambda { |tld|
-    where("tld = ?", tld)
-  }
+  scope :by_tld, lambda { |tld| where("tld = ?", tld) }
 
   def self.search(query)
     where(:tld => query).select([:tld, :name]).limit(1).first
+  end
+
+  def deploy_user
+    users.where("#{Membership.table_name}.role" => "deploy").first
   end
 
   def update_index!
@@ -35,6 +36,7 @@ class Subdomain < ActiveRecord::Base
   end
 
   protected
+
     def transform_tld
       self.tld = tld.to_slug.normalize!(:to_ascii => true) unless tld.blank?
     end
@@ -61,8 +63,9 @@ class Subdomain < ActiveRecord::Base
     end
 
   private
+
     def assign_deploy_user
-      password = ActiveSupport::SecureRandom.hex(8)
+      password = SecureRandom.hex(8)
       user = User.create!({
         :name                  => "#{self.name} deploy",
         :email                 => "#{self.tld}@minege.ms",
@@ -75,4 +78,5 @@ class Subdomain < ActiveRecord::Base
 
       Membership.create!(:subdomain => self, :user => user, :role => 'deploy')
     end
+
 end
