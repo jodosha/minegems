@@ -1,0 +1,21 @@
+body.page-home {
+  background: #111E2C;
+
+  #container {
+    margin: 0 auto;
+  }
+
+  #content {
+    margin: 0;
+    text-align: center;
+
+    .box {
+      margin-top: 25px;
+    }
+
+    form input {
+      margin-top: 10px;
+      padding: 5px;
+    }
+  }
+}

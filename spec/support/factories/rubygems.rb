@@ -10,5 +10,5 @@ def rubygem_params(attributes = {})
 end
 
 def rubygem_file(name)
-  ::File.open(::File.dirname(__FILE__) + "/gems/#{name}" )
+  Rack::Test::UploadedFile.new(::File.dirname(__FILE__) + "/gems/#{name}", nil, true)
 end
