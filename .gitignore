@@ -1,5 +1,7 @@
 .bundle
 .rvmrc
+.rbenv-version
+tags
 config/database.yml
 db/*.sqlite3
 log/*.log
