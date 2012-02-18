@@ -5,6 +5,7 @@ Minegems::Application.routes.draw do
   constraints(subdomain: /.+/) do
     get "/" => "dashboard#index", as: "dashboard"
     resources :gems, only: %w( index new create show )
+    resource :account, only: %w( show update )
   end
 
   root :to => "home#index"
@@ -15,7 +16,6 @@ Minegems::Application.routes.draw do
   end
 
   resources :early_birds, :only => [ :index, :create ]
-  resource  :settings, :only => [ :show, :update ]
   get "ping" => "ping#index"
 
 end

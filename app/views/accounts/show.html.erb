@@ -1,9 +1,10 @@
 <h2 class="title">Settings</h2>
+
 <div class="box">
   <h3 class="subtitle">Change your password</h3>
   <hr />
 
-  <%= form_for(:user, :url => settings_path, :html => { :method => :put }) do |f| %>
+  <%= form_for(@user, url: account_path, html: { method: "put" }) do |f| %>
     <div>
     <p><%= f.label :password %><br />
     <%= f.password_field :password, :class => "title" %></p>
@@ -14,15 +15,4 @@
 
     <p><%= f.submit "Change my password" %></p>
   <% end %>
-</div>
-<br />
-<div class="box">
-  <h3 class="subtitle">Deploy password</h3>
-  <hr />
-  <form>
-    <div>
-      <p><input type="password" value="<%= @deploy_password %>" id="deploy_password" class="title" /></p>
-    </div>
-  </form>
-  <p><input type="button" value="Show" id="show_deploy_password" /></p>
 </div>
