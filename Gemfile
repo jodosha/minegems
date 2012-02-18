@@ -29,13 +29,13 @@ end
 group :test do
   # gem 'cucumber-rails'
   gem 'capybara'
-  gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 1.0.0'
   gem 'email_spec', '~> 1.2.0'
 end
 
 group :development, :test do
+  gem 'factory_girl_rails', '~> 1.7.0'
   gem 'rspec-rails', '~> 2.8.0'
   gem 'ruby-debug19', require: false
 end

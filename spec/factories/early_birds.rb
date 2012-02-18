@@ -1,3 +1,5 @@
-Factory.define :early_bird do |f|
-  f.sequence(:email) { |n| "user#{n}@domain.com" }
+FactoryGirl.define do
+  factory :early_bird do
+    sequence(:email) { |n| "user#{n}@domain.com" }
+  end
 end

@@ -1,6 +1,6 @@
-Factory.define :subdomain do |f|
-  f.sequence(:tld) { |n| "subdomain#{n}" }
-  f.after_build do |s|
-    s.name = s.tld.classify
+FactoryGirl.define do
+  factory :subdomain do
+    sequence(:tld) { |n| "subdomain#{n}" }
+    name { tld.titleize }
   end
 end

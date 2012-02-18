@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe Subdomain do
 
-  subject { Factory.build(:subdomain) }
+  subject { FactoryGirl.build(:subdomain) }
 
   describe "associations" do
     it { should have_many(:memberships).dependent(:destroy) }
@@ -23,7 +23,7 @@ describe Subdomain do
     end
 
     describe ":tld" do
-      let(:subdomain) { Factory.build :subdomain, :tld => tld }
+      let(:subdomain) { FactoryGirl.build :subdomain, :tld => tld }
 
       it { should validate_presence_of(:tld) }
       it { should ensure_length_of(:tld).is_at_most(64) }
@@ -56,7 +56,7 @@ describe Subdomain do
 
   describe "after create" do
     it "should create a deploy user" do
-      subdomain = Factory.build(:subdomain)
+      subdomain = FactoryGirl.build(:subdomain)
       lambda {
         subdomain.save
       }.should change(User, :count)

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Rubygem do
 
-  subject { Factory.build(:rubygem) }
+  subject { FactoryGirl.build(:rubygem) }
 
   describe "associations" do
     it { should belong_to(:subdomain) }

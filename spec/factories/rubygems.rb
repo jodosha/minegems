@@ -1,7 +1,10 @@
-Factory.define :rubygem do |f|
-  f.sequence(:name) { |n| "gem#{n}" }
-  f.subdomain { |a| a.association(:subdomain) }
+FactoryGirl.define do
+  factory :rubygem do
+    sequence(:name) { |n| "gem#{n}" }
+    subdomain
+  end
 end
+
 
 def rubygem_params(attributes = {})
   {

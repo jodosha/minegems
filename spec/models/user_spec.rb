@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
 
-  subject { Factory.build(:user) }
+  subject { FactoryGirl.build(:user) }
 
   describe "associations" do
     it { should have_many(:memberships).dependent(:destroy) }
@@ -48,10 +48,10 @@ describe User do
 
   describe "create_with_subdomain!" do
     context "given a valid user" do
-      let(:user) { Factory.build(:user) }
+      let(:user) { FactoryGirl.build(:user) }
 
       context "and a valid subdomain" do
-        let(:subdomain) { Factory.build(:subdomain).attributes }
+        let(:subdomain) { FactoryGirl.build(:subdomain).attributes }
 
         it "should create" do
           user.create_with_subdomain!(subdomain).should be_true
@@ -59,7 +59,7 @@ describe User do
       end
 
       context "and an invalid subdomain" do
-        let(:subdomain) { Factory.build(:subdomain, :tld => "").attributes }
+        let(:subdomain) { FactoryGirl.build(:subdomain, :tld => "").attributes }
 
         it "should not create" do
           user.create_with_subdomain!(subdomain).should be_false
@@ -68,10 +68,10 @@ describe User do
     end
 
     context "given an invalid user" do
-      let(:user) { Factory.build(:user, :password => "") }
+      let(:user) { FactoryGirl.build(:user, :password => "") }
 
       context "and a valid subdomain" do
-        let(:subdomain) { Factory.build(:subdomain).attributes }
+        let(:subdomain) { FactoryGirl.build(:subdomain).attributes }
 
         it "should not create" do
           user.create_with_subdomain!(subdomain).should be_false
@@ -79,7 +79,7 @@ describe User do
       end
 
       context "and an invalid subdomain" do
-        let(:subdomain) { Factory.build(:subdomain, :name => "").attributes }
+        let(:subdomain) { FactoryGirl.build(:subdomain, :name => "").attributes }
 
         it "should not create" do
           user.create_with_subdomain!(subdomain).should be_false
@@ -88,8 +88,8 @@ describe User do
     end
 
     context "given an already existing record" do
-      let(:user) { Factory(:user) }
-      let(:subdomain) { Factory(:subdomain).attributes }
+      let(:user) { FactoryGirl.create(:user) }
+      let(:subdomain) { FactoryGirl.create(:subdomain).attributes }
 
       it "should return false" do
         user.create_with_subdomain!(subdomain).should be_false
