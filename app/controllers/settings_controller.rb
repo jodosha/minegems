@@ -1,8 +1,7 @@
-class SettingsController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :ensure_site
-  before_filter :ensure_site_access
+class SettingsController < SubdominedController
+
   before_filter :load_site
+
 
   # GET /settings
   def show
