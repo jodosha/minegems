@@ -23,6 +23,7 @@ class SubdominedController < ApplicationController
     return @current_subdomain if defined?(@current_subdomain)
     @current_subdomain = request.subdomain && Subdomain.find_by_tld(request.subdomain)
   end
+  helper_method :current_subdomain
 
   def require_subdomain
     unless current_subdomain

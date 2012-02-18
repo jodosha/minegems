@@ -3,7 +3,7 @@ Minegems::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => "registrations" }
 
   constraints(subdomain: /.+/) do
-    get "/" => "dashboard#index"
+    get "/" => "dashboard#index", as: "dashboard"
     resources :gems, only: %w( index new create show )
   end
 

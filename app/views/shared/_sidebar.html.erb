@@ -1,22 +1,22 @@
-<% if @site.respond_to?(:name) %>
-<div id="sidebar">
-  <div id="sidebar-glow"></div>
-  <div id="header">
-  <div id="title">
-    <div class="top"></div>
-    <div class="content">
-      <h1><a href="/"><%= @site.name %></a></h1>
-      <span class="tagline">Mine Gems&trade;</span>
+<% if current_subdomain %>
+  <div id="sidebar">
+    <div id="sidebar-glow"></div>
+    <div id="header">
+    <div id="title">
+      <div class="top"></div>
+      <div class="content">
+        <h1><%= link_to current_subdomain.name, dashboard_path %></h1>
+        <span class="tagline">Mine Gems&trade;</span>
+      </div>
+      <div class="bottom"></div>
     </div>
-    <div class="bottom"></div>
   </div>
-</div>
 
   <div id="mylinks" class="list">
     <ul>
-      <li class="nolabel"><a href="/"><span class=""></span><strong>Dashboard</strong></a></li>
-      <li class="nolabel"><a href="/gems"><span class=""></span><strong>Gems</strong></a></li>
-      <li class="nolabel"><a href="/settings"><span class=""></span><strong>Settings</strong></a></li>
+      <li class="nolabel"><%= link_to content_tag(:strong, "Dashboard"), dashboard_path %></li>
+      <li class="nolabel"><%= link_to content_tag(:strong, "Gems"), gems_path %></li>
+      <li class="nolabel"><%= link_to content_tag(:strong, "Settings"), settings_path %></li>
     </ul>
   </div>
 </div>
