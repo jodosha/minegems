@@ -39,16 +39,6 @@ describe Version do
     @version.authors.should     == "Luca Guidi"
   end
 
-  # it "should validates authors format" do
-  #   version = version_with_invalid_spec(:authors => "Max Power")
-  #   version.should be_invalid
-  # 
-  #   version = version_with_invalid_spec(:authors => ["Luca Guidi", 23])
-  #   version.should be_invalid
-  # 
-  #   version.errors[:authors].should == ["must be an Array of Strings"]
-  # end
-
   it "should set as a pre-release" do
     version = Version.create_from_file(rubygem_file('test-0.0.1.beta1.gem'), @subdomain)
     version.should be_prerelease
