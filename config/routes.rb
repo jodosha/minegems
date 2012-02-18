@@ -2,8 +2,9 @@ Minegems::Application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => "registrations" }
 
-  constraints(Minegems::Rack::SubdomainRouter) do
-    match "/" => "dashboard#index"
+  constraints(subdomain: /.+/) do
+    get "/" => "dashboard#index"
+    resources :gems, only: %w( index new create show )
   end
 
   root :to => "home#index"
@@ -13,7 +14,6 @@ Minegems::Application.routes.draw do
     end
   end
 
-  resources :gems
   resources :early_birds, :only => [ :index, :create ]
   resource  :settings, :only => [ :show, :update ]
   get "ping" => "ping#index"

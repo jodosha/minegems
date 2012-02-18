@@ -8,7 +8,6 @@ class Rubygem < ActiveRecord::Base
 
   delegate :summary, :to => :latest_version
 
-  scope :latest, order('created_at DESC')
   scope :by_name, lambda { |name|
     where("name = ?", name)
   }

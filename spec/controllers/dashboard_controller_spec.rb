@@ -12,10 +12,11 @@ describe DashboardController do
     end
 
     describe "GET index" do
-      let(:process!) { get :index }
+      before(:each) do
+        get :index
+      end
 
       it "responds with 200" do
-        process!
         response.status.should == 200
         should render_template(:index)
       end

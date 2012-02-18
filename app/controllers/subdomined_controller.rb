@@ -5,8 +5,19 @@ class SubdominedController < ApplicationController
   before_filter :require_subdomain
   before_filter :authorize_subdomain
 
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
-  private
+
+  protected
+
+  def render_404(exception = nil)
+    exception and logger.info("Rendering 404 with exception: #{exception.message}")
+
+    respond_to do |format|
+      format.html { render file: "#{Rails.root}/public/404", layout: false, status: :not_found }
+      format.any  { head :not_found }
+    end
+  end
 
   def current_subdomain
     return @current_subdomain if defined?(@current_subdomain)
