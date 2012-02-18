@@ -2,11 +2,24 @@ require 'spec_helper'
 
 describe DashboardController do
 
-  # describe "GET 'index'" do
-  #   it "should be successful" do
-  #     get 'index'
-  #     response.should be_success
-  #   end
-  # end
+  context "when not logged in" do
+    should_require_login :index
+  end
+
+  context "when logged in" do
+    before(:each) do
+      login_and_subdomain
+    end
+
+    describe "GET index" do
+      let(:process!) { get :index }
+
+      it "responds with 200" do
+        process!
+        response.status.should == 200
+        should render_template(:index)
+      end
+    end
+  end
 
 end

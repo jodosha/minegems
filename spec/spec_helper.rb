@@ -17,6 +17,7 @@ end
 
 RSpec.configure do |config|
   config.mock_with :rspec
+  config.render_views
   config.use_transactional_fixtures = true
 
   config.include Devise::TestHelpers, :type => :controller
