@@ -4,9 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # TODO privatebeta remove `deploy` flag when private beta will stop
-  attr_accessor :login, :registration_code, :deploy
-  attr_accessible :name, :email, :username, :login, :password, :password_confirmation, :remember_me, :registration_code, :deploy
+  attr_accessor :login
+  attr_accessible :name, :email, :username, :login, :password, :password_confirmation, :remember_me
 
   has_many :memberships, :dependent => :destroy
   has_many :subdomains, :through => :memberships
@@ -77,23 +76,4 @@ class User < ActiveRecord::Base
       where(attributes).where(["username = :value OR email = :value", { :value => login }]).first
     end
 
-    private
-
-      def registration_code_presence
-        return true if self.deploy
-
-        if registration_code.blank?
-          errors.add(:registration_code, "can't be blank")
-        else
-          early_bird = EarlyBird.first(:conditions => ['email = ? AND code = ?', email, registration_code])
-          errors.add(:registration_code, "is invalid") if early_bird.nil?
-        end
-      end
-
-      def reset_registration_code
-        return true if self.deploy
-
-        early_bird = EarlyBird.first(:conditions => ['email = ? AND code = ?', email, registration_code])
-        early_bird.update_attributes :code => nil, :activated_at => Time.now
-      end
 end

@@ -42,8 +42,6 @@ describe User do
   it { should allow_mass_assignment_of(:password) }
   it { should allow_mass_assignment_of(:password_confirmation) }
   it { should allow_mass_assignment_of(:remember_me) }
-  it { should allow_mass_assignment_of(:registration_code) }
-  it { should allow_mass_assignment_of(:deploy) }
 
 
   describe "create_with_subdomain!" do

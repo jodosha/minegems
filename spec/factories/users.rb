@@ -5,7 +5,6 @@ FactoryGirl.define do
     email                   { "#{username}@example.com" }
     password                "secret"
     password_confirmation   "secret"
-    sequence(:registration_code) { |n| n }
 
     # after_build do |u|
     #   Factory.create(:early_bird, :email => u.email, :code => u.registration_code)
