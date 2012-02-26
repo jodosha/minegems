@@ -1,11 +1,10 @@
 # encoding: utf-8
 
 class RubygemUploader < CarrierWave::Uploader::Base
-  storage :s3
   process :gemspec
 
   def store_dir
-    "gems"
+    'gems'
   end
 
   def gemspec

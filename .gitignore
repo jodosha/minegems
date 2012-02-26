@@ -6,4 +6,6 @@ config/database.yml
 db/*.sqlite3
 log/*.log
 public/uploads/*
+public/gems/*
+uploads/*
 tmp/*
