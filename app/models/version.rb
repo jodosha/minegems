@@ -1,11 +1,15 @@
 # encoding: utf-8
 class Version < ActiveRecord::Base
+
   belongs_to :rubygem
+
   mount_uploader :file, RubygemUploader
   mount_uploader :spec, SpecUploader
+
   validates_with GemValidator
   validates_presence_of :file, :number, :platform
   validate :authors_format, :on => :create
+
   before_validation :extract_data
   after_validation  :join_authors
   after_save        :reorder_versions, :full_nameify!, :store_spec!
@@ -71,6 +75,7 @@ class Version < ActiveRecord::Base
   end
 
   private
+
     def extract_data
       self.number      = version_number
       self.prerelease  = version_prerelease
