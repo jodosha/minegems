@@ -1,18 +1,17 @@
+<h1 class="title shadow">Gems</h1>
+
 <div id="gems" class="list">
-  <h1 class="title shadow">Gems</h1>
-  <% unless @rubygems.empty? %>
-  <ul>
-  <% for rubygem in @rubygems %>
-  <li class="">
-    <a href="<%= gem_path(rubygem) %>">
-      <span class=""></span><strong><%= rubygem.name_with_version %></strong><br><%= rubygem.summary %>
-    </a>
-  </li>
-  <% end %>
-  </ul>
+  <% if @rubygems.empty? %>
+    You haven't added any gems yet. You can <%= link_to "upload", new_gem_path %> it now.
   <% else %>
-  <div class="box">
-    <p class="shadow">You haven't added any gems yet. You can <%= link_to "upload", new_gem_path %> it now.</p>
-  </div>
+    <table>
+      <% @rubygems.each do |rubygem| %>
+        <tr>
+          <td><%= link_to rubygem.name_with_version, gem_path(rubygem) %></td>
+          <td><%= rubygem.summary %></td>
+        </tr>
+      <% end %>
+    </table>
   <% end %>
+
 </div>

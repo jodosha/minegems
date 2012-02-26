@@ -1,34 +1,29 @@
-class GemsController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :ensure_site
-  before_filter :ensure_site_access
+class GemsController < SubdominedController
+
   before_filter :load_site
 
-  # GET https://bootstrapp.minege.ms/gems
+
   def index
-    @rubygems = @site.rubygems.latest
+    @rubygems = @site.rubygems.order("created_at DESC")
   end
 
-  # GET https://bootstrapp.minege.ms/gems/planisphere
-  def show
-    @rubygem = @site.rubygems.by_name(params[:id]).first
-    raise ActiveRecord::RecordNotFound unless @rubygem
-  end
-
-  # GET https://bootstrapp.minege.ms/gems/new
   def new
-    @rubygem = Rubygem.new
+    @rubygem = @site.rubygems.build
   end
 
-  # POST https://bootstrapp.minege.ms/gems
   def create
     @rubygem = Rubygem.create_version(params[:gem][:file], @site)
 
     if @rubygem.valid?
-      redirect_to gems_path, :notice => "Gem was successful registered"
+      redirect_to gems_url, notice: "Gem was successful registered"
     else
-      flash[:alert] = "There was errors preventing this gem being registered"
+      flash.now[:alert] = "There was errors preventing this gem being registered"
       render :new
     end
   end
+
+  def show
+    @rubygem = @site.rubygems.find_by_name!(params[:id])
+  end
+
 end
