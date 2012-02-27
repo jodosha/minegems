@@ -1,0 +1,4 @@
+db: postgres -D /usr/local/var/postgres
+redis: redis-server
+mongo: mongod
+queue: bundle exec rake resque:work

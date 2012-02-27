@@ -1,6 +1,8 @@
 .bundle
 .rvmrc
 .rbenv-version
+Procfile
+dump.rdb
 tags
 config/database.yml
 db/*.sqlite3
