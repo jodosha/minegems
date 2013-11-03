@@ -28,3 +28,6 @@ for subdomains usage.
 Be sure Foreman is running, then:
 
     $ bundle exec rake
+
+## Presentation
+[![Minegems presentation on Slideshare](http://image.slidesharecdn.com/minegems-110308104612-phpapp02/95/slide-1-1024.jpg?1299602822)](http://www.slideshare.net/jodosha/minegems)
