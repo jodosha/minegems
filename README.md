@@ -2,17 +2,18 @@
 
 Multi-tenancy private gem hosting.
 
+**This project isn't actively maintained, I just open sourced because it may be useful for your business.**
+
 ## Usage
 
 This software is deployable on Heroku (yes, it works with the read-only file system) and requires an Amazon S3 bucket.
 It supports multi-tenancy separation of contents, authentication and authorization, with third level domains approach.
 
+**It only supports the old gem index**
+
 Example:
 
 In your Gemfile add `source 'http://deploy:token@account.example.org'`, before of 'https://rubygems.org'.
-
-
-**It only supports the old gem index**
 
 
 
