@@ -1,5 +1,21 @@
 # Minegems
 
+Multi-tenancy private gem hosting.
+
+## Usage
+
+This software is deployable on Heroku (yes, it works with the read-only file system) and requires an Amazon S3 bucket.
+It supports multi-tenancy separation of contents, authentication and authorization, with third level domains approach.
+
+Example:
+
+In your Gemfile add `source 'http://deploy:token@account.example.org'`, before of 'https://rubygems.org'.
+
+
+**It only supports the old gem index**
+
+
+
 ## Requirements
 
   * Ruby 1.9 (with Bundler 1.1.rc)
@@ -31,3 +47,6 @@ Be sure Foreman is running, then:
 
 ## Presentation
 [![Minegems presentation on Slideshare](http://image.slidesharecdn.com/minegems-110308104612-phpapp02/95/slide-1-1024.jpg?1299602822)](http://www.slideshare.net/jodosha/minegems)
+
+## Copyright
+2011 - 2013 Luca Guidi - http://lucaguidi.com, released under the MIT license
