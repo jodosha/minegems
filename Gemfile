@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.2.rc1'
-gem 'jquery-rails', '~> 2.0.0'
+gem 'rails', '3.2.15'
+gem 'jquery-rails', '~> 2.0.1'
 
 # I dont like RCs for unstable projects but ran into this Bundler conflict.
 #
